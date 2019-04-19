@@ -1,0 +1,80 @@
+button{
+  cursor: pointer;
+  border: none;
+  margin: 0em;
+  padding: 1em;
+  font-size: medium;
+  text-decoration: none;
+  @include rm-focus-outline;
+}
+
+.btn{
+  cursor: pointer;
+  border: none;
+  margin: 0em;
+  padding: 1em;
+  font-size: medium;
+  text-decoration: none;
+  @include rm-focus-outline;
+}
+
+.btn-round{
+  border-radius: 30px;
+  padding: 1.25em;
+}
+
+@mixin btn-fillback-lr($color1, $color2){
+  background: linear-gradient(to left, $color1 50%, $color2 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease;
+  &:hover{
+    background-position: left bottom;
+  }
+}
+
+@mixin btn-fillback-rl($color1, $color2){
+  background: linear-gradient(to right, $color1 50%, $color2 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.5s ease;
+  &:hover{
+    background-position: right bottom;
+  }
+}
+
+.btn-fb-lr-gw{
+  @include btn-fillback-lr(gold, $white)
+  color: $black;
+  &:hover{
+    color: $purple;
+  }
+}
+
+.btn-fb-lr-gp{
+  @include btn-fillback-lr(gold, $purple)
+  color: $black;
+  &:hover{
+    color: $white;
+  }
+}
+
+.btn-fb-lr-pg{
+  @include btn-fillback-lr($purple, gold)
+  color: $white;
+  &:hover{
+    color: $black;
+  }
+}
+
+.btn-fb-lr-pw{
+  @include btn-fillback-lr($purple, $white)
+  color: $white;
+  &:hover{
+    color: $black;
+  }
+}
+
+.btn-fb-rl-gp{
+  @include btn-fillback-rl(gold, $purple)
+}
