@@ -1,10 +1,10 @@
 <template>
   <div class="home-container container" id="c-home">
-    <div class="slider-container" ref="slider">
-      <div class="holder">
+    <div class="slider-container" ref="slider" v-bind:class="{ 'on-wait': onWait }">
+      <div class="holder" ref="holder">
 
-        <div class="slide home1">
-            <div class="home1-text" v-if="isShow">
+        <div class="slide home1" ref="slide1">
+            <div class="home1-text" v-if="holderPosition == 0">
               <b>
                 <p class="home-a home1-p1">
                   {{ $t('home1-1st-p') }}
@@ -20,16 +20,16 @@
 
               </br>
 
-              <a class="btn btn-round btn-fb-lr-gp home-a home1-btn" href="#c-about">
+              <button type="button" class="btn-round btn-fb-lr-gp home-a home1-btn" @click="scrollToComponent('c-about')">
                 {{ $t('home-button-info') }}
                 <font-awesome-icon :icon="['fas', 'arrow-right']" />
-              </a>
+              </button>
 
             </div>
         </div>
 
-        <div class="slide home2">
-            <div class="home2-text" v-if="!isShow">
+        <div class="slide home2" ref="slide2">
+            <div class="home2-text" v-if="holderPosition == 1">
               <b>
                 <p class="home-a home2-p">
                   {{ $t('home2-1st-p') }}
@@ -39,14 +39,14 @@
               <img src="../assets/logo-unsch.png" width="20%" class="home-a home2-logo" />
 
               <div class="home-a home2-buttons">
-                <a class="btn btn-round btn-fb-lr-pw home2-btn">
+                <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-schedule')">
                   {{ $t('home2-button') }}
                   <font-awesome-icon :icon="['fas', 'arrow-right']" />
-                </a>
-                <a class="btn btn-round btn-fb-lr-pw home2-btn" href="#c-about">
+                </button>
+                <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-about')">
                   {{ $t('home-button-info') }}
                   <font-awesome-icon :icon="['fas', 'arrow-right']" />
-                </a>
+                </button>
               </div>
             </div>
         </div>
@@ -54,11 +54,11 @@
       </div>
     </div>
     <font-awesome-icon icon="angle-left" mask="circle" size="4x" transform="left-0.75"
-    @click="scroll_x_home_left"
-    v-bind:class="{ 'nav-button-gh': position == 0, 'nav-button-ph': position == 1 }" class="nav-button" />
+    @click="scrollXHomeRight"
+    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1 }" class="nav-button" />
     <font-awesome-icon icon="angle-right" mask="circle" size="4x" transform="right-0.5"
-    @click="scroll_x_home_right"
-    v-bind:class="{ 'nav-button-gh': position == 0, 'nav-button-ph': position == 1 }" class="nav-button" />
+    @click="scrollXHomeRight"
+    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1 }" class="nav-button" />
   </div>
 
 </template>
@@ -68,36 +68,53 @@ export default {
   name: 'ContainerHome',
   data: function() {
     return {
-      hover: false,
-      isShow: true,
-      position: 0,
+      holderPosition: 0,
+      holderSlides: [],
+      aux: 0,
+      aux2: 0,
+      onWait: false
     };
   },
   methods: {
-    scroll_x_home_right: function() {
-      this.position = 1;
-      this.isShow = false;
+    scrollXHomeRight: function() {
+      var holder = this.$refs.holder;
 
-      var slider = this.$refs.slider;
-      this.$nextTick(function(){
-  			slider.scroll({
-          left: slider.clientWidth,
-          behavior: 'smooth'
-        });
-  		});
+      if(this.holderPosition < holder.childElementCount - 1){
+        this.holderPosition++;
+        this.aux = holder.firstChild.cloneNode(true);
+        this.aux2 = holder.lastChild.cloneNode(true);
+        console.log(this.aux)
+        console.log(this.aux2)
+        // holder.removeChild(holder.firstChild);
+        holder.replaceChild(this.aux2, holder.firstChild);
+        // holder.replaceChild(this.aux2, holder.childNodes[0]);
+        this.onWait = true;
+        this.onWait = false;
+        // holder.appendChild(this.aux);
+        // setTimeout(function() {holder.removeChild(holder.firstChild); holder.appendChild(this.aux); this.onWait = true; }, 500);
+
+      } else{
+        this.holderPosition = 0;
+        // holder.add(holder.remove(0));
+
+
+
+      }
+
+      console.log(holder.children)
+
+      // var slider = this.$refs.slider;
+      // this.$nextTick(function(){
+  		// 	slider.scroll({
+      //     left: this.holderSlides[this.holderPosition].scrollWidth,
+      //     behavior: 'smooth'
+      //   });
+  		// });
+
     },
-
-    scroll_x_home_left: function() {
-      this.position = 0;
-      this.isShow = true;
-
-      this.$nextTick(function(){
-        this.$refs.slider.scroll({
-          left: 0,
-          behavior: 'smooth'
-        });
-      });
-    },
+  },
+  mounted() {
+    this.holderSlides = [this.$refs.slide1, this.$refs.slide2];
   },
 }
 </script>
@@ -127,9 +144,12 @@ export default {
     color: $white;
   }
   .slider-container{
-    overflow-x: hidden;
+    overflow-x: scroll;
     grid-column: 1;
     grid-row: 1;
+    &.on-wait{
+      overflow-x: hidden;
+    }
   }
   .holder {
     width: 200%;
@@ -139,7 +159,6 @@ export default {
     justify-content: center;
     width: 50%;
     height: 100vh;
-    transition: all 2s;
   }
   .home-a{
     opacity: 0;

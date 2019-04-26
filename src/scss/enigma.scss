@@ -7,6 +7,9 @@ $nav-color2: rgba(0, 0, 0, 1);
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
 @mixin rm-focus-outline{
+  -moz-outline-style: none;
+  outline:none;
+  outline: 0;
   &:focus{
     -moz-outline-style: none;
     outline:none;

@@ -5,13 +5,13 @@ import VueI18n from 'vue-i18n';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight, faCaretSquareLeft } from '@fortawesome/free-regular-svg-icons';
-import { faCircle, faArrowRight, faMapMarkerAlt, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import es from '@/lang/es.json';
 import en from '@/lang/en.json';
 
-library.add(faCircle, faArrowRight, faMapMarkerAlt, faAngleRight, faAngleLeft);
+library.add(faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(VueI18n)
@@ -20,9 +20,9 @@ Vue.config.productionTip = false
 
 Vue.mixin({
   methods: {
-    // scrollToComponent: function(element) {
-    //   document.getElementById(element).scrollIntoView({behavior: "smooth"});
-    // },
+    scrollToComponent: function(element) {
+      document.getElementById(element).scrollIntoView({behavior: "smooth"});
+    },
     getElementY: function(element) {
       let elem = document.getElementById(element),
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;

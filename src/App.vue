@@ -6,26 +6,7 @@
       </span>
 
       <nav>
-        <a href="#c-home" v-bind:class="{ 'active': position == 0 }" class="nav-item">
-          {{ $t('app-1st-li') }}
-        </a>
-        <a href="#c-about" v-bind:class="{ 'active': position == 1 }" class="nav-item">
-          {{ $t('app-2nd-li') }}
-        </a>
-        <a href="#c-speakers" v-bind:class="{ 'active': position == 2 }" class="nav-item">
-          {{ $t('app-3rd-li') }}
-        </a>
-        <a href="#c-schedule" v-bind:class="{ 'active': position == 3 }" class="nav-item">
-          {{ $t('app-4th-li') }}
-        </a>
-        <a href="#c-pricing" v-bind:class="{ 'active': position == 4 }" class="nav-item">
-          {{ $t('app-5th-li') }}
-        </a>
-        <a href="#" v-bind:class="{ 'active': position == 5 }" class="nav-item">
-          {{ $t('app-6th-li') }}
-        </a>
-
-        <!-- <li @click="scrollToComponent('c-home')" v-bind:class="{ 'active': position == 0 }" class="nav-item">
+        <li @click="scrollToComponent('c-home')" v-bind:class="{ 'active': position == 0 }" class="nav-item">
           {{ $t('app-1st-li') }}
         </li>
         <li @click="scrollToComponent('c-about')" v-bind:class="{ 'active': position == 1 }" class="nav-item">
@@ -42,27 +23,24 @@
         </li>
         <li @click="scrollToComponent('c-contact')" v-bind:class="{ 'active': position == 5 }" class="nav-item">
           {{ $t('app-6th-li') }}
-        </li> -->
+        </li>
       </nav>
 
       <span class="language-selector">
         <abbr v-bind:class="{ 'language-selected': isEnActive }"
               @click="change_lang">
-        <!-- , 'thinking': isEsThinking
-        @mouseenter="mouse_enter_en"
-        @mouseleave="mouse_leave_en" -->
-          es</abbr>
+          es
+        </abbr>
         <aside>&nbsp;|&nbsp;</aside>
         <abbr v-bind:class="{ 'language-selected': !isEnActive }"
               @click="change_lang">
-        <!-- , 'thinking': isEnThinking
-        @mouseenter="mouse_enter_es"
-        @mouseleave="mouse_leave_es" -->
-          en</abbr>
+          en
+        </abbr>
       </span>
     </header>
 
     <router-view/>
+    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home')" icon="angle-up" mask="circle" size="3x" transform="up-0.75" class="nav-up-button"/>
   </div>
 </template>
 
@@ -226,7 +204,13 @@
     @include unselectable;
   } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
 
-
+  .nav-up-button{
+    cursor: pointer;
+    position: fixed;
+    bottom: 2.5%;
+    right: 1.5%;
+    color: gold;
+  }
 
   @media only screen and (max-width: 768px){
 
