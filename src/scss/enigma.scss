@@ -26,6 +26,22 @@ $nav-color2: rgba(0, 0, 0, 1);
   user-select: none;
 }
 
+@mixin background-size($property){
+  -webkit-background-size: $property;
+  -moz-background-size: $property;
+  -o-background-size: $property;
+  background-size: $property;
+}
+
+@mixin background-fill{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 @mixin transition-pd($property, $duration){
   -webkit-transition: $property $duration;
   -moz-transition: $property $duration;

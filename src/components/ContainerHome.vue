@@ -1,9 +1,9 @@
 <template>
   <div class="home-container container" id="c-home">
-    <div class="slider-container" ref="slider" v-bind:class="{ 'on-wait': onWait }">
+    <div class="slider-container" ref="slider">
       <div class="holder" ref="holder">
 
-        <div class="slide home1" ref="slide1">
+        <div class="slide home1">
             <div class="home1-text" v-if="holderPosition == 0">
               <b>
                 <p class="home-a home1-p1">
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="slide home2" ref="slide2">
+        <div class="slide home2">
             <div class="home2-text" v-if="holderPosition == 1">
               <b>
                 <p class="home-a home2-p">
@@ -51,10 +51,16 @@
             </div>
         </div>
 
+        <div class="slide home3">
+            <div class="" v-if="holderPosition == 2">
+
+            </div>
+        </div>
+
       </div>
     </div>
     <font-awesome-icon icon="angle-left" mask="circle" size="4x" transform="left-0.75"
-    @click="scrollXHomeRight"
+    @click="scrollXHomeLeft"
     v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1 }" class="nav-button" />
     <font-awesome-icon icon="angle-right" mask="circle" size="4x" transform="right-0.5"
     @click="scrollXHomeRight"
@@ -69,52 +75,34 @@ export default {
   data: function() {
     return {
       holderPosition: 0,
-      holderSlides: [],
-      aux: 0,
-      aux2: 0,
-      onWait: false
     };
   },
   methods: {
-    scrollXHomeRight: function() {
-      var holder = this.$refs.holder;
+    scrollXHomeLeft: function() {
+      var slider = this.$refs.slider;
 
-      if(this.holderPosition < holder.childElementCount - 1){
-        this.holderPosition++;
-        this.aux = holder.firstChild.cloneNode(true);
-        this.aux2 = holder.lastChild.cloneNode(true);
-        console.log(this.aux)
-        console.log(this.aux2)
-        // holder.removeChild(holder.firstChild);
-        holder.replaceChild(this.aux2, holder.firstChild);
-        // holder.replaceChild(this.aux2, holder.childNodes[0]);
-        this.onWait = true;
-        this.onWait = false;
-        // holder.appendChild(this.aux);
-        // setTimeout(function() {holder.removeChild(holder.firstChild); holder.appendChild(this.aux); this.onWait = true; }, 500);
+      this.holderPosition = this.holderPosition == 0 ? 2 : this.holderPosition - 1;
 
-      } else{
-        this.holderPosition = 0;
-        // holder.add(holder.remove(0));
-
-
-
-      }
-
-      console.log(holder.children)
-
-      // var slider = this.$refs.slider;
-      // this.$nextTick(function(){
-  		// 	slider.scroll({
-      //     left: this.holderSlides[this.holderPosition].scrollWidth,
-      //     behavior: 'smooth'
-      //   });
-  		// });
-
+      this.$nextTick(function(){
+        slider.scroll({
+          left: this.$refs.holder.children[this.holderPosition].offsetLeft,
+          behavior: 'smooth'
+        });
+      });
     },
-  },
-  mounted() {
-    this.holderSlides = [this.$refs.slide1, this.$refs.slide2];
+
+    scrollXHomeRight: function() {
+      var slider = this.$refs.slider;
+
+      this.holderPosition = this.holderPosition < this.$refs.holder.childElementCount - 1 ? this.holderPosition + 1 : 0;
+
+      this.$nextTick(function(){
+        slider.scroll({
+          left: this.$refs.holder.children[this.holderPosition].offsetLeft,
+          behavior: 'smooth'
+        });
+      });
+    },
   },
 }
 </script>
@@ -124,6 +112,14 @@ export default {
   |* Animations ····························································· *|
   |****************************************************************************/
   @-webkit-keyframes home1-pa{
+    0%   {opacity:0; margin-top:28px;}
+    100% {opacity:1; margin-top:0px;}
+  }
+  @-moz-keyframes home1-pa{
+    0%   {opacity:0; margin-top:28px;}
+    100% {opacity:1; margin-top:0px;}
+  }
+  @-o-keyframes home1-pa{
     0%   {opacity:0; margin-top:28px;}
     100% {opacity:1; margin-top:0px;}
   }
@@ -144,27 +140,28 @@ export default {
     color: $white;
   }
   .slider-container{
-    overflow-x: scroll;
+    overflow-x: hidden;
     grid-column: 1;
     grid-row: 1;
-    &.on-wait{
-      overflow-x: hidden;
-    }
   }
   .holder {
-    width: 200%;
+    width: 300%;
   }
   .slide{
     display: flex;
     justify-content: center;
-    width: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 33.33%;
     height: 100vh;
+    float: left;
   }
   .home-a{
     opacity: 0;
     margin-top: 0px;
-    animation: home1-pa .65s ease-out;
-    -webkit-animation: home1-pa .65s ease-out;
+    animation: home1-pa .75s ease-out;
+    -webkit-animation: home1-pa .75s ease-out;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
   } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
@@ -174,8 +171,8 @@ export default {
   |* Slide 1 ································································ *|
   |****************************************************************************/
   .home1{
-    background: url("../assets/home1.jpg") no-repeat;
-    float: left;
+    background: url("../assets/home1.jpg");
+    @include background-fill;
   }
   .home1-text{
     font-size: 4em;
@@ -208,8 +205,8 @@ export default {
   |* Slide 2 ································································ *|
   |****************************************************************************/
   .home2{
-    background: url("../assets/home2.jpg") no-repeat;
-    float: right;
+    background: url("../assets/home2.jpg");
+    @include background-fill;
   }
   .home2-text{
     font-size: 4.5em;
@@ -233,6 +230,15 @@ export default {
     vertical-align: middle;
     margin-right: 1em;
     margin-left: 1em;
+  } //=========================================================================\
+
+
+  /****************************************************************************|
+  |* Slide 3 ································································ *|
+  |****************************************************************************/
+  .home3{
+    background: url("../assets/home3.jpg");
+    @include background-fill;
   } //=========================================================================\
 
 
