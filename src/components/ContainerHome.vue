@@ -57,13 +57,15 @@
               <p class="home-a">
                 FRESI
               </p>
-              <p class="home-a">
+              <p class="home-a home3-p2">
                 OF
               </p>
-              <p class="home-a">
+              <p class="home-a home3-p3">
                 MRD
               </p>
-              &#x1F648;
+              <p class="home-a home3-p4">
+                &#x1F648;
+              </p>
             </b>
           </div>
         </div>
@@ -72,10 +74,10 @@
     </div>
     <font-awesome-icon icon="angle-left" mask="circle" size="4x" transform="left-0.75"
     @click="scrollXHomeLeft"
-    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1 }" class="nav-button" />
+    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" class="nav-button" />
     <font-awesome-icon icon="angle-right" mask="circle" size="4x" transform="right-0.5"
     @click="scrollXHomeRight"
-    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1 }" class="nav-button" />
+    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" class="nav-button" />
   </div>
 
 </template>
@@ -119,7 +121,7 @@ export default {
     },
 
     onScroll: function() {
-      if(this.$refs.slider.scrollLeft.between(this.$refs.holder.children[this.holderPosition].offsetLeft - 3, this.$refs.holder.children[this.holderPosition].offsetLeft + 3, true)){
+      if(this.$refs.slider.scrollLeft.between(this.$refs.holder.children[this.holderPosition].offsetLeft - 2, this.$refs.holder.children[this.holderPosition].offsetLeft + 2, true)){
         this.animationPosition = this.holderPosition;
       } else{
         this.animationPosition = -1;
@@ -280,6 +282,15 @@ export default {
     text-align: center;
     margin-top: 24vh;
     color: black;
+  }
+  .home3-p2{
+    animation-delay: .5s;
+  }
+  .home3-p3{
+    animation-delay: 1s;
+  }
+  .home3-p4{
+    animation-delay: 2s;
   } //=========================================================================\
 
 
@@ -298,6 +309,9 @@ export default {
   }
   .nav-button-ph:hover{
     color: $purple;
+  }
+  .nav-button-nch:hover{
+    color: $nav-color;
   } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
 
 
