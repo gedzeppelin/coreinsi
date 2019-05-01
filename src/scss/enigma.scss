@@ -3,8 +3,17 @@ $white: #fcfcfc;
 $purple: #820263;
 $black: #0a0908;
 $nav-color: rgba(0, 0, 0, .75);
+$nav-color-r: rgba(0, 0, 0, .5);
 $nav-color2: rgba(0, 0, 0, 1);
 @import url('https://fonts.googleapis.com/css?family=Rubik');
+
+@mixin position-absolute ($top: null, $left: null, $right: null, $bottom: null) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
 
 @mixin rm-focus-outline{
   -moz-outline-style: none;
@@ -40,6 +49,26 @@ $nav-color2: rgba(0, 0, 0, 1);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+@mixin transition-multi($value...) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+
+@mixin grouped-trans($list, $time, $ease) {
+  @include transition-property($list);
+  @include transition-duration($time);
+  @include transition-timing-function($ease);
+}
+
+@mixin transition-mix($property: all, $duration: 0.25s, $timing: linear, $delay: 0s) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+  transition-delay: $delay;
 }
 
 @mixin transition-pd($property, $duration){

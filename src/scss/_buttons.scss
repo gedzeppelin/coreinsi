@@ -23,6 +23,23 @@ button{
   padding: 1.25em;
 }
 
+@media only screen and (max-width: 800px){
+  button{
+    padding: .75em;
+    font-size: small;
+  }
+
+  .btn{
+    padding: .75em;
+    font-size: small;
+  }
+
+  .btn-round{
+    border-radius: 30px;
+    padding: .9em;
+  }
+}
+
 @mixin btn-fillback-lr($color1, $color2){
   background: linear-gradient(to left, $color1 50%, $color2 50%);
   background-size: 200% 100%;
