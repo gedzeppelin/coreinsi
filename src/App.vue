@@ -1,25 +1,28 @@
 <template>
   <div id="app">
     <header v-bind:class="{ 'scrolled-y': isScrolled, 'expanded': isTogleAux }">
-      <div class="burger-nav" @click="auux">
+      <div class="burger-nav" @click="expandHeader">
           <span class="line" ref="line1"></span>
           <span class="line" ref="line2"></span>
           <span class="line line-3" ref="line3"></span>
       </div>
 
-      <span class="header-logo header-logo-e" @click="scrollToComponent('c-home')" v-bind:class="{ 'active': position == 0 }" v-if="isTogleAux">
-        {{ $t('app-1st-li') }}
-      </span>
-
-      <span class="header-logo" v-else>
+      <span class="header-logo">
         XII COREINSI
       </span>
 
-      <nav v-bind:class="{ 'nav-open': isTogleAux }">
-        <li @click="scrollToComponent('c-home')" v-bind:class="{ 'active': position == 0 }" class="nav-item nav-item-r">
+      <span class="header-logo-r header-logo-re" @click="scrollToComponent('c-home'); expandHeader();" v-bind:class="{ 'active': position == 0 }" v-if="isTogleAux">
+        {{ $t('app-1st-li') }}
+      </span>
+      <span class="header-logo-r" v-else>
+        {{ position == 0 ? $t('app-1st-li') : position == 1 ? $t('app-2nd-li') : position == 2 ? $t('app-3rd-li') : position == 3 ? $t('app-4th-li') : position == 4 ? $t('app-5th-li') : $t('app-6th-li') }}
+      </span>
+
+      <nav class="nav-header nav-normal">
+        <li @click="scrollToComponent('c-home')" v-bind:class="{ 'active': position == 0 }" class="nav-item">
           {{ $t('app-1st-li') }}
         </li>
-        <li @click="scrollToComponent('c-about')" v-bind:class="{ 'active': position == 1 }" class="nav-item nav-item-r2">
+        <li @click="scrollToComponent('c-about')" v-bind:class="{ 'active': position == 1 }" class="nav-item">
           {{ $t('app-2nd-li') }}
         </li>
         <li @click="scrollToComponent('c-speakers')" v-bind:class="{ 'active': position == 2 }" class="nav-item">
@@ -31,7 +34,25 @@
         <li @click="scrollToComponent('c-pricing')" v-bind:class="{ 'active': position == 4 }" class="nav-item">
           {{ $t('app-5th-li') }}
         </li>
-        <li @click="scrollToComponent('c-contact')" v-bind:class="{ 'active': position == 5 }" class="nav-item nav-item-rl">
+        <li @click="scrollToComponent('c-contact')" v-bind:class="{ 'active': position == 5 }" class="nav-item">
+          {{ $t('app-6th-li') }}
+        </li>
+      </nav>
+
+      <nav class="nav-header nav-responsive" v-bind:class="{ 'nav-open': isTogleAux }">
+        <li @click="scrollToComponent('c-about'); expandHeader();" v-bind:class="{ 'active': position == 1 }" class="nav-item nav-item-r2">
+          {{ $t('app-2nd-li') }}
+        </li>
+        <li @click="scrollToComponent('c-speakers'); expandHeader();" v-bind:class="{ 'active': position == 2 }" class="nav-item">
+          {{ $t('app-3rd-li') }}
+        </li>
+        <li @click="scrollToComponent('c-schedule'); expandHeader();" v-bind:class="{ 'active': position == 3 }" class="nav-item">
+          {{ $t('app-4th-li') }}
+        </li>
+        <li @click="scrollToComponent('c-pricing'); expandHeader();" v-bind:class="{ 'active': position == 4 }" class="nav-item">
+          {{ $t('app-5th-li') }}
+        </li>
+        <li @click="scrollToComponent('c-contact'); expandHeader();" v-bind:class="{ 'active': position == 5 }" class="nav-item nav-item-rl">
           {{ $t('app-6th-li') }}
         </li>
       </nav>
@@ -84,7 +105,7 @@
         this.isEnActive = this.isEnActive === true ? false : true;
         this.$i18n.locale = this.$i18n.locale === 'es' ? 'en' : 'es';
       },
-      auux: function() {
+      expandHeader: function() {
         this.isTogleAux = this.isTogleAux === true ? false : true;
         if(this.isTogleAux == true) {
           this.$refs.line1.style = "transform:rotate(45deg);top:8px;background:gold;"
@@ -146,7 +167,7 @@
   /****************************************************************************|
   |* Header resposive menu button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .nav-responsive{
+  .burger-nav{
     display: none;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -161,19 +182,25 @@
     margin-right: 0px;
     color: gold;
     @include unselectable;
+  }
+  .header-logo-r{
+    display: none;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
   |* Header navigation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  nav{
+  .nav-header{
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
     width: 68%;
     padding: 0px;
     margin: 0px;
+    &.nav-responsive{
+      display: none;
+    }
   }
   .nav-item{
     width: 15%;
@@ -270,7 +297,7 @@
         background: $nav-color;
       }
       &.scrolled-y{
-        padding: 7.5px 0px;
+        padding: 10px 0px;
         background: $nav-color2;
       }
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
@@ -280,7 +307,7 @@
     |* Header resposive menu button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
     .burger-nav {
-      position: inline-block;
+      display: inline-block;
       margin: 0px;
       margin-left: 2.5%;
       margin-right: 13px;
@@ -307,12 +334,17 @@
     |* Header responsive logo/first-nav-item ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
     .header-logo{
+      display: none;
+    }
+    .header-logo-r{
+      display: inline-block;
       width: auto;
       margin: 0px;
-      color: gold;
       font-size: 18px;
+      color: gold;
+      @include unselectable;
       @include transition-pdf(color, .15s, linear);
-      &-e{
+      &e{
         color: $white;
         cursor: pointer;
       }
@@ -328,17 +360,22 @@
     /**************************************************************************|
     |* Header responsive navigation since 2nd nav-item ~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
-    nav{
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: null;
-      align-items: null;
+    .nav-header{
       visibility: hidden;
       opacity: 0;
       max-height: 0px;
       width: 100%;
       order: 1;
       @include transition-multi(opacity .35s ease-in, max-height .25s ease-out);
+      &.nav-responsive{
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: null;
+        align-items: null;
+      }
+      &.nav-normal{
+        display: none;
+      }
     }
     .nav-open{
       opacity: 1;
@@ -352,22 +389,19 @@
       font-size: 18px;
       line-height: 21px;
       @include transition-pdf(color, .15s, linear);
-      &.active{
-        color: gold;
-        font-size: 18px;
-      }
-      &:hover{
-        color: gold;
-        font-size: 18px;
-      }
-      &-r{
-        display: none;
-      }
       &-r2{
         padding-top: 10px;
       }
       &-rl{
         padding-bottom: 0;
+      }
+      &:hover{
+        color: gold;
+        font-size: 18px;
+      }
+      &.active{
+        color: gold;
+        font-size: 18px;
       }
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
