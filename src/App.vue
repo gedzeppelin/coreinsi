@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header v-bind:class="{ 'scrolled-y': isScrolled, 'expanded': isTogleAux }">
-      <div class="burger-nav" @click="expandHeader">
+      <div class="burger-nav" @click="isTogleAux == true ? collapseHeader() : expandHeader();">
           <span class="line" ref="line1"></span>
           <span class="line" ref="line2"></span>
           <span class="line line-3" ref="line3"></span>
@@ -11,7 +11,7 @@
         XII COREINSI
       </span>
 
-      <span class="header-logo-r header-logo-re" @click="scrollToComponent('c-home'); expandHeader();" v-bind:class="{ 'active': position == 0 }" v-if="isTogleAux">
+      <span class="header-logo-r header-logo-re" @click="scrollToComponent('c-home'); collapseHeader();" v-bind:class="{ 'active': position == 0 }" v-if="isTogleAux">
         {{ $t('app-1st-li') }}
       </span>
       <span class="header-logo-r" v-else>
@@ -40,19 +40,19 @@
       </nav>
 
       <nav class="nav-header nav-responsive" v-bind:class="{ 'nav-open': isTogleAux }">
-        <li @click="scrollToComponent('c-about'); expandHeader();" v-bind:class="{ 'active': position == 1 }" class="nav-item nav-item-r2">
+        <li @click="scrollToComponent('c-about'); collapseHeader();" v-bind:class="{ 'active': position == 1 }" class="nav-item nav-item-r2">
           {{ $t('app-2nd-li') }}
         </li>
-        <li @click="scrollToComponent('c-speakers'); expandHeader();" v-bind:class="{ 'active': position == 2 }" class="nav-item">
+        <li @click="scrollToComponent('c-speakers'); collapseHeader();" v-bind:class="{ 'active': position == 2 }" class="nav-item">
           {{ $t('app-3rd-li') }}
         </li>
-        <li @click="scrollToComponent('c-schedule'); expandHeader();" v-bind:class="{ 'active': position == 3 }" class="nav-item">
+        <li @click="scrollToComponent('c-schedule'); collapseHeader();" v-bind:class="{ 'active': position == 3 }" class="nav-item">
           {{ $t('app-4th-li') }}
         </li>
-        <li @click="scrollToComponent('c-pricing'); expandHeader();" v-bind:class="{ 'active': position == 4 }" class="nav-item">
+        <li @click="scrollToComponent('c-pricing'); collapseHeader();" v-bind:class="{ 'active': position == 4 }" class="nav-item">
           {{ $t('app-5th-li') }}
         </li>
-        <li @click="scrollToComponent('c-contact'); expandHeader();" v-bind:class="{ 'active': position == 5 }" class="nav-item nav-item-rl">
+        <li @click="scrollToComponent('c-contact'); collapseHeader();" v-bind:class="{ 'active': position == 5 }" class="nav-item nav-item-rl">
           {{ $t('app-6th-li') }}
         </li>
       </nav>
@@ -71,7 +71,7 @@
     </header>
 
     <router-view/>
-    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home')" icon="angle-up" mask="circle" size="3x" transform="up-0.75" class="nav-up-button"/>
+    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home'); if(isTogleAux === true) collapseHeader();" icon="angle-up" mask="circle" size="3x" transform="up-0.75" class="nav-up-button"/>
   </div>
 </template>
 
@@ -106,14 +106,14 @@
         this.$i18n.locale = this.$i18n.locale === 'es' ? 'en' : 'es';
       },
       expandHeader: function() {
-        this.isTogleAux = this.isTogleAux === true ? false : true;
-        if(this.isTogleAux == true) {
-          this.$refs.line1.style = "transform:rotate(45deg);top:8px;background:gold;"
-          this.$refs.line2.style = "width:0;opacity:0;"
-          this.$refs.line3.style = "transform:rotate(-45deg);top:-8px;background:gold;"
-        } else {
-          this.$refs.line1.style = this.$refs.line3.style = this.$refs.line2.style = null;
-        }
+        this.isTogleAux = true;
+        this.$refs.line1.style = "transform:rotate(45deg);top:8px;background:gold;"
+        this.$refs.line2.style = "width:0;opacity:0;"
+        this.$refs.line3.style = "transform:rotate(-45deg);top:-8px;background:gold;"
+      },
+      collapseHeader: function() {
+        this.isTogleAux = false;
+        this.$refs.line1.style = this.$refs.line3.style = this.$refs.line2.style = null;
       }
     },
     mounted() {
