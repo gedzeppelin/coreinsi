@@ -117,10 +117,12 @@ export default {
       });
     },
     swipeXHome: function(event){
-      if(event.type == "swipeleft"){
-        this.scrollXHomeRight();
-      } else if(event.type == "swiperight"){
-        this.scrollXHomeLeft();
+      if(event.pointerType == "touch"){
+        if(event.type == "swipeleft"){
+          this.scrollXHomeRight();
+        } else if(event.type == "swiperight"){
+          this.scrollXHomeLeft();
+        }
       }
     },
     onScroll: function() {

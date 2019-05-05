@@ -16,7 +16,7 @@ library.add(faGlobeAmericas, faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 VueHammer.config.swipe = {
-  threshold: 50,
+  threshold: 100,
   direction: 6,
 }
 
