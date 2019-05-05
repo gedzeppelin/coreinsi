@@ -4,7 +4,7 @@
       <div class="holder" ref="holder">
 
         <div class="slide home1">
-          <div class="home1-text" v-if="animationPosition == 0">
+          <div class="home-text home1-nr" v-if="animationPosition == 0">
             <b>
               <p class="home-a home1-p1">
                 {{ $t('home1-1st-p') }}
@@ -14,7 +14,8 @@
               </p>
 
               <p class="home-a home1-city">
-                <font-awesome-icon :icon="['fas', 'map-marker-alt']" /> AYACUCHO, HUAMANGA, PERÚ
+                AYACUCHO, HUAMANGA <font-awesome-icon :icon="['fas', 'map-marker-alt']" /><br />
+                PERÚ <font-awesome-icon :icon="['fas', 'globe-americas']" />
               </p>
             </b>
 
@@ -24,19 +25,18 @@
               {{ $t('home-button-info') }}
               <font-awesome-icon :icon="['fas', 'arrow-right']" />
             </button>
-
           </div>
         </div>
 
         <div class="slide home2">
-          <div class="home2-text" v-if="animationPosition == 1">
+          <div class="home-text" v-if="animationPosition == 1">
             <b>
               <p class="home-a home2-p">
                 {{ $t('home2-1st-p') }}
               </p>
             </b>
 
-            <img src="../assets/logo-unsch.png" width="20%" class="home-a home2-logo" />
+            <img src="../assets/logo-unsch.png" class="home-a home2-logo" />
 
             <div class="home-a home2-buttons">
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-schedule')">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="slide home3">
-          <div class="home3-text" v-if="animationPosition == 2">
+          <div class="home-text" v-if="animationPosition == 2">
             <b>
               <p class="home-a">
                 FRESI
@@ -72,12 +72,16 @@
 
       </div>
     </div>
-    <font-awesome-icon icon="angle-left" mask="circle" size="4x" transform="left-0.75"
-    @click="scrollXHomeLeft"
-    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" class="nav-button" />
-    <font-awesome-icon icon="angle-right" mask="circle" size="4x" transform="right-0.5"
-    @click="scrollXHomeRight"
-    v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" class="nav-button" />
+    <div class="nav-button nav-button-left">
+      <font-awesome-icon icon="angle-left" mask="circle" transform="left-0.75"
+      @click="scrollXHomeLeft"
+      v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" />
+    </div>
+    <div class="nav-button nav-button-right">
+      <font-awesome-icon icon="angle-right" mask="circle" transform="right-0.5"
+      @click="scrollXHomeRight"
+      v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" />
+    </div>
   </div>
 
 </template>
@@ -141,40 +145,24 @@ export default {
 
 <style scoped lang="scss">
   /****************************************************************************|
-  |* Animations ····························································· *|
+  |* Animations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  @-webkit-keyframes home1-pa{
-    0%   {opacity:0; margin-top:28px;}
-    100% {opacity:1; margin-top:0px;}
-  }
-  @-moz-keyframes home1-pa{
-    0%   {opacity:0; margin-top:28px;}
-    100% {opacity:1; margin-top:0px;}
-  }
-  @-o-keyframes home1-pa{
-    0%   {opacity:0; margin-top:28px;}
-    100% {opacity:1; margin-top:0px;}
-  }
-  @keyframes home1-pa{
-    0%   {opacity:0; margin-top:28px;}
-    100% {opacity:1; margin-top:0px;}
-  } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
+  @include keyframes(home1-pa){
+    0%   {opacity:0; transform:translateY(30px)}
+    100% {opacity:1; transform:translateY(0px)}
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Grid configuration ····················································· *|
+  |* Grid configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  p{
-    margin: .1em auto;
-  }
   .home-container{
     display: grid;
-    color: $white;
   }
   .slider-container{
-    overflow-x: hidden;
     grid-column: 1;
     grid-row: 1;
+    overflow-x: hidden;
   }
   .holder {
     width: 300%;
@@ -182,106 +170,83 @@ export default {
   .slide{
     display: flex;
     justify-content: center;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 33.33%;
+    align-items: center;
     height: 100vh;
+    width: 33.33%;
     float: left;
   }
   .home-a{
     opacity: 0;
-    margin-top: 0px;
-    animation: home1-pa .75s ease-out;
-    -webkit-animation: home1-pa .75s ease-out;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-  } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
+    @include animation-mix(home1-pa, $duration: 0.75s);
+  }
+  .home-text{
+    width: 75%;
+    font-size: 9vw;
+    text-align: center;
+    line-height: 125%;
+    max-height: 75%;
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Slide 1 ································································ *|
+  |* Slide 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .home1{
     background: url("../assets/home1.jpg");
     @include background-fill;
   }
-  .home1-text{
-    font-size: 4em;
-    text-align: right;
-    margin-top: 30vh;
-  }
-  .home1-p1{
-    // animation-delay: .55s;
-  }
   .home1-p2{
-    margin-bottom: 0px;
+    margin-bottom: 1.5vh;
     animation-delay: .25s;
-    // animation-delay: .8s;
   }
   .home1-city{
+    line-height: 150%;
     display: inline-block;
-    padding: .55em;
-    margin-left: auto;
+    padding: .35rem .65rem;
     background: $black;
-    font-size: .55em;
-    margin-bottom: 1.25em;
+    font-size: 4vw;
+    margin-bottom: 3.5vh;
+    text-align: right;
     animation-delay: .6s;
-    // animation-delay: 1.15s;
   }
   .home1-btn{
-    display: inline-block;
+    font-size: 40%;
     animation-delay: .70s;
-    // animation-delay: 1.225s;
-  } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Slide 2 ································································ *|
+  |* Slide 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .home2{
     background: url("../assets/home2.jpg");
     @include background-fill;
   }
-  .home2-text{
-    font-size: 4.5em;
-    text-align: center;
-    margin-top: 24vh;
-  }
   .home2-p{
-    // animation-delay: .55s;
+    margin-bottom: 2vh;
   }
   .home2-logo{
-    display: block;
+    max-width: 50%;
     margin: 0 auto;
-    margin-bottom: .25em;
     animation-delay: .3s;
-    // animation-delay: .85s;
   }
   .home2-buttons{
-    text-align: center;
     animation-delay: .55s;
-    // animation-delay: 1s;
   }
   .home2-btn{
-    vertical-align: middle;
-    margin-right: 1em;
-    margin-left: 1em;
+    display: block;
+    margin: 1.5vh auto;
+    font-size: 40%;
   } //=========================================================================\
 
 
   /****************************************************************************|
-  |* Slide 3 ································································ *|
+  |* Slide 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .home3{
     background: url("../assets/home3.jpg");
-    @include background-fill;
-  }
-  .home3-text{
-    font-size: 4.5em;
-    text-align: center;
-    margin-top: 24vh;
     color: black;
+    @include background-fill;
   }
   .home3-p2{
     animation-delay: .5s;
@@ -290,19 +255,30 @@ export default {
     animation-delay: 1s;
   }
   .home3-p4{
-    animation-delay: 2s;
-  } //=========================================================================\
+    animation-delay: 1.5s;
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Navigation arrows ······················································ *|
+  |* Navigation arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .nav-button{
+    position: absolute;
     grid-column: 1;
     grid-row: 1;
-    margin-top: 45vh;
+    top: 50%;
+    transform: translateY(-50%);
+    &-left{
+      left: 2.5%;
+    }
+    &-right{
+      right: 2.5%;
+    }
+  }
+  .nav-button{
     cursor: pointer;
-    @include transition-pdf(color, .5s, ease);
+    font-size: 1.75rem;
+    @include transition-pdt(color, .5s, ease);
   }
   .nav-button-gh:hover{
     color: gold;
@@ -312,18 +288,85 @@ export default {
   }
   .nav-button-nch:hover{
     color: $nav-color;
-  } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* FA icons ······························································· *|
+  |* FA arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .fa-angle-right{
-    margin-left: 87.5vw;
-  }
+  .fa-arrow-right{
+    cursor: pointer;
+    margin-left: .5em;
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
-  .fa-angle-left{
-    margin-left: 6.5vw;
+  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-  } //·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·=·|
+  /****************************************************************************|
+  |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
+  @include breakpoint(large){
+    /**************************************************************************|
+    |* Grid configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .home-text{
+      width: 65%;
+      font-size: 4.25vw;
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Slide 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .home1-nr{
+      text-align: right;
+    }
+    .home1-city{
+      line-height: 125%;
+      padding: .35rem 1rem;
+      font-size: 2vw;
+    }
+    .home1-btn{
+      font-size: 27.5%;
+      margin: 0;
+      margin-left:auto;
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Slide 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .home2-p{
+      margin-bottom: 1vh;
+    }
+    .home2-logo{
+      max-width: 25%;
+      margin-bottom: -2vh;
+    }
+    .home2-btn{
+      display: inline-block;
+      margin-left:1.5vw;
+      margin-right:1.5vw;
+      font-size: 27.5%;
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Navigation arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .nav-button{
+      font-size: 3.5rem;
+      &-left{
+        left: 7.5%;
+      }
+      &-right{
+        right: 7.5%;
+      }
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 </style>

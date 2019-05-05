@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header v-bind:class="{ 'scrolled-y': isScrolled, 'expanded': isTogleAux }">
+    <header v-bind:class="{ 'scrolled-y': isScrolled }">
       <div class="burger-nav" @click="isTogleAux == true ? collapseHeader() : expandHeader();">
           <span class="line" ref="line1"></span>
           <span class="line" ref="line2"></span>
@@ -58,12 +58,12 @@
       </nav>
 
       <span class="language-selector">
-        <abbr v-bind:class="{ 'language-selected': isEnActive }"
+        <abbr v-bind:class="{ 'language-selected': !isEnActive }"
               @click="change_lang">
           es
         </abbr>
         <aside>&nbsp;|&nbsp;</aside>
-        <abbr v-bind:class="{ 'language-selected': !isEnActive }"
+        <abbr v-bind:class="{ 'language-selected': isEnActive }"
               @click="change_lang">
           en
         </abbr>
@@ -71,7 +71,7 @@
     </header>
 
     <router-view/>
-    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home'); if(isTogleAux === true) collapseHeader();" icon="angle-up" mask="circle" size="3x" transform="up-0.75" class="nav-up-button"/>
+    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home'); if(isTogleAux == true) collapseHeader();" icon="angle-up" mask="circle" transform="up-0.75" class="nav-up-button"/>
   </div>
 </template>
 
@@ -80,7 +80,7 @@
     data: function() {
       return {
         isTogleAux: false,
-        isEnActive: true,
+        isEnActive: false,
         isScrolled: false,
         position: 0,
       };
@@ -133,11 +133,8 @@
   |****************************************************************************/
   html, body{
     background: $white;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    scroll-behavior: smooth;
-    font: 100% $font-stack;
+    color: $white;
+    font: 18px $font-stack;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -148,18 +145,16 @@
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    background: $nav-color;
-    position: fixed;
-    width: 100%;
-    padding: 1.5% 0px;
-    top: 0;
-    left: 0;
-    font-size: 24px;
-    z-index: 1;
+    flex-wrap: wrap;
+    padding: 18px 0px;
+    background: $nav-color-r;
     @include transition-pd(all, .5s);
+    &.expanded{
+      background: $nav-color;
+    }
     &.scrolled-y{
+      padding: 10px 0px;
       background: $nav-color2;
-      padding: .65% 0px;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -167,59 +162,96 @@
   /****************************************************************************|
   |* Header resposive menu button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .burger-nav{
-    display: none;
+  .burger-nav {
+    display: inline-block;
+    margin: 0px;
+    margin-left: 2.5%;
+    margin-right: 13px;
+    width: auto;
+    cursor: pointer;
+  }
+  .line {
+    background: $white;
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin-bottom: 4px;
+    position: relative;
+    top: 0;
+    border-radius: 10px;
+    @include transition-pdt(all, ease-in-out, .35s);
+    &-3{
+      margin-bottom: 0px;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Header logo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* Header responsive logo/first-nav-item ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .header-logo{
-    display: inline-block;
-    width: 15%;
-    margin-left: 1%;
-    margin-right: 0px;
-    color: gold;
-    @include unselectable;
+    display: none;
   }
   .header-logo-r{
-    display: none;
+    display: inline-block;
+    width: auto;
+    color: gold;
+    @include unselectable;
+    &e{
+      color: $white;
+      cursor: pointer;
+    }
+    &.active{
+      color: gold;
+    }
+    &:hover{
+      color:gold;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Header navigation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* Header responsive navigation since 2nd nav-item ~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .nav-header{
     display: inline-flex;
-    justify-content: space-between;
     align-items: center;
-    width: 68%;
-    padding: 0px;
-    margin: 0px;
     &.nav-responsive{
-      display: none;
+      flex-direction: column;
+      order: 1;
+      visibility: hidden;
+      opacity: 0;
+      max-height: 0px;
+      width: 100%;
+      @include transition-multi(opacity .35s ease-in, max-height .25s ease-out);
+    }
+    &.nav-open{
+      visibility: visible;
+      opacity: 1;
+      max-height: 250px;
     }
   }
+  .nav-normal{
+    display: none;
+  }
   .nav-item{
-    width: 15%;
-    font-size: 18px;
-    line-height: 28px;
-    text-align: center;
-    text-decoration: none;
+    display: inline-block;
+    width: auto;
+    padding: 5px 0;
     color: white;
-    list-style-type: none;
     cursor: pointer;
-    @include rm-focus-outline;
-    @include transition-pdf(font-size, .15s, linear);
-    &.active{
-      color: gold;
-      font-size: 24px;
+    @include transition-pdt(color, .15s, linear);
+    &-r2{
+      padding-top: 10px;
+    }
+    &-rl{
+      padding-bottom: 0;
     }
     &:hover{
       color: gold;
-      font-size: 24px;
+    }
+    &.active{
+      color: gold;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -229,25 +261,20 @@
   |****************************************************************************/
   .language-selector {
     display: inline-block;
-    width: 15%;
-    margin-right: 1%;
-    font-size: 18px;
-    line-height: 28px;
+    width: auto;
+    margin-right: 2.25%;
+    font-size: 15px;
+    line-height: 21px;
     text-align: right;
+    cursor: pointer;
+    @include unselectable;
   }
   abbr {
     display: inline-block;
-    color: white;
-    cursor: pointer;
-    @include unselectable;
-    @include transition-pd(color, .35s);
+    @include transition-pd(color, .25s);
     &.language-selected {
       color: gold;
       text-decoration: underline;
-    }
-    &.thinking {
-      color: white;
-      text-decoration: none;
     }
     &:hover {
       color: gold;
@@ -255,8 +282,6 @@
   }
   aside {
     display: inline-block;
-    color: white;
-    @include unselectable;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -267,22 +292,24 @@
     cursor: pointer;
     position: fixed;
     bottom: 2.5%;
-    right: 1.5%;
+    right: 5%;
     color: gold;
+    font-size: 2rem;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
-
+  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
   /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
   /****************************************************************************|
-  |* RESPONSIVITY 800px ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  @media only screen and (max-width: 800px){
+  @include breakpoint(large){
     /**************************************************************************|
     |* Global configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
     html, body{
-      font-size: 60%;
+      font-size: 1.0  5rem;
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -290,15 +317,12 @@
     |* Header configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
     header{
-      background: $nav-color-r;
-      padding: 17.5px 0px;
-      flex-wrap: wrap;
-      &.expanded{
-        background: $nav-color;
-      }
+      flex-wrap: nowrap;
+      background: $nav-color;
+      font-size: 24px;
       &.scrolled-y{
-        padding: 10px 0px;
         background: $nav-color2;
+        padding: 18 0px;
       }
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -306,102 +330,54 @@
     /**************************************************************************|
     |* Header resposive menu button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
-    .burger-nav {
-      display: inline-block;
-      margin: 0px;
-      margin-left: 2.5%;
-      margin-right: 13px;
-      width: auto;
-      cursor: pointer;
-    }
-    .line {
-      background: $white;
-      display: block;
-      width: 30px;
-      height: 4px;
-      margin-bottom: 4px;
-      position: relative;
-      top: 0;
-      transition: all ease-in-out .35s;
-      border-radius: 10px;
-      &-3{
-        margin-bottom: 0px;
-      }
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Header responsive logo/first-nav-item ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .header-logo{
+    .burger-nav{
       display: none;
     }
-    .header-logo-r{
-      display: inline-block;
-      width: auto;
-      margin: 0px;
-      font-size: 18px;
-      color: gold;
-      @include unselectable;
-      @include transition-pdf(color, .15s, linear);
-      &e{
-        color: $white;
-        cursor: pointer;
-      }
-      &.active{
-        color: gold;
-      }
-      &:hover{
-        color:gold;
-      }
+    .line{
+      display: none;
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
     /**************************************************************************|
-    |* Header responsive navigation since 2nd nav-item ~~~~~~~~~~~~~~~~~~~~~~ *|
+    |* Header logo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
-    .nav-header{
-      visibility: hidden;
-      opacity: 0;
-      max-height: 0px;
-      width: 100%;
-      order: 1;
-      @include transition-multi(opacity .35s ease-in, max-height .25s ease-out);
-      &.nav-responsive{
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: null;
-        align-items: null;
-      }
-      &.nav-normal{
-        display: none;
-      }
+    .header-logo{
+      display: inline-block;
+      width: 15%;
+      margin-left: 1%;
+      color: gold;
+      @include unselectable;
     }
-    .nav-open{
-      opacity: 1;
-      visibility: visible;
-      max-height: 200px;
+    .header-logo-r{
+      display: none;
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Header navigation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .nav-responsive{
+      display: none;
+    }
+    .nav-normal{
+      display: inline-flex;
+      justify-content: space-between;
+      width: 68%;
     }
     .nav-item{
-      display: inline-block;
-      padding: 5px 0;
-      width: auto;
-      font-size: 18px;
-      line-height: 21px;
-      @include transition-pdf(color, .15s, linear);
-      &-r2{
-        padding-top: 10px;
-      }
-      &-rl{
-        padding-bottom: 0;
-      }
+      width: 15%;
+      padding: 0;
+      font-size: 1rem;
+      line-height: 28px;
+      text-align: center;
+      @include transition-multi(font-size .1s linear, color .2s ease-in);
       &:hover{
         color: gold;
-        font-size: 18px;
+        font-size: 24px;
       }
       &.active{
         color: gold;
-        font-size: 18px;
+        font-size: 24px;
       }
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -410,10 +386,10 @@
     |* Navigation bar language selector ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
     .language-selector {
-      width: auto;
-      margin-right: 2.25%;
-      font-size: 15px;
-      line-height: 21px;
+      width: 15%;
+      margin-right: 1%;
+      font-size: 18px;
+      line-height: 28px;
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -421,9 +397,9 @@
     |* Navigation fixed button (to top) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
     .nav-up-button{
-      bottom: 2.75%;
-      right: 5%;
-      font-size: 700%;
+      bottom: 2%;
+      right: 1.5%;
+      font-size: 2.5rem;
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 

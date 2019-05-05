@@ -5,13 +5,13 @@ import VueI18n from 'vue-i18n';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight, faCaretSquareLeft } from '@fortawesome/free-regular-svg-icons';
-import { faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faGlobeAmericas, faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import es from '@/lang/es.json';
 import en from '@/lang/en.json';
 
-library.add(faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft);
+library.add(faGlobeAmericas, faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(VueI18n)

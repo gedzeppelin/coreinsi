@@ -1,0 +1,11 @@
+@mixin animation-mix($name, $delay: 0s, $direction: normal, $duration: 0.25s, $fill-mode: forwards,
+                    $iteration-count: 1, $play-state: running, $timing-function: linear) {
+  @include css3-prefix-wo-ms(animation-delay, $delay);
+  @include css3-prefix-wo-ms(animation-direction, $direction);
+  @include css3-prefix-wo-ms(animation-duration, $duration);
+  @include css3-prefix-wo-ms(animation-fill-mode, $fill-mode);
+  @include css3-prefix-wo-ms(animation-iteration-count, $iteration-count);
+  @include css3-prefix-wo-ms(animation-name, $name);
+  @include css3-prefix-wo-ms(animation-play-state, $play-state);
+  @include css3-prefix-wo-ms(animation-timing-function, $timing-function);
+}

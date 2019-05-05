@@ -1,0 +1,29 @@
+
+@mixin transition-multi($value...) {
+  @include css3-prefix-wo-ms(transition, $value);
+}
+
+@mixin transition-grouped($list, $time, $ease) {
+  @include transition-property($list);
+  @include transition-duration($time);
+  @include transition-timing-function($ease);
+}
+
+@mixin transition-mix($property: all, $duration: 0.25s, $timming-function: linear, $delay: 0s) {
+  @include css3-prefix-wo-ms(transition-property, $property);
+  @include css3-prefix-wo-ms(transition-duration, $duration);
+  @include css3-prefix-wo-ms(transition-timing-function, $timming-function);
+  @include css3-prefix-wo-ms(transition-delay, $delay);
+}
+
+@mixin transition-pd($property, $duration){
+  @include css3-prefix-wo-ms(transition, $property $duration);
+}
+
+@mixin transition-pdt($property, $duration, $timming-function){
+  @include css3-prefix-wo-ms(transition, $property $duration $timming-function);
+}
+
+@mixin transition-pdtD($property, $duration, $timming-function, $delay){
+  @include css3-prefix-wo-ms(transition, $duration $timming-function $delay);
+}
