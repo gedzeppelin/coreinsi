@@ -5,22 +5,16 @@
 
         <div class="slide home1">
           <div class="home-text home1-nr" v-if="animationPosition == 0">
-            <b>
-              <p class="home-a home1-p1">
-                {{ $t('home1-1st-p') }}
-              </p>
-              <p class="home-a home1-p2">
-                {{ $t('home1-2nd-p') }}
-              </p>
-
-              <p class="home-a home1-city">
-                AYACUCHO, HUAMANGA <font-awesome-icon :icon="['fas', 'map-marker-alt']" /><br />
-                PERÚ <font-awesome-icon :icon="['fas', 'globe-americas']" />
-              </p>
-            </b>
-
-            </br>
-
+            <p class="home-a">
+              {{ $t('home1-1st-p') }}
+            </p>
+            <p class="home-a home1-p2">
+              {{ $t('home1-2nd-p') }}
+            </p>
+            <span class="home-a home1-city">
+              AYACUCHO, HUAMANGA <font-awesome-icon :icon="['fas', 'map-marker-alt']" /><br />
+              PERÚ <font-awesome-icon :icon="['fas', 'globe-americas']" />
+            </span>
             <button type="button" class="btn-round btn-fb-lr-gp home-a home1-btn" @click="scrollToComponent('c-about')">
               {{ $t('home-button-info') }}
               <font-awesome-icon :icon="['fas', 'arrow-right']" />
@@ -30,14 +24,10 @@
 
         <div class="slide home2">
           <div class="home-text" v-if="animationPosition == 1">
-            <b>
-              <p class="home-a home2-p">
-                {{ $t('home2-1st-p') }}
-              </p>
-            </b>
-
+            <p class="home-a home2-p">
+              {{ $t('home2-1st-p') }}
+            </p>
             <img src="../assets/logo-unsch.png" class="home-a home2-logo" />
-
             <div class="home-a home2-buttons">
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-schedule')">
                 {{ $t('home2-button') }}
@@ -72,16 +62,19 @@
 
       </div>
     </div>
-    <div class="nav-button nav-button-left">
+
       <font-awesome-icon icon="angle-left" mask="circle" transform="left-0.75"
+      class="nav-button nav-button-left"
       @click="scrollXHomeLeft"
-      v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" />
-    </div>
-    <div class="nav-button nav-button-right">
+      v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
+      'nav-button-b': holderPosition == 2 }" />
+
       <font-awesome-icon icon="angle-right" mask="circle" transform="right-0.5"
+      class="nav-button nav-button-right"
       @click="scrollXHomeRight"
-      v-bind:class="{ 'nav-button-gh': holderPosition == 0, 'nav-button-ph': holderPosition == 1, 'nav-button-nch': holderPosition == 2 }" />
-    </div>
+      v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
+      'nav-button-b': holderPosition == 2 }" />
+
   </div>
 
 </template>
@@ -147,7 +140,7 @@ export default {
   /****************************************************************************|
   |* Animations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  @include keyframes(home1-pa){
+  @include keyframes(home-a){
     0%   {opacity:0; transform:translateY(30px)}
     100% {opacity:1; transform:translateY(0px)}
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
@@ -168,23 +161,26 @@ export default {
     width: 300%;
   }
   .slide{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     height: 100vh;
     width: 33.33%;
     float: left;
   }
   .home-a{
     opacity: 0;
-    @include animation-mix(home1-pa, $duration: 0.75s);
+    @include animation-mix(home-a, $duration: 0.75s);
   }
   .home-text{
-    width: 75%;
-    font-size: 9vw;
-    text-align: center;
-    line-height: 125%;
+    position: absolute;
     max-height: 75%;
+    width: 75%;
+    top: 45%;
+    left: 50%;
+    line-height: 125%;
+    font-size: 9vw;
+    font-weight: bold;
+    text-align: center;
+    transform: translate(-50%, -45%);
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -267,27 +263,25 @@ export default {
     grid-column: 1;
     grid-row: 1;
     top: 50%;
+    font-size: 1.75rem;
+    cursor: pointer;
     transform: translateY(-50%);
+    @include transition-pdt(color, 1.5s, ease-in);
     &-left{
       left: 2.5%;
     }
     &-right{
       right: 2.5%;
     }
-  }
-  .nav-button{
-    cursor: pointer;
-    font-size: 1.75rem;
-    @include transition-pdt(color, .5s, ease);
-  }
-  .nav-button-gh:hover{
-    color: gold;
-  }
-  .nav-button-ph:hover{
-    color: $purple;
-  }
-  .nav-button-nch:hover{
-    color: $nav-color;
+    &-g{
+      color: gold;
+    }
+    &-p{
+      color: $purple;
+    }
+    &-b{
+      color: $nav-color;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -299,9 +293,11 @@ export default {
     margin-left: .5em;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
+
   /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
   /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
   /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
 
   /****************************************************************************|
   |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
@@ -357,11 +353,30 @@ export default {
     |**************************************************************************/
     .nav-button{
       font-size: 3.5rem;
+      @include transition-pdt(color, .5s, ease-out);
       &-left{
         left: 7.5%;
       }
       &-right{
         right: 7.5%;
+      }
+      &-g{
+        color: $white;
+        &:hover{
+          color: gold;
+        }
+      }
+      &-p{
+        color: $white;
+        &:hover{
+          color: $purple;
+        }
+      }
+      &-b{
+        color: $white;
+        &:hover{
+          color: $nav-color;
+        }
       }
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
