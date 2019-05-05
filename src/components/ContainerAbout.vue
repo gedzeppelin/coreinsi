@@ -74,13 +74,13 @@ export default {
   }
   .ceis-logo{
     display: block;
-    max-width: 45%;
+    max-width: 40%;
     margin: 2vh auto;
   }
   .about-btn{
     font-size: 75%;
     padding: .75em 1.25em;
-    margin-bottom: 5vh;
+    margin-bottom: 2.5vh;
   }
   .countdown {
     margin: 0 auto;
@@ -90,7 +90,7 @@ export default {
     font-size: 8vw;
     font-weight: bold;
     color: $chiffon;
-    width: 75%;
+    width: 60%;
     .counter {
       display: inline-block;
       width: 33.33%;
