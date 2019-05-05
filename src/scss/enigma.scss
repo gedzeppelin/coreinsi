@@ -1,28 +1,36 @@
 $font-stack: 'Rubik', sans-serif;
-$white: #fcfcfc;
-$purple: #820263;
 $black: #0a0908;
+$chiffon: #FFFACD;
+$gold: #ffd700;
+$purple: #820263;
+$purple2: #191970;
+$white: #fcfcfc;
 $nav-color: rgba(0, 0, 0, .75);
 $nav-color-r: rgba(0, 0, 0, .5);
 $nav-color2: rgba(0, 0, 0, 1);
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
 @mixin breakpoint($point) {
-   @if $point == large {
-      @media only screen and (min-width: 1366px) {
-         @content;
-      }
-   }
-   @else if $point == desktop {
-      @media only screen and (min-width: 1024px) {
-         @content;
-      }
-   }
-   @else if $point == tablet {
-      @media only screen and (min-width: 600px) {
-         @content;
-      }
-   }
+  @if $point == x-large {
+     @media only screen and (min-width: 1850px) {
+        @content;
+     }
+  }
+  @if $point == large {
+    @media only screen and (min-width: 1350px) {
+       @content;
+    }
+  }
+  @else if $point == desktop {
+    @media only screen and (min-width: 1000px) {
+       @content;
+    }
+  }
+  @else if $point == tablet {
+    @media only screen and (min-width: 600px) {
+       @content;
+    }
+  }
 }
 
 @mixin position-absolute ($top: null, $left: null, $right: null, $bottom: null) {
@@ -31,6 +39,14 @@ $nav-color2: rgba(0, 0, 0, 1);
   left: $left;
   right: $right;
   bottom: $bottom;
+}
+
+@mixin vertical-center {
+   position: relative;
+   top: 50%;
+   -ms-transform: translateY(-50%);
+   -webkit-transform: translateY(-50%);
+   transform: translateY(-50%);
 }
 
 @mixin keyframes($name) {

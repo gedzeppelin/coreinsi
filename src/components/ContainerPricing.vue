@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="c-pricing">
+  <div class="container" id="c-pricing" style="background: blue;">
     <span class="test-margin">
       PRICING
     </span>

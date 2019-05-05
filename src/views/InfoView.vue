@@ -30,7 +30,8 @@
 
 <style lang="scss">
   .info-view{
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .test-margin{

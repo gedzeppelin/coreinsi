@@ -1,3 +1,5 @@
+@import 'transitions';
+
 button{
   display:block;
   cursor: pointer;
@@ -12,7 +14,7 @@ button{
   background: linear-gradient(to left, $color1 50%, $color2 50%);
   background-size: 200% 100%;
   background-position: right bottom;
-  transition: all 0.5s ease;
+  @include transition-pdt(all, .5s, ease);
   &:hover{
     background-position: left bottom;
   }
@@ -22,7 +24,7 @@ button{
   background: linear-gradient(to right, $color1 50%, $color2 50%);
   background-size: 200% 100%;
   background-position: left bottom;
-  transition: all 0.5s ease;
+  @include transition-pdt(all, .5s, ease);
   &:hover{
     background-position: right bottom;
   }
@@ -70,6 +72,17 @@ button{
   color: $white;
   &:hover{
     color: $black;
+  }
+}
+
+.btn-fb-lr-wp{
+  background: $white;
+  border: 2px solid $white;
+  color: $purple2;
+  @include transition-pdt(all, .35s, ease);
+  &:hover{
+    background: none;
+    color: $white;
   }
 }
 

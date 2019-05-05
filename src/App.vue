@@ -71,6 +71,7 @@
     </header>
 
     <router-view/>
+
     <font-awesome-icon v-if="true" @click="scrollToComponent('c-home'); if(isTogleAux == true) collapseHeader();" icon="angle-up" mask="circle" transform="up-0.75" class="nav-up-button"/>
   </div>
 </template>
@@ -295,6 +296,15 @@
     right: 5%;
     color: gold;
     font-size: 2rem;
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* FA arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
+  .fa-arrow-right{
+    cursor: pointer;
+    margin-left: .5em;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 

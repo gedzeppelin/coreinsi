@@ -63,18 +63,17 @@
       </div>
     </div>
 
-      <font-awesome-icon icon="angle-left" mask="circle" transform="left-0.75"
-      class="nav-button nav-button-left"
-      @click="scrollXHomeLeft"
-      v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
-      'nav-button-b': holderPosition == 2 }" />
+    <font-awesome-icon icon="angle-left" mask="circle" transform="left-0.75"
+    class="nav-button nav-button-left"
+    @click="scrollXHomeLeft"
+    v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
+    'nav-button-b': holderPosition == 2 }" />
 
-      <font-awesome-icon icon="angle-right" mask="circle" transform="right-0.5"
-      class="nav-button nav-button-right"
-      @click="scrollXHomeRight"
-      v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
-      'nav-button-b': holderPosition == 2 }" />
-
+    <font-awesome-icon icon="angle-right" mask="circle" transform="right-0.5"
+    class="nav-button nav-button-right"
+    @click="scrollXHomeRight"
+    v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
+    'nav-button-b': holderPosition == 2 }" />
   </div>
 
 </template>
@@ -238,7 +237,6 @@ export default {
     animation-delay: .55s;
   }
   .home2-btn{
-    display: block;
     margin: 1.5vh auto;
     font-size: 40%;
   } //=========================================================================\
@@ -272,33 +270,19 @@ export default {
     grid-row: 1;
     top: 50%;
     font-size: 1.75rem;
+    color: $white;
     cursor: pointer;
     transform: translateY(-50%);
-    @include transition-pdt(color, 1.5s, ease-in);
+    @include transition-pdt(color, .25s, ease-in);
     &-left{
       left: 2.5%;
     }
     &-right{
       right: 2.5%;
     }
-    &-g{
-      color: gold;
-    }
-    &-p{
-      color: $purple;
-    }
     &-b{
       color: $nav-color;
     }
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-  /****************************************************************************|
-  |* FA arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-  |****************************************************************************/
-  .fa-arrow-right{
-    cursor: pointer;
-    margin-left: .5em;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
