@@ -1,6 +1,6 @@
 <template>
   <div class="home-container container" id="c-home">
-    <div class="slider-container" ref="slider" v-hammer:swipe.left="scrollXHomeRight" v-hammer:swipe.right="scrollXHomeLeft">
+    <div class="slider-container" ref="slider" v-hammer:swipe.horizontal="(event) => swipeXHome(event)">
       <div class="holder" ref="holder">
 
         <div class="slide home1">
@@ -116,7 +116,13 @@ export default {
         });
       });
     },
-
+    swipeXHome: function(event){
+      if(event.type == "swipeleft"){
+        this.scrollXHomeRight();
+      } else if(event.type == "swiperight"){
+        this.scrollXHomeLeft();
+      }
+    },
     onScroll: function() {
       if(this.$refs.slider.scrollLeft.between(this.$refs.holder.children[this.holderPosition].offsetLeft - 2, this.$refs.holder.children[this.holderPosition].offsetLeft + 2, true)){
         this.animationPosition = this.holderPosition;
