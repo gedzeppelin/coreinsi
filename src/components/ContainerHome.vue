@@ -1,6 +1,6 @@
 <template>
   <div class="home-container container" id="c-home">
-    <div class="slider-container" ref="slider">
+    <div class="slider-container" ref="slider" v-hammer:swipe.left="scrollXHomeRight" v-hammer:swipe.right="scrollXHomeLeft">
       <div class="holder" ref="holder">
 
         <div class="slide home1">

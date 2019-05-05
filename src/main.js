@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueI18n from 'vue-i18n';
+import { VueHammer } from 'vue2-hammer'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCaretSquareRight, faCaretSquareLeft } from '@fortawesome/free-regular-svg-icons';
@@ -15,6 +16,7 @@ library.add(faGlobeAmericas, faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(VueI18n)
+Vue.use(VueHammer)
 
 Vue.config.productionTip = false
 
