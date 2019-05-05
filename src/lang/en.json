@@ -5,10 +5,16 @@
   "app-4th-li": "SCHEDULE",
   "app-5th-li": "PRICING",
   "app-6th-li": "CONTACT",
+  "button-more-info": "MORE INFORMATION",
+  "button-schedule": "SEE SCHEDULE",
   "home1-1st-p": "12TH SYSTEMS ENGINEERING",
   "home1-2nd-p": "REGIONAL CONFERENCE",
   "home2-1st-p": "FROM MAY 30 TO JUNE 2",
   "home2-2nd-p": "UNSCH",
-  "home2-button": "SEE SCHEDULE",
-  "home-button-info": "MORE INFORMATION"
+  "about-head": "ABOUT THE CONFERENCE",
+  "about-text": "Duis auctor et leo et mattis. Curabitur sapien ipsum, venenatis in placerat a, ornare eu libero. Quisque ornare turpis congue dictum convallis. Nunc eleifend purus leo, sed laoreet justo consectetur ut. Aliquam maximus fringilla enim. Pellentesque sodales mi eu nulla pulvinar auctor. In efficitur orci ante. Proin facilisis sollicitudin justo id vestibulum. Etiam tristique.",
+  "about-countdown": "COUNTDOWN",
+  "about-countdown-weeks": "WEEKS",
+  "about-countdown-days": "DAYS",
+  "about-countdown-hours": "HOURS"
 }

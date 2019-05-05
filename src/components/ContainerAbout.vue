@@ -1,32 +1,33 @@
 <template>
-  <div class="about-container container" id="c-about">
+  <div class="container about-container" id="c-about">
     <div class="about-text">
-      <h6 class="h6">ACERCA DEL CONGRESO</h6>
-      <h2 class="h2">XII COREINSI</h2>
-      <p class="p1">
-        Proin viverra elit ipsum, id maximus ante porttitor vel. Etiam efficitur arcu libero. Proin blandit lacinia ante vel euismod. Ut nec semper velit, quis semper ante. In rutrum vel velit ut iaculis. Duis varius tellus metus, non iaculis odio rhoncus a. Vivamus semper lectus sapien, finibus elementum massa semper sed. Etiam eu congue velit. Sed tempus est id nisl cursus malesuada.
+
+      <h6 class="about-head">{{ $t('about-head') }}</h6>
+      <h2 class="about-title">XII COREINSI</h2>
+      <p class="about-text-content">
+        {{ $t('about-text') }}
       </p>
 
       <img src="../assets/logo-unsch.png" class="ceis-logo" />
 
       <button type="button" class="btn-round btn-fb-lr-wp about-btn" @click="scrollToComponent('c-schedule')">
-        {{ $t('home2-button') }}
+        {{ $t('button-schedule') }}
         <font-awesome-icon :icon="['fas', 'arrow-right']" />
       </button>
 
-      <h6 class="h62">CUENTA REGRESIVA</h6>
+      <h6 class="about-countdown">{{ $t('about-countdown') }}</h6>
       <ul class="countdown">
         <li class="counter">
-          <p>00</p>
-          <p class="counter-label">MESES</p>
+          <p>{{ weeks }}</p>
+          <p class="counter-label">{{ $t('about-countdown-weeks') }}</p>
         </li>
         <li class="counter">
-          <p>00</p>
-          <p class="counter-label">HORAS</p>
+          <p>{{ days }}</p>
+          <p class="counter-label">{{ $t('about-countdown-days') }}</p>
         </li>
         <li class="counter">
-          <p>00</p>
-          <p class="counter-label">DÍAS</p>
+          <p>{{ hours }}</p>
+          <p class="counter-label">{{ $t('about-countdown-hours') }}</p>
         </li>
       </ul>
 
@@ -37,11 +38,51 @@
 <script>
 export default {
   name: 'ContainerAbout',
+  data: function() {
+    return {
+      weeks: 0,
+      days: 0,
+      hours: 0,
+    };
+  },
+  methods: {
+    updateHours: function() {
+      var today = new Date();
+
+      if(today.getMinutes() < 15) this.hours = (24.00 - today.getHours()).toString(); else
+      if(today.getMinutes() < 30) this.hours = (24.00 - today.getHours()).toString() + "\u00BE"; else
+      if(today.getMinutes() < 45) this.hours = (24.00 - today.getHours()).toString() + "\u00BD";
+      else this.hours = (24.00 - today.getHours()).toString() + "\u00BC";
+
+      console.log("Hours left updated: " + this.hours)
+    },
+  },
+  mounted() {
+    this.updateHours();
+    setInterval(this.updateHours, 30 * 1000);
+
+    var today = new Date(),
+    theDay = new Date("2019-05-30"),
+    weeksDay = new Date();
+
+    const utc1 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const utc2 = Date.UTC(theDay.getFullYear(), theDay.getMonth(), theDay.getDate());
+
+    this.weeks = Math.floor((utc2 - utc1) / (24 * 3600 * 1000 * 7));
+
+    weeksDay.setDate(today.getDate() + (this.weeks * 7));
+
+    const utc3 = Date.UTC(weeksDay.getFullYear(), weeksDay.getMonth(), weeksDay.getDate());
+
+    this.days = Math.floor((utc2 - utc3) / (1000 * 60 * 60 * 24));
+  },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  /****************************************************************************|
+  |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   .about-container{
     background: linear-gradient($purple2, $purple);
   }
@@ -51,26 +92,27 @@ export default {
     font-size: 5vw;
     width: 90%;
     text-align: center;
-  }
-  .p1{
-    text-align: justify;
-    color: $white;
-    font-size: 4.25vw;
-  }
-  .h2{
-    margin: 2.25vh auto;
-    color: $gold;
-    text-align: left;
-  }
-  .h6{
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
+  .about-head{
     color: $chiffon;
     margin: 0 auto;
     border-bottom: 3px solid;
     text-align: left;
   }
-  .h62{
-    color: $chiffon;
-    margin: 0 auto;
+  .about-title{
+    margin: 2.25vh auto;
+    color: $gold;
+    text-align: left;
+  }
+  .about-text-content{
+    text-align: justify;
+    color: $white;
+    font-size: 4.25vw;
   }
   .ceis-logo{
     display: block;
@@ -81,26 +123,60 @@ export default {
     font-size: 75%;
     padding: .75em 1.25em;
     margin-bottom: 2.5vh;
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
+  .about-countdown{
+    color: $chiffon;
+    margin: 0 auto;
   }
   .countdown {
     margin: 0 auto;
-    border-top: 3px solid $chiffon;
-    border-bottom: 3px solid $chiffon;
+    border-top: 3px solid $white;
+    border-bottom: 3px solid $white;
     padding: 1vh;
     font-size: 8vw;
     font-weight: bold;
-    color: $chiffon;
-    width: 60%;
+    color: $white;
+    width: 65%;
     .counter {
       display: inline-block;
       width: 33.33%;
     }
   }
   .counter-label {
-    color: $white;
     font-size: 4vw;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
+  @media only screen and (max-height: 650px) {
+    .about-text{
+      font-size: 4.75vw;
+      width: 95%;
+    }
+    .about-text-content{
+      font-size: 4vw;
+    }
+    .about-btn{
+      position: absolute;
+      right: 2.5%;
+      font-size: 70%;
+      padding: .65em 1.25em;
+      margin-bottom: 0;
+      transform: rotate(90deg) translateX(-15%);
+      transform-origin: 100% 0;
+    }
+    .countdown {
+      padding: 1vh;
+      font-size: 7vw;
+      width: 65%;
+    }
+    .counter-label {
+      font-size: 3.5vw;
+    }
+  }
 
   /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
   /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
@@ -111,12 +187,20 @@ export default {
   |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   @include breakpoint(large){
+    /**************************************************************************|
+    |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
     .about-text{
-      margin-top: 60px;
+      margin-top: 70px;
       font-size: 2vw;
       width: 80%;
-    }
-    .p1{
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .about-text-content{
       font-size: 1.75vw;
     }
     .ceis-logo{
@@ -125,14 +209,19 @@ export default {
     }
     .about-btn{
       font-size: 60%;
-    }
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
     .countdown {
       font-size: 3vw;
       width: 50%;
     }
     .counter-label {
       font-size: 1.5vw;
-    }
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -145,12 +234,20 @@ export default {
   |* RESPONSIVITY X-LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   @include breakpoint(x-large){
+    /**************************************************************************|
+    |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
     .about-text{
-      margin-top: 60px;
+      margin-top: 80px;
       font-size: 1.75vw;
       width: 80%;
-    }
-    .p1{
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
+    .about-text-content{
       font-size: 1.3vw;
     }
     .ceis-logo{
@@ -158,13 +255,18 @@ export default {
     }
     .about-btn{
       font-size: 55%;
-    }
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+    /**************************************************************************|
+    |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+    |**************************************************************************/
     .countdown {
       font-size: 2.5vw;
       width: 30%;
     }
     .counter-label {
       font-size: 1.25vw;
-    }
-  }
+    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

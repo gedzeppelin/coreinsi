@@ -5,10 +5,16 @@
   "app-4th-li": "HORARIOS",
   "app-5th-li": "PRECIOS",
   "app-6th-li": "CONTACTO",
+  "button-more-info": "MÁS INFORMACIÓN",
+  "button-schedule": "VER HORARIOS",
   "home1-1st-p": "XII CONGRESO REGIONAL",
   "home1-2nd-p": "DE INGENIERÍA DE SISTEMAS",
   "home2-1st-p": "DEL 30 DE MAYO AL 02 DE JUNIO",
   "home2-2nd-p": "UNSCH",
-  "home2-button": "VER HORARIOS",
-  "home-button-info": "MÁS INFORMACIÓN"
+  "about-head": "ACERCA DEL CONGRESO",
+  "about-text": "Proin viverra elit ipsum, id maximus ante porttitor vel. Etiam efficitur arcu libero. Proin blandit lacinia ante vel euismod. Ut nec semper velit, quis semper ante. In rutrum vel velit ut iaculis. Duis varius tellus metus, non iaculis odio rhoncus a. Vivamus semper lectus sapien, finibus elementum massa semper sed. Etiam eu congue velit. Sed tempus est id nisl cursus malesuada.",
+  "about-countdown": "CUENTA REGRESIVA",
+  "about-countdown-weeks": "SEMANAS",
+  "about-countdown-days": "DÍAS",
+  "about-countdown-hours": "HORAS"
 }

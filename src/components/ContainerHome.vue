@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container container" id="c-home">
+  <div class="container home-container" id="c-home">
     <div class="slider-container" ref="slider" v-hammer:swipe.horizontal="(event) => swipeXHome(event)">
       <div class="holder" ref="holder">
 
@@ -16,7 +16,7 @@
               PERÚ <font-awesome-icon :icon="['fas', 'globe-americas']" />
             </span>
             <button type="button" class="btn-round btn-fb-lr-gp home-a home1-btn" @click="scrollToComponent('c-about')">
-              {{ $t('home-button-info') }}
+              {{ $t('button-more-info') }}
               <font-awesome-icon :icon="['fas', 'arrow-right']" />
             </button>
           </div>
@@ -30,11 +30,11 @@
             <img src="../assets/logo-unsch.png" class="home-a home2-logo" />
             <div class="home-a home2-buttons">
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-schedule')">
-                {{ $t('home2-button') }}
+                {{ $t('button-schedule') }}
                 <font-awesome-icon :icon="['fas', 'arrow-right']" />
               </button>
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-about')">
-                {{ $t('home-button-info') }}
+                {{ $t('button-more-info') }}
                 <font-awesome-icon :icon="['fas', 'arrow-right']" />
               </button>
             </div>

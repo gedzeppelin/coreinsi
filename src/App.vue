@@ -14,7 +14,7 @@
       <span class="header-logo-r header-logo-re" @click="scrollToComponent('c-home'); collapseHeader();" v-bind:class="{ 'active': position == 0 }" v-if="isTogleAux">
         {{ $t('app-1st-li') }}
       </span>
-      <span class="header-logo-r" v-else>
+      <span class="header-logo-r" @click="scrollTooComponent()" v-else>
         {{ position == 0 ? $t('app-1st-li') : position == 1 ? $t('app-2nd-li') : position == 2 ? $t('app-3rd-li') : position == 3 ? $t('app-4th-li') : position == 4 ? $t('app-5th-li') : $t('app-6th-li') }}
       </span>
 
@@ -115,6 +115,28 @@
       collapseHeader: function() {
         this.isTogleAux = false;
         this.$refs.line1.style = this.$refs.line3.style = this.$refs.line2.style = null;
+      },
+      scrollTooComponent: function() {
+        switch(this.position){
+          case 0:
+            this.scrollToComponent('c-home');
+            break;
+          case 1:
+            this.scrollToComponent('c-about');
+            break;
+          case 2:
+            this.scrollToComponent('c-speakers');
+            break;
+          case 3:
+            this.scrollToComponent('c-schedule');
+            break;
+          case 4:
+            this.scrollToComponent('c-pricing');
+            break;
+          case 5:
+            this.scrollToComponent('c-contact');
+            break;
+        }
       }
     },
     mounted() {
@@ -197,10 +219,10 @@
     display: inline-block;
     width: auto;
     color: gold;
+    cursor: pointer;
     @include unselectable;
     &e{
       color: $white;
-      cursor: pointer;
     }
     &.active{
       color: gold;

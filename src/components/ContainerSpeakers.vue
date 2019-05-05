@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="c-speakers">
+  <div class="container speakers-container" id="c-speakers">
     <span class="test-margin">
       SPEAKERS
     </span>
@@ -22,5 +22,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  .speakers-container{
+    background: #5c67dc;
+    height: 200vh;
+    color: #f5fdf9;
+    font-weight: bold;
+  }
 
 </style>
