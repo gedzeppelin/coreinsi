@@ -247,7 +247,7 @@ export default {
   |****************************************************************************/
   .home3{
     background: url("../assets/home3.jpg");
-    color: black;
+    color: $black;
     @include background-fill;
   }
   .home3-p2{

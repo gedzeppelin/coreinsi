@@ -85,13 +85,27 @@ export default {
   |****************************************************************************/
   .about-container{
     background: linear-gradient($purple2, $purple);
+    height: auto;
+    font-size: 6vw;
+    @include breakpoint(desktop){
+      font-size: 3vw;
+    }
+    @include breakpoint(large){
+      font-size: 2vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1.75vw;
+    }
   }
   .about-text{
     margin: 0 auto;
     margin-top: 50px;
-    font-size: 5vw;
     width: 90%;
     text-align: center;
+    @include breakpoint(desktop){
+      margin-top: 70px;
+      width: 75%;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -112,17 +126,46 @@ export default {
   .about-text-content{
     text-align: justify;
     color: $white;
-    font-size: 4.25vw;
+    font-size: 4.5vw;
+    @include breakpoint(desktop){
+      font-size: 2.75vw;
+    }
+    @include breakpoint(large){
+      font-size: 1.75vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1.5vw;
+    }
   }
   .ceis-logo{
     display: block;
-    max-width: 40%;
-    margin: 2vh auto;
+    max-width: 50%;
+    margin: 2.5vh auto;
+    @include breakpoint(desktop){
+      max-width: 30%;
+      margin: 2.5% auto;
+    }
+    @include breakpoint(large){
+      max-width: 20%;
+    }
+    @include breakpoint(x-large){
+      margin: 2% auto;
+    }
   }
   .about-btn{
     font-size: 75%;
     padding: .75em 1.25em;
-    margin-bottom: 2.5vh;
+    margin-bottom: 5vh;
+    @include breakpoint(desktop){
+      font-size: 1.75vw;
+    }
+    @include breakpoint(large){
+      font-size: 1.15vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1vw;
+      margin-bottom: 3.5%;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -142,6 +185,19 @@ export default {
     font-weight: bold;
     color: $white;
     width: 65%;
+    margin-bottom: 5vh;
+    @include breakpoint(desktop){
+      font-size: 4vw;
+      width: 40%;
+    }
+    @include breakpoint(large){
+      font-size: 3vw;
+      width: 40%;
+    }
+    @include breakpoint(x-large){
+      font-size: 2.5vw;
+      width: 30%;
+    }
   }
   .counter {
     display: inline-block;
@@ -149,124 +205,14 @@ export default {
   }
   .counter-label {
     font-size: 4vw;
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-  @media only screen and (max-height: 650px) {
-    .about-text{
-      font-size: 4.75vw;
-      width: 95%;
-    }
-    .about-text-content{
-      font-size: 4vw;
-    }
-    .about-btn{
-      position: absolute;
-      right: 2.5%;
-      font-size: 70%;
-      padding: .65em 1.25em;
-      margin-bottom: 0;
-      transform: rotate(90deg) translateX(-15%);
-      transform-origin: 100% 0;
-    }
-    .countdown {
-      padding: 1vh;
-      font-size: 7vw;
-      width: 65%;
-    }
-    .counter-label {
-      font-size: 3.5vw;
-    }
-  }
-
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-
-
-  /****************************************************************************|
-  |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-  |****************************************************************************/
-  @include breakpoint(large){
-    /**************************************************************************|
-    |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .about-text{
-      margin-top: 70px;
+    @include breakpoint(desktop){
       font-size: 2vw;
-      width: 80%;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .about-text-content{
-      font-size: 1.75vw;
     }
-    .ceis-logo{
-      max-width: 20%;
-      margin: 2.5vh auto;
-    }
-    .about-btn{
-      font-size: 60%;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .countdown {
-      font-size: 3vw;
-      width: 50%;
-    }
-    .counter-label {
+    @include breakpoint(large){
       font-size: 1.5vw;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-
-
-  /****************************************************************************|
-  |* RESPONSIVITY X-LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-  |****************************************************************************/
-  @include breakpoint(x-large){
-    /**************************************************************************|
-    |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .about-text{
-      margin-top: 80px;
-      font-size: 1.75vw;
-      width: 80%;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .about-text-content{
-      font-size: 1.3vw;
     }
-    .ceis-logo{
-      max-width: 16%;
-    }
-    .about-btn{
-      font-size: 55%;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .countdown {
-      font-size: 2.5vw;
-      width: 30%;
-    }
-    .counter-label {
+    @include breakpoint(x-large){
       font-size: 1.25vw;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

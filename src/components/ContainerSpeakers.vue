@@ -310,8 +310,6 @@ export default {
   .speakers-container::after {
     content: "";
     background: url("https://media.giphy.com/media/4GXNdzsOcVR0aZl7mT/giphy.gif");
-    // background: url("https://media.giphy.com/media/hSLDN6zfh2Yy4ekMWi/giphy.gif");
-    // background: url("https://media.giphy.com/media/rDP8so9lJmsMM/giphy.gif");
     opacity: 0.1;
     top: 0;
     left: 0;
@@ -329,11 +327,12 @@ export default {
   }
 
   %flip-card{
-    width: 70%;
-    height: 45vh;
+    width: 70vw;
+    height: 95vw;
     margin: 5vh 0;
     @include breakpoint(desktop){
-      width: 35vh;
+      width: 17.5vw;
+      height: 25vw;
     }
     // perspective: 1000px;
   }
@@ -478,9 +477,7 @@ export default {
   @include breakpoint(desktop){
     .speakers-container{
       font-size: 2vw;
-
     }
-
     .nr-helper{
       display: flex;
       flex-wrap: wrap;
@@ -490,14 +487,10 @@ export default {
       margin: 2% auto;
       margin-bottom: 5%;
     }
-
     .speakers-header{
       width: 30%;
       border-bottom: 4px dashed;
     }
-
-
-
   }/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
 
