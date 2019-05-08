@@ -6,7 +6,7 @@
 
     <div class="nr-helper">
 
-      <div class="flip-card-l">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <div class="flip-card-r">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
@@ -94,7 +94,7 @@
         </div>
       </div>
 
-      <div class="flip-card-l">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
@@ -138,7 +138,7 @@
         </div>
       </div>
 
-      <div class="flip-card-r">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
@@ -182,7 +182,7 @@
         </div>
       </div>
 
-      <div class="flip-card-l">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
@@ -226,7 +226,7 @@
         </div>
       </div>
 
-      <div class="flip-card-r">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
@@ -305,7 +305,9 @@ export default {
     text-align: center;
     font-size: 4.5vw;
     z-index: 0;
-
+    @include breakpoint(desktop){
+      font-size: 2vw;
+    }
   }
   .speakers-container::after {
     content: "";
@@ -324,11 +326,25 @@ export default {
     margin: 0 auto;
     margin-top: 60px;
     border-bottom: 3px dashed;
+    @include breakpoint(desktop){
+      width: 30%;
+      border-bottom: 4px dashed;
+    }
   }
-
+  .nr-helper{
+    @include breakpoint(desktop){
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 75%;
+      margin: 2% auto;
+      margin-bottom: 5%;
+    }
+  }
   %flip-card{
-    width: 70vw;
-    height: 95vw;
+    width: 80vw;
+    height: 110vw;
     margin: 5vh 0;
     @include breakpoint(desktop){
       width: 17.5vw;
@@ -343,19 +359,10 @@ export default {
     backface-visibility: hidden;
   }
   .flip-card{
-    &-l{
-      @extend %flip-card;
-      margin-left: 7.5%;
-      @include breakpoint(desktop){
-        margin: 2.5vh 2.5%;
-      }
-    }
-    &-r{
-      @extend %flip-card;
-      margin-left: 22.5%;
-      @include breakpoint(desktop){
-        margin: 2.2vh 2.5%;
-      }
+    @extend %flip-card;
+    margin: 10% auto;
+    @include breakpoint(desktop){
+      margin: 2.5vh 2.5%;
     }
     &-inner {
       position: relative;
@@ -469,29 +476,4 @@ export default {
         border-bottom-right-radius: 10px;
     }
   }
-
-
-  /****************************************************************************|
-  |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-  |****************************************************************************/
-  @include breakpoint(desktop){
-    .speakers-container{
-      font-size: 2vw;
-    }
-    .nr-helper{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 75%;
-      margin: 2% auto;
-      margin-bottom: 5%;
-    }
-    .speakers-header{
-      width: 30%;
-      border-bottom: 4px dashed;
-    }
-  }/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-
-
 </style>

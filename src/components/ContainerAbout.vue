@@ -84,7 +84,8 @@ export default {
   |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-container{
-    background: linear-gradient($purple2, $purple);
+    background: linear-gradient(to bottom, #42275a, #734b6d);
+    // background: linear-gradient($purple2, $purple);
     height: auto;
     font-size: 6vw;
     @include breakpoint(desktop){
@@ -113,7 +114,8 @@ export default {
   |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-head{
-    color: $chiffon;
+    // color: $chiffon;
+    color: $white;
     margin: 0 auto;
     border-bottom: 3px solid;
     text-align: left;
@@ -173,7 +175,8 @@ export default {
   |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-countdown{
-    color: $chiffon;
+    // color: $chiffon;
+    color: $white;
     margin: 0 auto;
   }
   .countdown {
