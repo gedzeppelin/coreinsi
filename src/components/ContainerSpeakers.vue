@@ -41,7 +41,7 @@
                  </a>
               </div>
               <h2>Elver Galarga</h2>
-              <p>Vende buena mierda.</p>
+              <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
               {{ $t('button-less-info') }}
@@ -60,7 +60,7 @@
               <div class="front-card-content-text">
                 Benito Camelo
               <p class="speaker-job">
-                Psychonaut
+                Lawyer
               </p>
               </div>
             </div>
@@ -85,7 +85,7 @@
                  </a>
               </div>
               <h2>Benito Camelo</h2>
-              <p>Se mete 5 líenas de cocaína por inhalada.</p>
+              <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
               {{ $t('button-less-info') }}
@@ -104,7 +104,7 @@
               <div class="front-card-content-text">
                 Elsa Badillo
               <p class="speaker-job">
-                FBI cop
+                Cop
               </p>
               </div>
             </div>
@@ -129,7 +129,7 @@
                  </a>
               </div>
               <h2>Elsa Badillo</h2>
-              <p>Siempre salva.</p>
+              <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
               {{ $t('button-less-info') }}
@@ -146,9 +146,9 @@
             </button>
             <div class="front-card-content">
               <div class="front-card-content-text">
-                Benito Camelo
+                Elba Zurita
               <p class="speaker-job">
-                Psychonaut
+                Priest
               </p>
               </div>
             </div>
@@ -172,8 +172,8 @@
                    <font-awesome-icon :icon="['fab', 'linkedin-in']" />
                  </a>
               </div>
-              <h2>Benito Camelo</h2>
-              <p>Se mete 5 líenas de cocaína por inhalada.</p>
+              <h2>Elba Zurita</h2>
+              <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
               {{ $t('button-less-info') }}
@@ -190,9 +190,9 @@
             </button>
             <div class="front-card-content">
               <div class="front-card-content-text">
-                Elsa Badillo
+                Aquiles Brinco
               <p class="speaker-job">
-                FBI cop
+                Programmer
               </p>
               </div>
             </div>
@@ -216,8 +216,8 @@
                    <font-awesome-icon :icon="['fab', 'linkedin-in']" />
                  </a>
               </div>
-              <h2>Elsa Badillo</h2>
-              <p>Siempre salva.</p>
+              <h2>Aquiles Brinco</h2>
+              <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
               {{ $t('button-less-info') }}
@@ -234,9 +234,9 @@
             </button>
             <div class="front-card-content">
               <div class="front-card-content-text">
-                Benito Camelo
+                Elvis Tek
               <p class="speaker-job">
-                Psychonaut
+                Teacher
               </p>
               </div>
             </div>
@@ -260,8 +260,8 @@
                    <font-awesome-icon :icon="['fab', 'linkedin-in']" />
                  </a>
               </div>
-              <h2>Benito Camelo</h2>
-              <p>Se mete 5 líenas de cocaína por inhalada.</p>
+              <h2>Elvis Tek</h2>
+              <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
               {{ $t('button-less-info') }}
