@@ -12,12 +12,12 @@
               {{ $t('home1-2nd-p') }}
             </p>
             <span class="home-a home1-city">
-              AYACUCHO, HUAMANGA <font-awesome-icon :icon="['fas', 'map-marker-alt']" /><br />
-              PERÚ <font-awesome-icon :icon="['fas', 'globe-americas']" />
+              AYACUCHO, HUAMANGA <font-awesome-icon icon="map-marker-alt" /><br />
+              PERÚ <font-awesome-icon icon="globe-americas" />
             </span>
             <button type="button" class="btn-round btn-fb-lr-gp home-a home1-btn" @click="scrollToComponent('c-about')">
               {{ $t('button-more-info') }}
-              <font-awesome-icon :icon="['fas', 'arrow-right']" />
+              <font-awesome-icon icon="arrow-right" />
             </button>
           </div>
         </div>
@@ -31,11 +31,11 @@
             <div class="home-a home2-buttons">
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-schedule')">
                 {{ $t('button-schedule') }}
-                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+                <font-awesome-icon icon="arrow-right" />
               </button>
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-about')">
                 {{ $t('button-more-info') }}
-                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+                <font-awesome-icon icon="arrow-right" />
               </button>
             </div>
           </div>
@@ -63,13 +63,13 @@
       </div>
     </div>
 
-    <font-awesome-icon icon="angle-left" mask="circle" transform="left-0.75"
+    <font-awesome-icon :icon="['far', 'arrow-alt-circle-left']"
     class="nav-button nav-button-left"
     @click="scrollXHomeLeft"
     v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
     'nav-button-b': holderPosition == 2 }" />
 
-    <font-awesome-icon icon="angle-right" mask="circle" transform="right-0.5"
+    <font-awesome-icon :icon="['far', 'arrow-alt-circle-right']"
     class="nav-button nav-button-right"
     @click="scrollXHomeRight"
     v-bind:class="{ 'nav-button-g': holderPosition == 0, 'nav-button-p': holderPosition == 1,
@@ -355,7 +355,7 @@ export default {
       &-g{
         color: $white;
         &:hover{
-          color: gold;
+          color: $gold;
         }
       }
       &-p{

@@ -13,6 +13,8 @@ $elLime: #7de917;
 $nav-color: rgba(0, 0, 0, .75);
 $nav-color-r: rgba(0, 0, 0, .5);
 $nav-color2: rgba(0, 0, 0, 1);
+
+$avatar-linear: rgba(0, 0, 0, .6);
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
 @mixin breakpoint($point) {
@@ -151,3 +153,4 @@ header{
 @import 'animations';
 @import 'buttons';
 @import 'transitions';
+@import 'transforms';

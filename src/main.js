@@ -5,14 +5,17 @@ import VueI18n from 'vue-i18n';
 import { VueHammer } from 'vue2-hammer'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCaretSquareRight, faCaretSquareLeft } from '@fortawesome/free-regular-svg-icons';
-import { faGlobeAmericas, faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight, faArrowAltCircleLeft  } from '@fortawesome/free-regular-svg-icons';
+import { faArrowRight, faChevronCircleUp, faGlobeAmericas, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookF, faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import es from '@/lang/es.json';
 import en from '@/lang/en.json';
 
-library.add(faGlobeAmericas, faCircle, faArrowRight, faMapMarkerAlt, faAngleUp, faAngleRight, faAngleLeft);
+library.add(faArrowAltCircleRight, faArrowAltCircleLeft,
+          faArrowRight, faChevronCircleUp, faGlobeAmericas, faMapMarkerAlt,
+          faFacebookF, faGithub, faInstagram, faLinkedinIn, faTwitter);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 VueHammer.config.swipe = {

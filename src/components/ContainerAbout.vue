@@ -12,7 +12,7 @@
 
       <button type="button" class="btn-round btn-fb-lr-wp about-btn" @click="scrollToComponent('c-schedule')">
         {{ $t('button-schedule') }}
-        <font-awesome-icon :icon="['fas', 'arrow-right']" />
+        <font-awesome-icon icon="arrow-right" />
       </button>
 
       <h6 class="about-countdown">{{ $t('about-countdown') }}</h6>
@@ -49,10 +49,10 @@ export default {
     updateHours: function() {
       var today = new Date();
 
-      if(today.getMinutes() < 15) this.hours = (24.00 - today.getHours()).toString(); else
-      if(today.getMinutes() < 30) this.hours = (24.00 - today.getHours()).toString() + "\u00BE"; else
-      if(today.getMinutes() < 45) this.hours = (24.00 - today.getHours()).toString() + "\u00BD";
-      else this.hours = (24.00 - today.getHours()).toString() + "\u00BC";
+      if(today.getMinutes() < 15) this.hours = (23.00 - today.getHours()).toString(); else
+      if(today.getMinutes() < 30) this.hours = (23.00 - today.getHours()).toString() + "\u00BE"; else
+      if(today.getMinutes() < 45) this.hours = (23.00 - today.getHours()).toString() + "\u00BD";
+      else this.hours = (23.00 - today.getHours()).toString() + "\u00BC";
 
       console.log("Hours left updated: " + this.hours)
     },
@@ -62,7 +62,7 @@ export default {
     setInterval(this.updateHours, 30 * 1000);
 
     var today = new Date(),
-    theDay = new Date("2019-05-30"),
+    theDay = new Date("2019-06-19"),
     weeksDay = new Date();
 
     const utc1 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
@@ -142,10 +142,10 @@ export default {
     font-weight: bold;
     color: $white;
     width: 65%;
-    .counter {
-      display: inline-block;
-      width: 33.33%;
-    }
+  }
+  .counter {
+    display: inline-block;
+    width: 33.33%;
   }
   .counter-label {
     font-size: 4vw;

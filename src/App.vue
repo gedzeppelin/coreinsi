@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header v-bind:class="{ 'scrolled-y': isScrolled }">
+    <header v-bind:class="{ 'expanded': isTogleAux, 'scrolled-y': isScrolled }">
       <div class="burger-nav" @click="isTogleAux == true ? collapseHeader() : expandHeader();">
           <span class="line" ref="line1"></span>
           <span class="line" ref="line2"></span>
@@ -18,7 +18,7 @@
         {{ position == 0 ? $t('app-1st-li') : position == 1 ? $t('app-2nd-li') : position == 2 ? $t('app-3rd-li') : position == 3 ? $t('app-4th-li') : position == 4 ? $t('app-5th-li') : $t('app-6th-li') }}
       </span>
 
-      <nav class="nav-header nav-normal">
+      <nav class="nav-header nav-header-normal">
         <li @click="scrollToComponent('c-home')" v-bind:class="{ 'active': position == 0 }" class="nav-item">
           {{ $t('app-1st-li') }}
         </li>
@@ -39,7 +39,7 @@
         </li>
       </nav>
 
-      <nav class="nav-header nav-responsive" v-bind:class="{ 'nav-open': isTogleAux }">
+      <nav class="nav-header nav-header-responsive" v-bind:class="{ 'open': isTogleAux }">
         <li @click="scrollToComponent('c-about'); collapseHeader();" v-bind:class="{ 'active': position == 1 }" class="nav-item nav-item-r2">
           {{ $t('app-2nd-li') }}
         </li>
@@ -72,7 +72,7 @@
 
     <router-view/>
 
-    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home'); if(isTogleAux == true) collapseHeader();" icon="angle-up" mask="circle" transform="up-0.75" class="nav-up-button"/>
+    <font-awesome-icon v-if="true" @click="scrollToComponent('c-home'); if(isTogleAux == true) collapseHeader();" icon="chevron-circle-up" class="nav-up-button"/>
   </div>
 </template>
 
@@ -108,9 +108,9 @@
       },
       expandHeader: function() {
         this.isTogleAux = true;
-        this.$refs.line1.style = "transform:rotate(45deg);top:8px;background:gold;"
+        this.$refs.line1.style = "transform:rotate(45deg);top:8px;background:#ffd700;"
         this.$refs.line2.style = "width:0;opacity:0;"
-        this.$refs.line3.style = "transform:rotate(-45deg);top:-8px;background:gold;"
+        this.$refs.line3.style = "transform:rotate(-45deg);top:-8px;background:#ffd700;"
       },
       collapseHeader: function() {
         this.isTogleAux = false;
@@ -172,13 +172,13 @@
     padding: 18px 0px;
     background: $nav-color-r;
     @include transition-pd(all, .5s);
-    &.expanded{
-      background: $nav-color;
-    }
-    &.scrolled-y{
-      padding: 10px 0px;
-      background: $nav-color2;
-    }
+  }
+  .expanded{
+    background: $nav-color;
+  }
+  .scrolled-y{
+    padding: 10px 0px;
+    background: $nav-color2;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -218,17 +218,17 @@
   .header-logo-r{
     display: inline-block;
     width: auto;
-    color: gold;
+    color: $gold;
     cursor: pointer;
     @include unselectable;
     &e{
       color: $white;
     }
     &.active{
-      color: gold;
+      color: $gold;
     }
     &:hover{
-      color:gold;
+      color:$gold;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -239,7 +239,7 @@
   .nav-header{
     display: inline-flex;
     align-items: center;
-    &.nav-responsive{
+    &-responsive{
       flex-direction: column;
       order: 1;
       visibility: hidden;
@@ -248,14 +248,14 @@
       width: 100%;
       @include transition-multi(opacity .35s ease-in, max-height .25s ease-out);
     }
-    &.nav-open{
+    &-normal{
+      display: none;
+    }
+    &.open{
       visibility: visible;
       opacity: 1;
       max-height: 250px;
     }
-  }
-  .nav-normal{
-    display: none;
   }
   .nav-item{
     display: inline-block;
@@ -271,10 +271,10 @@
       padding-bottom: 0;
     }
     &:hover{
-      color: gold;
+      color: $gold;
     }
     &.active{
-      color: gold;
+      color: $gold;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -296,11 +296,11 @@
     display: inline-block;
     @include transition-pd(color, .25s);
     &.language-selected {
-      color: gold;
+      color: $gold;
       text-decoration: underline;
     }
     &:hover {
-      color: gold;
+      color: $gold;
     }
   }
   aside {
@@ -316,7 +316,7 @@
     position: fixed;
     bottom: 2.5%;
     right: 5%;
-    color: gold;
+    color: $gold;
     font-size: 2rem;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -354,10 +354,10 @@
       flex-wrap: nowrap;
       background: $nav-color;
       font-size: 24px;
-      &.scrolled-y{
-        background: $nav-color2;
-        padding: 18 0px;
-      }
+    }
+    .scrolled-y{
+      background: $nav-color2;
+      padding: 18 0px;
     } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -390,10 +390,10 @@
     /**************************************************************************|
     |* Header navigation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
     |**************************************************************************/
-    .nav-responsive{
+    .nav-header-responsive{
       display: none;
     }
-    .nav-normal{
+    .nav-header-normal{
       display: inline-flex;
       justify-content: space-between;
       width: 68%;
