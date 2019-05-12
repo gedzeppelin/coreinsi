@@ -29,6 +29,14 @@
           <p>{{ hours }}</p>
           <p class="counter-label">{{ $t('about-countdown-hours') }}</p>
         </li>
+        <li class="counter">
+          <p>{{ minutes }}</p>
+          <p class="counter-label">{{ $t('about-countdown-minutes') }}</p>
+        </li>
+        <li class="counter">
+          <p>{{ seconds }}</p>
+          <p class="counter-label">{{ $t('about-countdown-seconds') }}</p>
+        </li>
       </ul>
 
     </div>
@@ -43,49 +51,47 @@ export default {
       weeks: 0,
       days: 0,
       hours: 0,
+      minutes: 0,
+      seconds: 0
     };
   },
   methods: {
-    updateHours: function() {
-      var today = new Date();
-
-      if(today.getMinutes() < 15) this.hours = (23.00 - today.getHours()).toString(); else
-      if(today.getMinutes() < 30) this.hours = (23.00 - today.getHours()).toString() + "\u00BE"; else
-      if(today.getMinutes() < 45) this.hours = (23.00 - today.getHours()).toString() + "\u00BD";
-      else this.hours = (23.00 - today.getHours()).toString() + "\u00BC";
-
-      console.log("Hours left updated: " + this.hours)
+    updateDiff: function() {
+      if(this.$moment().seconds() == 0 || this.seconds < 0){
+        this.setDiff();
+      } else{
+        this.seconds -= 1;
+      }
     },
+    setDiff() {
+      var now = this.$moment();
+      var theDay = this.$moment("20190619", "YYYYMMDD");
+      this.weeks = theDay.diff(now, 'weeks');
+      now.weeks(now.weeks() + this.weeks);
+      this.days = theDay.diff(now, 'days');
+      now.days(now.days() + this.days);
+      this.hours = theDay.diff(now, 'hours');
+      now.hours(now.hours() + this.hours);
+      this.minutes = theDay.diff(now, 'minutes');
+      now.minutes(now.minutes() + this.minutes);
+      this.seconds = theDay.diff(now, 'seconds');
+    }
   },
   mounted() {
-    this.updateHours();
-    setInterval(this.updateHours, 30 * 1000);
-
-    var today = new Date(),
-    theDay = new Date("2019-06-19"),
-    weeksDay = new Date();
-
-    const utc1 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-    const utc2 = Date.UTC(theDay.getFullYear(), theDay.getMonth(), theDay.getDate());
-
-    this.weeks = Math.floor((utc2 - utc1) / (24 * 3600 * 1000 * 7));
-
-    weeksDay.setDate(today.getDate() + (this.weeks * 7));
-
-    const utc3 = Date.UTC(weeksDay.getFullYear(), weeksDay.getMonth(), weeksDay.getDate());
-
-    this.days = Math.floor((utc2 - utc3) / (1000 * 60 * 60 * 24));
-  },
+    this.setDiff();
+    setInterval(this.updateDiff, 1000);
+  }
 }
 </script>
 
 <style scoped lang="scss">
+  $bossanova: #42275a;
+  $eggplant: #734b6d;
   /****************************************************************************|
   |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-container{
-    background: linear-gradient(to bottom, #42275a, #734b6d);
-    // background: linear-gradient($purple2, $purple);
+    background: linear-gradient(to bottom, $bossanova, $eggplant);
     height: auto;
     font-size: 6vw;
     @include breakpoint(desktop){
@@ -114,8 +120,6 @@ export default {
   |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-head{
-    // color: $chiffon;
-    color: $white;
     margin: 0 auto;
     border-bottom: 3px solid;
     text-align: left;
@@ -127,7 +131,6 @@ export default {
   }
   .about-text-content{
     text-align: justify;
-    color: $white;
     font-size: 4.5vw;
     @include breakpoint(desktop){
       font-size: 2.75vw;
@@ -175,47 +178,63 @@ export default {
   |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-countdown{
-    // color: $chiffon;
-    color: $white;
     margin: 0 auto;
   }
   .countdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
-    border-top: 3px solid $white;
-    border-bottom: 3px solid $white;
-    padding: 1vh;
-    font-size: 8vw;
-    font-weight: bold;
-    color: $white;
-    width: 65%;
-    margin-bottom: 5vh;
+    margin-bottom: 75px;
+    padding: .25em 0;
+    border-top: 3px dashed;
+    border-bottom: 3px dashed;
+    list-style-type: none;
+    width: 100%;
+    font-size: 8.5vw;
+    @include breakpoint(tablet){
+      justify-content: space-evenly;
+      width: 75%;
+      font-size: 5.5vw;
+    }
     @include breakpoint(desktop){
-      font-size: 4vw;
-      width: 40%;
+      font-size: 4.5vw;
     }
     @include breakpoint(large){
-      font-size: 3vw;
-      width: 40%;
+      width: 60%;
+      font-size: 3.5vw;
     }
     @include breakpoint(x-large){
+      width: 50%;
       font-size: 2.5vw;
-      width: 30%;
     }
   }
   .counter {
-    display: inline-block;
-    width: 33.33%;
+    border: 2px solid;
+    border-radius: 15px;
+    padding: .25em 0px;
+    width: 18%;
+    filter: drop-shadow( 3px 3px 5px rgba(0,0,0,1) );
+    @include breakpoint(tablet){
+      width: 17%;
+    }
+    @include breakpoint(desktop){
+      width: 16%;
+    }
   }
   .counter-label {
-    font-size: 4vw;
-    @include breakpoint(desktop){
-      font-size: 2vw;
+    font-size: 3.75vw;
+    @include breakpoint(tablet){
+      font-size: 2.25vw;
     }
-    @include breakpoint(large){
+    @include breakpoint(desktop){
       font-size: 1.5vw;
     }
+    @include breakpoint(large){
+      font-size: 1.15vw;
+    }
     @include breakpoint(x-large){
-      font-size: 1.25vw;
+      font-size: 0.95vw;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

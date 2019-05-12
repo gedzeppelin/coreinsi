@@ -15,7 +15,9 @@
   "about-head": "ABOUT THE CONFERENCE",
   "about-text": "Duis auctor et leo et mattis. Curabitur sapien ipsum, venenatis in placerat a, ornare eu libero. Quisque ornare turpis congue dictum convallis. Nunc eleifend purus leo, sed laoreet justo consectetur ut. Aliquam maximus fringilla enim. Pellentesque sodales mi eu nulla pulvinar auctor. In efficitur orci ante. Proin facilisis sollicitudin justo id vestibulum. Etiam tristique.",
   "about-countdown": "COUNTDOWN",
-  "about-countdown-weeks": "WEEKS",
+  "about-countdown-weeks": "WKS",
   "about-countdown-days": "DAYS",
-  "about-countdown-hours": "HOURS"
+  "about-countdown-hours": "HRS",
+  "about-countdown-minutes": "MINS",
+  "about-countdown-seconds": "SECS"
 }

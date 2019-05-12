@@ -1,8 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import moment from 'moment';
+Object.defineProperty(Vue.prototype, '$moment', { value: moment });
 import VueI18n from 'vue-i18n';
-import { VueHammer } from 'vue2-hammer'
+import { VueHammer } from 'vue2-hammer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowAltCircleRight, faArrowAltCircleLeft  } from '@fortawesome/free-regular-svg-icons';
@@ -54,6 +56,7 @@ Number.prototype.between = function(a, b, inclusive) {
 
   return inclusive ? this >= min && this <= max : this > min && this < max;
 }
+// Vue.prototype.moment = moment;
 
 new Vue({
   i18n,
