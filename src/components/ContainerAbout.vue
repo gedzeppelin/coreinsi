@@ -8,9 +8,9 @@
         {{ $t('about-text') }}
       </p>
 
-      <img src="../assets/logo-unsch.png" class="ceis-logo" />
+      <img src="../assets/logo-coreinsi.png" class="ceis-logo" />
 
-      <button type="button" class="btn-round btn-fb-lr-wp about-btn" @click="scrollToComponent('c-schedule')">
+      <button type="button" class="btn-round btn-cc-wp about-btn" @click="scrollToComponent('c-schedule')">
         {{ $t('button-schedule') }}
         <font-awesome-icon icon="arrow-right" />
       </button>
@@ -85,8 +85,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  $bossanova: #42275a;
-  $eggplant: #734b6d;
   /****************************************************************************|
   |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
@@ -132,6 +130,7 @@ export default {
   .about-text-content{
     text-align: justify;
     font-size: 4.5vw;
+    font-family: $font-content;
     @include breakpoint(desktop){
       font-size: 2.75vw;
     }
@@ -144,16 +143,17 @@ export default {
   }
   .ceis-logo{
     display: block;
-    max-width: 50%;
+    max-width: 75%;
     margin: 2.5vh auto;
     @include breakpoint(desktop){
-      max-width: 30%;
+      max-width: 40%;
       margin: 2.5% auto;
     }
     @include breakpoint(large){
-      max-width: 20%;
+      max-width: 35%;
     }
     @include breakpoint(x-large){
+      max-width: 30%;
       margin: 2% auto;
     }
   }
@@ -162,7 +162,7 @@ export default {
     padding: .75em 1.25em;
     margin-bottom: 5vh;
     @include breakpoint(desktop){
-      font-size: 1.75vw;
+      font-size: 1.5vw;
     }
     @include breakpoint(large){
       font-size: 1.15vw;

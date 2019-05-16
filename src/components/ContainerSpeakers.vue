@@ -1,7 +1,7 @@
 <template>
   <div class="container speakers-container" id="c-speakers">
     <h3 class="speakers-header">
-      NUESTROS PONENTES
+      {{ $t('speakers-header') }}
     </h3>
 
     <div class="nr-helper">
@@ -295,9 +295,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  $malibu: #8f94fb;
-  $royalBlue: #5c67dc;
-
+  /****************************************************************************|
+  |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   .speakers-container{
     background: linear-gradient($royalBlue, $malibu);
     position: relative;
@@ -305,21 +305,26 @@ export default {
     text-align: center;
     font-size: 4.5vw;
     z-index: 0;
+    &::after{
+      content: "";
+      background: url("https://media.giphy.com/media/4GXNdzsOcVR0aZl7mT/giphy.gif");
+      opacity: 0.1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
     @include breakpoint(desktop){
       font-size: 2vw;
     }
-  }
-  .speakers-container::after {
-    content: "";
-    background: url("https://media.giphy.com/media/4GXNdzsOcVR0aZl7mT/giphy.gif");
-    opacity: 0.1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-  }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* Title ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   .speakers-header{
     font-weight: bold;
     width: 70%;
@@ -330,7 +335,12 @@ export default {
       width: 30%;
       border-bottom: 4px dashed;
     }
-  }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* Non-responsive helper ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   .nr-helper{
     @include breakpoint(desktop){
       display: flex;
@@ -341,17 +351,12 @@ export default {
       margin: 2% auto;
       margin-bottom: 5%;
     }
-  }
-  %flip-card{
-    width: 80vw;
-    height: 110vw;
-    margin: 5vh 0;
-    @include breakpoint(desktop){
-      width: 17.5vw;
-      height: 25vw;
-    }
-    // perspective: 1000px;
-  }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   %flip-card-side{
     position: absolute;
     width: 100%;
@@ -359,11 +364,15 @@ export default {
     backface-visibility: hidden;
   }
   .flip-card{
-    @extend %flip-card;
-    margin: 10% auto;
+    width: 80vw;
+    height: 110vw;
+    margin: 1.75em auto;
     @include breakpoint(desktop){
       margin: 2.5vh 2.5%;
+      width: 17.5vw;
+      height: 25vw;
     }
+    // perspective: 1000px;
     &-inner {
       position: relative;
       width: 100%;
@@ -384,37 +393,16 @@ export default {
       border-radius: 10px;
       transform: rotateY(180deg);
     }
-  }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
-  .speaker-job{
-    font-size: 4vw;
-    color: $gold;
-    @include breakpoint(desktop){
-      font-size: 1.25vw;
-    }
-  }
 
-  .speaker-social{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    height: 10%;
-    width: 70%;
-    background: $malibu;
-    margin: 0 auto;
-    svg{
-      cursor: pointer;
-      color: $white;
-    }
-  }
-
+  /****************************************************************************|
+  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   %card-content{
     position: absolute;
     width: 100%;
     height: 90%;
-
   }
   .front-card-content{
     @extend %card-content;
@@ -423,10 +411,10 @@ export default {
     border-bottom-right-radius: 10px;
     @include background-fill;
     &-text{
-      font-size: 5vw;
+      font-size: 5.75vw;
       text-align: left;
       position: absolute;
-      height: 20%;
+      height: 18%;
       width: 90%;
       bottom: 0;
       left: 5%;
@@ -441,18 +429,50 @@ export default {
       left: 0;
       width: 100%;
       height: 30%;
-      background: linear-gradient(transparent, $avatar-linear);
+      background: linear-gradient(transparent, $avatar-trans);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
     }
   }
+  .speaker-job{
+    font-size: 4.5vw;
+    color: $gold;
+    font-family: $font-speaker-job;
+    @include breakpoint(desktop){
+      font-size: 1.25vw;
+    }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+
+
+  /****************************************************************************|
+  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   .back-card-content{
     @extend %card-content;
-      @include breakpoint(desktop){
-        font-size: 1.5vw;
-      }
+    @include breakpoint(desktop){
+      font-size: 1.5vw;
+    }
   }
+  .speaker-social{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 10%;
+    width: 70%;
+    background: $malibu;
+    margin: 0 auto;
+    svg{
+      cursor: pointer;
+      color: $white;
+    }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
+
+  /****************************************************************************|
+  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
   .card-btn{
     font-size: 4vw;
     height:10%;
@@ -475,5 +495,5 @@ export default {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
     }
-  }
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

@@ -158,6 +158,7 @@ export default {
   |****************************************************************************/
   .home-container{
     display: grid;
+    font-family: $font-home;
   }
   .slider-container{
     grid-column: 1;
@@ -188,6 +189,14 @@ export default {
     font-weight: bold;
     text-align: center;
     transform: translate(-50%, -45%);
+    @include breakpoint(tablet){
+      width: 70%;
+      font-size: 6vw;
+    }
+    @include breakpoint(large){
+      width: 65%;
+      font-size: 3.75vw;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -197,6 +206,11 @@ export default {
   .home1{
     background: url("../assets/home1.jpg");
     @include background-fill;
+    &-nr{
+      @include breakpoint(large){
+        text-align: right;
+      }
+    }
   }
   .home1-p2{
     margin-bottom: 1.5vh;
@@ -211,10 +225,28 @@ export default {
     margin-bottom: 3.5vh;
     text-align: right;
     animation-delay: .6s;
+    @include breakpoint(tablet){
+      line-height: 125%;
+      padding: .45rem .75rem;
+      font-size: 3vw;
+      margin-bottom: 2.5vh;
+    }
+    @include breakpoint(large){
+      padding: .35rem 1rem;
+      font-size: 2vw;
+    }
   }
   .home1-btn{
     font-size: 40%;
     animation-delay: .70s;
+    @include breakpoint(tablet){
+      font-size: 2vw;
+    }
+    @include breakpoint(large){
+      font-size: 27.5%;
+      margin: 0;
+      margin-left:auto;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -227,11 +259,22 @@ export default {
   }
   .home2-p{
     margin-bottom: 2vh;
+    @include breakpoint(large){
+      margin-bottom: 1vh;
+    }
   }
   .home2-logo{
     max-width: 50%;
     margin: 0 auto;
     animation-delay: .3s;
+    @include breakpoint(desktop){
+      max-width: 35%;
+      margin-bottom: -2vh;
+    }
+    @include breakpoint(large){
+      max-width: 25%;
+      margin-bottom: -2vh;
+    }
   }
   .home2-buttons{
     animation-delay: .55s;
@@ -239,6 +282,18 @@ export default {
   .home2-btn{
     margin: 1.5vh auto;
     font-size: 40%;
+    @include breakpoint(tablet){
+      display: inline-block;
+      padding: .75em 1.15em;
+      margin-left: 1vw;
+      margin-right: 1vw;
+      font-size: 2vw;
+    }
+    @include breakpoint(large){
+      margin-left:1.5vw;
+      margin-right:1.5vw;
+      font-size: 27.5%;
+    }
   } //=========================================================================\
 
 
@@ -274,76 +329,7 @@ export default {
     cursor: pointer;
     transform: translateY(-50%);
     @include transition-pdt(color, .25s, ease-in);
-    &-left{
-      left: 2.5%;
-    }
-    &-right{
-      right: 2.5%;
-    }
-    &-b{
-      color: $nav-color;
-    }
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-
-
-  /****************************************************************************|
-  |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-  |****************************************************************************/
-  @include breakpoint(large){
-    /**************************************************************************|
-    |* Grid configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .home-text{
-      width: 65%;
-      font-size: 4.25vw;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Slide 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .home1-nr{
-      text-align: right;
-    }
-    .home1-city{
-      line-height: 125%;
-      padding: .35rem 1rem;
-      font-size: 2vw;
-    }
-    .home1-btn{
-      font-size: 27.5%;
-      margin: 0;
-      margin-left:auto;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Slide 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .home2-p{
-      margin-bottom: 1vh;
-    }
-    .home2-logo{
-      max-width: 25%;
-      margin-bottom: -2vh;
-    }
-    .home2-btn{
-      display: inline-block;
-      margin-left:1.5vw;
-      margin-right:1.5vw;
-      font-size: 27.5%;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Navigation arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .nav-button{
+    @include breakpoint(large){
       font-size: 3.5rem;
       @include transition-pdt(color, .5s, ease-out);
       &-left{
@@ -370,10 +356,15 @@ export default {
           color: $nav-color;
         }
       }
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
+    }
+    &-left{
+      left: 2.5%;
+    }
+    &-right{
+      right: 2.5%;
+    }
+    &-b{
+      color: $nav-color;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 </style>

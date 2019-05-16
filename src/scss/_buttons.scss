@@ -43,6 +43,11 @@ button{
   border-radius: 30px;
 }
 
+.btn-fb-lr-b{
+  @include btn-fillback-lr($bahamaBlue, $pacificBlue);
+  color: $white;
+}
+
 .btn-fb-lr-gw{
   @include btn-fillback-lr(gold, $white)
   color: $black;
@@ -75,13 +80,24 @@ button{
   }
 }
 
-.btn-fb-lr-wp{
+.btn-cc-wp{
   background: $white;
   border: 2px solid $white;
   color: $purple2;
   @include transition-pdt(all, .35s, ease);
   &:hover{
     background: none;
+    color: $white;
+  }
+}
+
+.btn-cc-tw{
+  background: $white;
+  border: 2px solid $white;
+  color: $blueBell;
+  @include transition-pdt(all, .35s, ease);
+  &:hover{
+    background: $blueBell;
     color: $white;
   }
 }

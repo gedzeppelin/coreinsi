@@ -157,7 +157,10 @@
   html, body{
     background: $white;
     color: $white;
-    font: 18px $font-stack;
+    font: 18px $font-sans;
+    @include breakpoint(large){
+      // font-size: 5em;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -172,6 +175,11 @@
     padding: 18px 0px;
     background: $nav-color-r;
     @include transition-pd(all, .5s);
+    @include breakpoint(large){
+      flex-wrap: nowrap;
+      background: $nav-color;
+      font-size: 24px;
+    }
   }
   .expanded{
     background: $nav-color;
@@ -179,6 +187,10 @@
   .scrolled-y{
     padding: 10px 0px;
     background: $nav-color2;
+    @include breakpoint(large){
+      background: $nav-color2;
+      padding: 18 0px;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -192,6 +204,9 @@
     margin-right: 13px;
     width: auto;
     cursor: pointer;
+    @include breakpoint(large){
+      display: none;
+    }
   }
   .line {
     background: $white;
@@ -203,6 +218,9 @@
     top: 0;
     border-radius: 10px;
     @include transition-pdt(all, ease-in-out, .35s);
+    @include breakpoint(large){
+      display: none;
+    }
     &-3{
       margin-bottom: 0px;
     }
@@ -214,6 +232,13 @@
   |****************************************************************************/
   .header-logo{
     display: none;
+    @include breakpoint(large){
+      display: inline-block;
+      width: 15%;
+      margin-left: 1%;
+      color: gold;
+      @include unselectable;
+    }
   }
   .header-logo-r{
     display: inline-block;
@@ -221,6 +246,9 @@
     color: $gold;
     cursor: pointer;
     @include unselectable;
+    @include breakpoint(large){
+      display: none;
+    }
     &e{
       color: $white;
     }
@@ -247,9 +275,17 @@
       max-height: 0px;
       width: 100%;
       @include transition-multi(opacity .35s ease-in, max-height .25s ease-out);
+      @include breakpoint(large){
+        display: none;
+      }
     }
     &-normal{
       display: none;
+      @include breakpoint(large){
+        display: inline-flex;
+        justify-content: space-between;
+        width: 68%;
+      }
     }
     &.open{
       visibility: visible;
@@ -264,6 +300,22 @@
     color: white;
     cursor: pointer;
     @include transition-pdt(color, .15s, linear);
+    @include breakpoint(large){
+      width: 15%;
+      padding: 0;
+      font-size: 1rem;
+      line-height: 28px;
+      text-align: center;
+      @include transition-multi(font-size .1s linear, color .2s ease-in);
+      &:hover{
+        color: gold;
+        font-size: 24px;
+      }
+      &.active{
+        color: gold;
+        font-size: 24px;
+      }
+    }
     &-r2{
       padding-top: 10px;
     }
@@ -291,6 +343,12 @@
     text-align: right;
     cursor: pointer;
     @include unselectable;
+    @include breakpoint(large){
+      width: 15%;
+      margin-right: 1%;
+      font-size: 18px;
+      line-height: 28px;
+    }
   }
   abbr {
     display: inline-block;
@@ -314,10 +372,20 @@
   .nav-up-button{
     cursor: pointer;
     position: fixed;
-    bottom: 2.5%;
-    right: 5%;
+    bottom: 2%;
+    right: 3.5%;
     color: $gold;
-    font-size: 2rem;
+    font-size: 8vw;
+    @include breakpoint(tablet){
+      font-size: 5vw;
+      bottom: 2.5%;
+      right: 2.5%;
+    }
+    @include breakpoint(large){
+      font-size: 2.5vw;
+      bottom: 4%;
+      right: 2.5%;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
@@ -325,118 +393,9 @@
   |* FA arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .fa-arrow-right{
-    cursor: pointer;
-    margin-left: .5em;
+    margin-left: .25em;
+    @include breakpoint(large){
+      font-size: inherit;
+    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-
-
-  /****************************************************************************|
-  |* RESPONSIVITY LARGE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-  |****************************************************************************/
-  @include breakpoint(large){
-    /**************************************************************************|
-    |* Global configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    html, body{
-      font-size: 1.0  5rem;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Header configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    header{
-      flex-wrap: nowrap;
-      background: $nav-color;
-      font-size: 24px;
-    }
-    .scrolled-y{
-      background: $nav-color2;
-      padding: 18 0px;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Header resposive menu button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .burger-nav{
-      display: none;
-    }
-    .line{
-      display: none;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Header logo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .header-logo{
-      display: inline-block;
-      width: 15%;
-      margin-left: 1%;
-      color: gold;
-      @include unselectable;
-    }
-    .header-logo-r{
-      display: none;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Header navigation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .nav-header-responsive{
-      display: none;
-    }
-    .nav-header-normal{
-      display: inline-flex;
-      justify-content: space-between;
-      width: 68%;
-    }
-    .nav-item{
-      width: 15%;
-      padding: 0;
-      font-size: 1rem;
-      line-height: 28px;
-      text-align: center;
-      @include transition-multi(font-size .1s linear, color .2s ease-in);
-      &:hover{
-        color: gold;
-        font-size: 24px;
-      }
-      &.active{
-        color: gold;
-        font-size: 24px;
-      }
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Navigation bar language selector ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .language-selector {
-      width: 15%;
-      margin-right: 1%;
-      font-size: 18px;
-      line-height: 28px;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-    /**************************************************************************|
-    |* Navigation fixed button (to top) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
-    |**************************************************************************/
-    .nav-up-button{
-      bottom: 2%;
-      right: 1.5%;
-      font-size: 2.5rem;
-    } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
-
-
-  /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 </style>
