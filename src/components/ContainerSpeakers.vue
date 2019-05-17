@@ -14,7 +14,7 @@
             </button>
             <div class="front-card-content">
               <div class="front-card-content-text">
-                Elver Galarga
+                Alex Villa
               <p class="speaker-job">
                 Dealer
               </p>
@@ -40,7 +40,7 @@
                    <font-awesome-icon :icon="['fab', 'linkedin-in']" />
                  </a>
               </div>
-              <h2>Elver Galarga</h2>
+              <h2>Alex Villa</h2>
               <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
@@ -58,7 +58,7 @@
             </button>
             <div class="front-card-content">
               <div class="front-card-content-text">
-                Benito Camelo
+                Juan Gabriel
               <p class="speaker-job">
                 Lawyer
               </p>
@@ -84,7 +84,7 @@
                    <font-awesome-icon :icon="['fab', 'linkedin-in']" />
                  </a>
               </div>
-              <h2>Benito Camelo</h2>
+              <h2>Juan Gabriel</h2>
               <p>A good person.</p>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
@@ -303,7 +303,7 @@ export default {
     position: relative;
     height: auto;
     text-align: center;
-    font-size: 4.5vw;
+    font-size: 5vw;
     z-index: 0;
     &::after{
       content: "";
@@ -316,8 +316,17 @@ export default {
       position: absolute;
       z-index: -1;
     }
+    @include breakpoint(tablet){
+      font-size: 4.15vw;
+    }
     @include breakpoint(desktop){
-      font-size: 2vw;
+      font-size: 2.5vw;
+    }
+    @include breakpoint(large){
+      font-size: 2.15vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1.7vw;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -326,14 +335,20 @@ export default {
   |* Title ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .speakers-header{
+    display: inline-block;
+    margin-bottom: 0;
     font-weight: bold;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 55px;
     border-bottom: 3px dashed;
-    @include breakpoint(desktop){
-      width: 30%;
+    @include breakpoint(tablet){
+      margin-bottom: .35em;
       border-bottom: 4px dashed;
+    }
+    @include breakpoint(desktop){
+      margin-bottom: .65em;
+    }
+    @include breakpoint(x-large){
+      margin-bottom: .45em;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -342,14 +357,24 @@ export default {
   |* Non-responsive helper ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .nr-helper{
-    @include breakpoint(desktop){
+    @include breakpoint(tablet){
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
+      justify-content: space-around;
       align-items: center;
-      width: 75%;
-      margin: 2% auto;
-      margin-bottom: 5%;
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 1em;
+    }
+    @include breakpoint(desktop){
+      width: 80%;
+    }
+    @include breakpoint(large){
+      width: 70%;
+    }
+    @include breakpoint(x-large){
+      width: 56%;
+      margin-bottom: 1.25em;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -366,13 +391,24 @@ export default {
   .flip-card{
     width: 80vw;
     height: 110vw;
-    margin: 1.75em auto;
-    @include breakpoint(desktop){
-      margin: 2.5vh 2.5%;
-      width: 17.5vw;
-      height: 25vw;
+    margin: 1.5em auto;
+    @include breakpoint(tablet){
+      margin: .5em auto;
+      width: 40vw;
+      height: 55vw;
     }
-    // perspective: 1000px;
+    @include breakpoint(desktop){
+      width: 22vw;
+      height: 31vw;
+    }
+    @include breakpoint(large){
+      width: 20vw;
+      height: 28.5vw;
+    }
+    @include breakpoint(x-large){
+      width: 16vw;
+      height: 22.8vw;
+    }
     &-inner {
       position: relative;
       width: 100%;
@@ -397,7 +433,7 @@ export default {
 
 
   /****************************************************************************|
-  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* Flip front card content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   %card-content{
     position: absolute;
@@ -418,8 +454,17 @@ export default {
       width: 90%;
       bottom: 0;
       left: 5%;
+      @include breakpoint(tablet){
+        font-size: 3.15vw;
+      }
       @include breakpoint(desktop){
-        font-size: 1.75vw;
+        font-size: 1.7vw;
+      }
+      @include breakpoint(large){
+        font-size: 1.55vw;
+      }
+      @include breakpoint(x-large){
+        font-size: 1.3vw;
       }
     }
     &::before{
@@ -438,19 +483,37 @@ export default {
     font-size: 4.5vw;
     color: $gold;
     font-family: $font-speaker-job;
+    @include breakpoint(tablet){
+      font-size: 2.5vw;
+    }
     @include breakpoint(desktop){
-      font-size: 1.25vw;
+      font-size: 1.4vw;
+    }
+    @include breakpoint(large){
+      font-size: 1.265vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1.05vw;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* Flip back card content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .back-card-content{
     @extend %card-content;
+    @include breakpoint(tablet){
+      font-size: 2.65vw;
+    }
     @include breakpoint(desktop){
       font-size: 1.5vw;
+    }
+    @include breakpoint(desktop){
+      font-size: 1.35vw;
+    }
+    @include breakpoint(desktop){
+      font-size: 1.05vw;
     }
   }
   .speaker-social{
@@ -471,7 +534,7 @@ export default {
 
 
   /****************************************************************************|
-  |* Flip card ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* Flip card buttons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .card-btn{
     font-size: 4vw;
@@ -480,8 +543,17 @@ export default {
     border-radius: 0;
     background: $malibu;
     padding:0;
+    @include breakpoint(tablet){
+      font-size: 2.55vw;
+    }
     @include breakpoint(desktop){
-      font-size: 1.25vw;
+      font-size: 1.35vw;
+    }
+    @include breakpoint(large){
+      font-size: 1.225vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1vw;
     }
     &-f{
       color: inherit;
@@ -492,8 +564,8 @@ export default {
       position: absolute;
       bottom:0;
       color: $white;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

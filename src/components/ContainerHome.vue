@@ -329,8 +329,11 @@ export default {
     cursor: pointer;
     transform: translateY(-50%);
     @include transition-pdt(color, .25s, ease-in);
-    @include breakpoint(large){
-      font-size: 3.5rem;
+    @include breakpoint(tablet){
+      font-size: 2.65rem;
+    }
+    @include breakpoint(desktop){
+      font-size: 3.25rem;
       @include transition-pdt(color, .5s, ease-out);
       &-left{
         left: 7.5%;

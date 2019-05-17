@@ -30,42 +30,151 @@
 	"schedule-2nd-long-day": "20 de junio",
 	"schedule-3rd-long-day": "21 de junio",
 	"schedule-4th-long-day": "22 de junio",
-  "schedule": [
+  "schedule-wednesday":
+	[
     {
-			"title": "INTRODUCCIÓN AL DEEP LEARNING",
-			"isPresentation": false,
-			"time1": "9:00",
-			"time2": "11:00",
-			"speaker": "Elsa Badillo",
-			"speakerJob": "Policía por Carmen Alto",
+			"title": "CEREMONIA DE INAUGURACIÓN",
+			"title2": "",
+			"isPresentation": null,
+			"time": "de 8:00 a.m. a 10:00 a.m.",
+			"speaker": "XXX XXX XXX",
+			"speakerJob": "XXXX XXXX XXXX",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 		},
 		{
-			"title": "INTRODUCCIÓN  PYTHON",
-			"isPresentation": false,
-			"time1": "11:00",
-			"time2": "13:00",
-			"speaker": "Benito Camelo",
-			"speakerJob": "Abogado en Samsung",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
-		},
-		{
-			"title": "INTRODUCCIÓN A TUVIE.JX APLICADA A LA INTELIGENCIA ARTIFICIAL",
+			"title": "CREACIÓN DE VIDEOJUEGOS EN 2D",
+			"title2": "",
 			"isPresentation": true,
-			"time1": "11:00",
-			"time2": "13:00",
-			"speaker": "Elver Galarga",
-			"speakerJob": "Dealer en INTECH PERÚ",
+			"time": "de 8:00 a.m. a 10:00 a.m.",
+			"speaker": "Dino Morales Chavarry",
+			"speakerJob": "XXXX XXXX XXXX",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 		},
 		{
-			"title": "INTRODUCCIÓN A LA MACARENA",
-			"isPresentation": false,
-			"time1": "15:00",
-			"time2": "17:00",
-			"speaker": "Aquiles Brinco",
-			"speakerJob": "Programador en MICROSOFT",
+			"title": "INVESTIGACIÓN",
+			"title2": "",
+			"isPresentation": true,
+			"time": "de 8:00 a.m. a 10:00 a.m.",
+			"speaker": "Yauri",
+			"speakerJob": "XXXX XXXX XXXX",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		}
+	],
+	"schedule-thursday":
+	[
+	],
+	"schedule-friday":
+	[
+    {
+			"title": "RECONOCIMIENTO DE IMÁGENES USANDO IA:",
+			"title2": "Cómo implementar una Pokédex desde cero.",
+			"isPresentation": true,
+			"time": "9:00 a.m. - 10:15 a.m.",
+			"speaker": "Ian Paul Brossard",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "MÚSICA Y PROGRAMACIÓN:",
+			"title2": "¿Cómo juntar dos pasiones?",
+			"isPresentation": true,
+			"time": "10:15 a.m. - 11:20 a.m.",
+			"speaker": "Michael Hurtado",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "BREAK",
+			"title2": "",
+			"isPresentation": null,
+			"time": "11:20 a.m. a 11:50 a.m.",
+			"speaker": "",
+			"speakerJob": "",
+      "description": ""
+		},
+		{
+			"title": "SHODAN:",
+			"title2": "Hackeando dispositivos IOT.",
+			"isPresentation": true,
+			"time": "11:50 a.m. a 1:00 p.m.",
+			"speaker": "Keith Fernández Idme",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "RECESO",
+			"title2": "",
+			"isPresentation": null,
+			"time": "1:00 p.m. a 4:00 p.m.",
+			"speaker": "",
+			"speakerJob": "",
+      "description": ""
+		},
+		{
+			"title": "MACHINE LEARNING.",
+			"title2": "",
+			"isPresentation": true,
+			"time": "4:00 p.m. a 5:00 p.m.",
+			"speaker": "Ian Paul Brossard",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "DIEZ AÑOS DE LOS FABLABS EN EL PERÚ.",
+			"title2": "",
+			"isPresentation": true,
+			"time": "5:00 p.m. a 6:00 p.m.",
+			"speaker": "Michael Hurtado",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		}
+	],
+	"schedule-saturday":
+	[
+    {
+			"title": "OSINT y HACKING CON BUSCADORES.",
+			"title2": "",
+			"isPresentation": true,
+			"time": "9:00 a.m. - 10:15 a.m.",
+			"speaker": "Keith Fernández Idme",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "INGRESA AL MUNDO DE LA ROBÓTICA.",
+			"title2": "",
+			"isPresentation": true,
+			"time": "10:15 a.m. - 11:20 a.m.",
+			"speaker": "Dino Morales Chavarry",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "BREAK",
+			"title2": "",
+			"isPresentation": null,
+			"time": "11:20 a.m. a 11:50 a.m.",
+			"speaker": "",
+			"speakerJob": "",
+      "description": ""
+		},
+		{
+			"title": "CONSTRUCCIÓN Y MANEJO DE DRONES.",
+			"title2": "",
+			"isPresentation": true,
+			"time": "11:50 a.m. a 1:00 p.m.",
+			"speaker": "Jorge Gonzales Moreno",
+			"speakerJob": "XXXX XXXX XXXX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+		},
+		{
+			"title": "PSICOLOGÍA POSITIVA",
+			"title2": "",
+			"isPresentation": null,
+			"time": "1:00 p.m. a 2:00 p.m.",
+			"speaker": "CENTRO DE ESTUDIANTES DE ING. DE SISTEMAS",
+			"speakerJob": "",
+      "description": ""
 		}
 	],
 	"pricing-title": "PRECIO DE <b>INSCRIPCIONES</b>",
