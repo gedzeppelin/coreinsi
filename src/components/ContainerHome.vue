@@ -44,17 +44,14 @@
         <div class="slide home3">
           <div class="home-text" v-if="animationPosition == 2">
             <b>
-              <p class="home-a">
-                FRESI
+              <p class="home-a home3-p1">
+                &#x1F64A;
               </p>
               <p class="home-a home3-p2">
-                OF
+                &#x1F648;
               </p>
               <p class="home-a home3-p3">
-                MRD
-              </p>
-              <p class="home-a home3-p4">
-                &#x1F648;
+                &#x1F649;
               </p>
             </b>
           </div>
@@ -310,9 +307,6 @@ export default {
   }
   .home3-p3{
     animation-delay: 1s;
-  }
-  .home3-p4{
-    animation-delay: 1.5s;
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 

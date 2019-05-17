@@ -16,7 +16,7 @@
               <div class="front-card-content-text">
                 Alex Villa
               <p class="speaker-job">
-                Dealer
+                Doctor
               </p>
               </div>
             </div>
