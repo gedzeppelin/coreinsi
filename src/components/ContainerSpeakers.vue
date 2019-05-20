@@ -1,270 +1,61 @@
 <template>
   <div class="container speakers-container" id="c-speakers">
-    <h3 class="speakers-header">
-      {{ $t('speakers-header') }}
-    </h3>
+    <h2 class="speakers-header">
+      {{ $t('speakers_header') }}
+    </h2>
 
     <div class="nr-helper">
 
-      <div class="flip-card">
+      <div class="flip-card" v-for="(speaker, name) in $t('speakers')">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
-              {{ $t('button-more-info') }}
+              {{ $t('button_more_info') }}
             </button>
-            <div class="front-card-content">
+            <div class="front-card-content" :style="{ backgroundImage: 'url(' + require('../assets/' + speaker.img) + ')' }">
               <div class="front-card-content-text">
-                Alex Villa
+                {{ speaker.name }}
               <p class="speaker-job">
-                Doctor
+                {{ speaker.job }}
               </p>
               </div>
             </div>
           </div>
           <div class="flip-card-back">
             <div class="back-card-content">
-              <div class="speaker-social">
-                 <a href="https://www.facebook.com/" target="_blank">
+              <div class="speaker-social" v-if="speaker.socialNetworks">
+                 <a v-if="speaker.socialNetworks.facebook" :href="speaker.socialNetworks.facebook" target="_blank">
                    <font-awesome-icon :icon="['fab', 'facebook-f']" />
                  </a>
-                 <a href="https://www.instagram.com/" target="_blank">
+                 <a v-if="speaker.socialNetworks.instagram" :href="speaker.socialNetworks.instagram" target="_blank">
                    <font-awesome-icon :icon="['fab', 'instagram']" />
                  </a>
-                 <a href="https://twitter.com/" target="_blank">
+                 <a v-if="speaker.socialNetworks.twitter" :href="speaker.socialNetworks.twitter" target="_blank">
                    <font-awesome-icon :icon="['fab', 'twitter']" />
                  </a>
-                 <a href="https://github.com/ " target="_blank">
+                 <a v-if="speaker.socialNetworks.github":href="speaker.socialNetworks.github" target="_blank">
                    <font-awesome-icon :icon="['fab', 'github']" />
                  </a>
-                 <a href="https://www.linkedin.com/" target="_blank">
+                 <a v-if="speaker.socialNetworks.linkedin" :href="speaker.socialNetworks.linkedin" target="_blank">
                    <font-awesome-icon :icon="['fab', 'linkedin-in']" />
                  </a>
               </div>
-              <h2>Alex Villa</h2>
-              <p>A good person.</p>
+              <div class="back-card-text">
+                <h3>{{ speaker.name }}</h3>
+                <ul>
+                  <li v-for="item in speaker.description" style="list-style-type: square;" v-html="item">
+                  </li>
+                </ul>
+                <span class="presentations">{{ $i18n.locale == "es" ? "PONENCIAS" : "PRESENTATIONS" }}:</span>
+                <ul>
+                  <li v-for="(item, index) in speaker.talks">
+                    {{ $t('speakers.' + name + '.talks[' + index + ']') }}
+                  </li>
+                </ul>
+              </div>
             </div>
             <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
-              {{ $t('button-less-info') }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
-              {{ $t('button-more-info') }}
-            </button>
-            <div class="front-card-content">
-              <div class="front-card-content-text">
-                Juan Gabriel
-              <p class="speaker-job">
-                Lawyer
-              </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="back-card-content">
-              <div class="speaker-social">
-                 <a href="https://www.facebook.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                 </a>
-                 <a href="https://www.instagram.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'instagram']" />
-                 </a>
-                 <a href="https://twitter.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'twitter']" />
-                 </a>
-                 <a href="https://github.com/ " target="_blank">
-                   <font-awesome-icon :icon="['fab', 'github']" />
-                 </a>
-                 <a href="https://www.linkedin.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-                 </a>
-              </div>
-              <h2>Juan Gabriel</h2>
-              <p>A good person.</p>
-            </div>
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
-              {{ $t('button-less-info') }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
-              {{ $t('button-more-info') }}
-            </button>
-            <div class="front-card-content">
-              <div class="front-card-content-text">
-                Elsa Badillo
-              <p class="speaker-job">
-                Cop
-              </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="back-card-content">
-              <div class="speaker-social">
-                 <a href="https://www.facebook.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                 </a>
-                 <a href="https://www.instagram.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'instagram']" />
-                 </a>
-                 <a href="https://twitter.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'twitter']" />
-                 </a>
-                 <a href="https://github.com/ " target="_blank">
-                   <font-awesome-icon :icon="['fab', 'github']" />
-                 </a>
-                 <a href="https://www.linkedin.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-                 </a>
-              </div>
-              <h2>Elsa Badillo</h2>
-              <p>A good person.</p>
-            </div>
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
-              {{ $t('button-less-info') }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
-              {{ $t('button-more-info') }}
-            </button>
-            <div class="front-card-content">
-              <div class="front-card-content-text">
-                Elba Zurita
-              <p class="speaker-job">
-                Priest
-              </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="back-card-content">
-              <div class="speaker-social">
-                 <a href="https://www.facebook.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                 </a>
-                 <a href="https://www.instagram.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'instagram']" />
-                 </a>
-                 <a href="https://twitter.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'twitter']" />
-                 </a>
-                 <a href="https://github.com/ " target="_blank">
-                   <font-awesome-icon :icon="['fab', 'github']" />
-                 </a>
-                 <a href="https://www.linkedin.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-                 </a>
-              </div>
-              <h2>Elba Zurita</h2>
-              <p>A good person.</p>
-            </div>
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
-              {{ $t('button-less-info') }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
-              {{ $t('button-more-info') }}
-            </button>
-            <div class="front-card-content">
-              <div class="front-card-content-text">
-                Aquiles Brinco
-              <p class="speaker-job">
-                Programmer
-              </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="back-card-content">
-              <div class="speaker-social">
-                 <a href="https://www.facebook.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                 </a>
-                 <a href="https://www.instagram.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'instagram']" />
-                 </a>
-                 <a href="https://twitter.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'twitter']" />
-                 </a>
-                 <a href="https://github.com/ " target="_blank">
-                   <font-awesome-icon :icon="['fab', 'github']" />
-                 </a>
-                 <a href="https://www.linkedin.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-                 </a>
-              </div>
-              <h2>Aquiles Brinco</h2>
-              <p>A good person.</p>
-            </div>
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
-              {{ $t('button-less-info') }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-f">
-              {{ $t('button-more-info') }}
-            </button>
-            <div class="front-card-content">
-              <div class="front-card-content-text">
-                Elvis Tek
-              <p class="speaker-job">
-                Teacher
-              </p>
-              </div>
-            </div>
-          </div>
-          <div class="flip-card-back">
-            <div class="back-card-content">
-              <div class="speaker-social">
-                 <a href="https://www.facebook.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                 </a>
-                 <a href="https://www.instagram.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'instagram']" />
-                 </a>
-                 <a href="https://twitter.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'twitter']" />
-                 </a>
-                 <a href="https://github.com/ " target="_blank">
-                   <font-awesome-icon :icon="['fab', 'github']" />
-                 </a>
-                 <a href="https://www.linkedin.com/" target="_blank">
-                   <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-                 </a>
-              </div>
-              <h2>Elvis Tek</h2>
-              <p>A good person.</p>
-            </div>
-            <button type="button" @click="flipCard" class="btn-round card-btn card-btn-b">
-              {{ $t('button-less-info') }}
+              {{ $t('button_less_info') }}
             </button>
           </div>
         </div>
@@ -307,7 +98,7 @@ export default {
     z-index: 0;
     &::after{
       content: "";
-      background: url("https://media.giphy.com/media/4GXNdzsOcVR0aZl7mT/giphy.gif");
+      background: url("../assets/speakers-background.gif");
       opacity: 0.1;
       top: 0;
       left: 0;
@@ -370,10 +161,10 @@ export default {
       width: 80%;
     }
     @include breakpoint(large){
-      width: 70%;
+      width: 75%;
     }
     @include breakpoint(x-large){
-      width: 56%;
+      width: 58%;
       margin-bottom: 1.25em;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
@@ -387,6 +178,7 @@ export default {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
   .flip-card{
     width: 80vw;
@@ -398,28 +190,30 @@ export default {
       height: 55vw;
     }
     @include breakpoint(desktop){
+      width: 23vw;
+      height: 32.5vw;
+    }
+    @include breakpoint(large){
       width: 22vw;
       height: 31vw;
     }
-    @include breakpoint(large){
-      width: 20vw;
-      height: 28.5vw;
-    }
     @include breakpoint(x-large){
-      width: 16vw;
-      height: 22.8vw;
+      width: 17vw;
+      height: 24vw;
     }
     &-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform .75s;
+      @include transition-pd(transform, .75s);
       transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
       &.flipped{
         @include transform(rotateY(180deg));
       }
     }
     &-front {
+      z-index: -1;
       @extend %flip-card-side;
     }
     &-back {
@@ -442,7 +236,7 @@ export default {
   }
   .front-card-content{
     @extend %card-content;
-    background: url("../assets/avatar.jpg");
+    // background-image: url("../assets/avatar.jpg");
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     @include background-fill;
@@ -450,21 +244,21 @@ export default {
       font-size: 5.75vw;
       text-align: left;
       position: absolute;
-      height: 18%;
+      height: 16%;
       width: 90%;
       bottom: 0;
       left: 5%;
       @include breakpoint(tablet){
-        font-size: 3.15vw;
+        font-size: 3vw;
       }
       @include breakpoint(desktop){
-        font-size: 1.7vw;
+        font-size: 1.675vw;
       }
       @include breakpoint(large){
-        font-size: 1.55vw;
+        font-size: 1.65vw;
       }
       @include breakpoint(x-large){
-        font-size: 1.3vw;
+        font-size: 1.25vw;
       }
     }
     &::before{
@@ -473,62 +267,154 @@ export default {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 30%;
+      height: 35%;
       background: linear-gradient(transparent, $avatar-trans);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
     }
   }
+  .presentations{
+    display: block;
+    margin-top: .75em;
+    font-weight: bold;
+  }
   .speaker-job{
-    font-size: 4.5vw;
+    font-size: 4vw;
     color: $gold;
     font-family: $font-speaker-job;
     @include breakpoint(tablet){
-      font-size: 2.5vw;
+      font-size: 2vw;
     }
     @include breakpoint(desktop){
-      font-size: 1.4vw;
+      font-size: 1.2vw;
     }
     @include breakpoint(large){
-      font-size: 1.265vw;
+      font-size: 1.18vw;
     }
     @include breakpoint(x-large){
-      font-size: 1.05vw;
+      font-size: .875vw;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
-  |* Flip back card content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |* Flip card back content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .back-card-content{
     @extend %card-content;
     @include breakpoint(tablet){
-      font-size: 2.65vw;
+      font-size: 2.4vw;
     }
     @include breakpoint(desktop){
       font-size: 1.5vw;
     }
-    @include breakpoint(desktop){
-      font-size: 1.35vw;
+    @include breakpoint(large){
+      font-size: 1.3vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1vw;
+    }
+  }
+  a{
+    display: inline-block;
+    margin: 0 2vw;
+    vertical-align: sub;
+    @include breakpoint(tablet){
+      margin: 0 1.125vw;
     }
     @include breakpoint(desktop){
-      font-size: 1.05vw;
+      margin: 0 .75vw;
+    }
+    @include breakpoint(large){
+      margin: 0 .6vw;
+    }
+    @include breakpoint(x-large){
+      margin: 0 .435vw;
+    }
+  }
+  .back-card-text{
+    width: 87.5%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 3.65vw;
+    text-align: left;
+    @include breakpoint(tablet){
+      font-size: 1.75vw;
+    }
+    @include breakpoint(desktop){
+      font-size: 1.1vw;
+    }
+    @include breakpoint(large){
+      font-size: 1vw;
+    }
+    @include breakpoint(x-large){
+      font-size: .785vw;
+    }
+  }
+  h3{
+    text-align: center;
+    font-size: 5.25vw;
+    margin-top: .75em;
+    margin-bottom: .5em;
+    @include breakpoint(tablet){
+      font-size: 2.65vw;
+    }
+    @include breakpoint(desktop){
+      font-size: 1.375vw;
+    }
+    @include breakpoint(large){
+      font-size: 1.5vw;
+    }
+    @include breakpoint(x-large){
+      font-size: 1.1vw;
+    }
+  }
+  ul{
+    margin:0;
+    padding-left: 3.25vw;
+    @include breakpoint(tablet){
+      padding-left: 1.6vw;
+    }
+    @include breakpoint(desktop){
+      padding-left: .95vw;
+    }
+    @include breakpoint(desktop){
+      padding-left: .7vw;
+    }
+  }
+  li{
+    margin: .5vw 0;
+    @include breakpoint(desktop){
+      margin: 0;
+    }
+    @include breakpoint(x-large){
+      margin: .25vw 0;
     }
   }
   .speaker-social{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    display: inline-block;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    height: 10%;
-    width: 70%;
+    height: 1.85em;
+    padding: 0 .6em;
     background: $malibu;
-    margin: 0 auto;
+    @include breakpoint(tablet){
+      height: 1.75em;
+      padding: 0 .4em;
+    }
+    @include breakpoint(desktop){
+      padding: 0 .25em;
+    }
+    @include breakpoint(large){
+      padding: 0 .25em;
+    }
+    @include breakpoint(x-large){
+      padding: 0 .25em;
+    }
     svg{
       cursor: pointer;
       color: $white;
+      vertical-align: sub;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -562,7 +448,11 @@ export default {
     }
     &-b{
       position: absolute;
+      width: 100%;
+      z-index: 2;
       bottom:0;
+      // left:0;
+      // right:0;
       color: $white;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;

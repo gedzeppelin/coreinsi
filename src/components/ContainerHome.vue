@@ -4,37 +4,37 @@
       <div class="holder" ref="holder">
 
         <div class="slide home1">
-          <div class="home-text home1-nr" v-if="animationPosition == 0">
+          <div class="home-text home1-nr" v-show="animationPosition == 0">
             <p class="home-a">
-              {{ $t('home1-1st-p') }}
+              {{ $t('home1_1st_p') }}
             </p>
             <p class="home-a home1-p2">
-              {{ $t('home1-2nd-p') }}
+              {{ $t('home1_2nd_p') }}
             </p>
             <span class="home-a home1-city">
               AYACUCHO, HUAMANGA <font-awesome-icon icon="map-marker-alt" /><br />
               PERÚ <font-awesome-icon icon="globe-americas" />
             </span>
             <button type="button" class="btn-round btn-fb-lr-gp home-a home1-btn" @click="scrollToComponent('c-about')">
-              {{ $t('button-more-info') }}
+              {{ $t('button_more_info') }}
               <font-awesome-icon icon="arrow-right" />
             </button>
           </div>
         </div>
 
         <div class="slide home2">
-          <div class="home-text" v-if="animationPosition == 1">
+          <div class="home-text" v-show="animationPosition == 1">
             <p class="home-a home2-p">
-              {{ $t('home2-1st-p') }}
+              {{ $t('home2_1st_p') }}
             </p>
             <img src="../assets/logo-unsch.png" class="home-a home2-logo" />
             <div class="home-a home2-buttons">
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-schedule')">
-                {{ $t('button-schedule') }}
+                {{ $t('button_schedule') }}
                 <font-awesome-icon icon="arrow-right" />
               </button>
               <button type="button" class="btn-round btn-fb-lr-pw home2-btn" @click="scrollToComponent('c-about')">
-                {{ $t('button-more-info') }}
+                {{ $t('button_more_info') }}
                 <font-awesome-icon icon="arrow-right" />
               </button>
             </div>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="slide home3">
-          <div class="home-text" v-if="animationPosition == 2">
+          <div class="home-text" v-show="animationPosition == 2">
             <b>
               <p class="home-a home3-p1">
                 &#x1F64A;

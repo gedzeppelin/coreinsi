@@ -16,6 +16,8 @@ $white: #fcfcfc;
 $nav-color: rgba(0, 0, 0, .75);
 $nav-color-r: rgba(0, 0, 0, .5);
 $nav-color2: rgba(0, 0, 0, 1);
+$nar-arrow: rgba(35, 35, 35, .6);
+$nar-arrow-h: #373737;
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 /******************************************************************************|
@@ -37,7 +39,7 @@ $eggplant: #734b6d;
 |******************************************************************************/
 $malibu: #8f94fb;
 $royalBlue: #5c67dc;
-$avatar-trans: rgba(0, 0, 0, .6);
+$avatar-trans: rgba(0, 0, 0, .75);
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 /******************************************************************************|
@@ -174,6 +176,24 @@ html, body{
   padding: 0;
   scroll-behavior: smooth;
 }
+
+h2{
+  font-size: 6.75vw;
+  @include breakpoint(tablet){
+    font-size: 4.5vw;
+  }
+  @include breakpoint(desktop){
+    font-size: 3.1vw;
+  }
+  @include breakpoint(large){
+    font-size: 2.75vw;
+  }
+  @include breakpoint(x-large){
+    font-size: 1.85vw;
+  }
+}
+
+
 
 p{
   margin: 0;

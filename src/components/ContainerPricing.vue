@@ -3,18 +3,18 @@
 
     <div class="pricing-content">
       <div class="head-helper">
-        <span class="pricing-head" v-html="$t('pricing-title')"></span>
+        <span class="pricing-head" v-html="$t('pricing_title')"></span>
       </div>
 
       <div class="dates-item-title">
-        {{ $t('pricing-1st-title') }}
+        {{ $t('pricing_1st_title') }}
       </div>
-      <span class="item dates-item-1" v-html="$t('pricing-dates-1')"></span>
-      <span class="item dates-item-2" v-html="$t('pricing-dates-2')"></span>
-      <span class="item dates-item-3" v-html="$t('pricing-dates-3')"></span>
+      <span class="item dates-item-1" v-html="$t('pricing_dates_1')"></span>
+      <span class="item dates-item-2" v-html="$t('pricing_dates_2')"></span>
+      <span class="item dates-item-3" v-html="$t('pricing_dates_3')"></span>
 
       <div class="indv-item-title">
-        {{ $t('pricing-2nd-title') }}
+        {{ $t('pricing_2nd_title') }}
       </div>
       <span class="item-e indv-e1" :class="{ 'i-e1-en': $i18n.locale == 'en' }">
         <b>{{ $i18n.locale == "es" ?  "E" : "S" }}</b>
@@ -30,7 +30,7 @@
       <span class="item indv-item2-3">S/120.00</span>
 
       <div class="grp-item-title">
-        {{ $t('pricing-3rd-title') }}
+        {{ $t('pricing_3rd_title') }}
       </div>
       <span class="item-e grp-e1" :class="{ 'g-en': $i18n.locale == 'en' }">
         10+
@@ -47,13 +47,13 @@
     </div>
 
     <button type="button" class="btn-round btn-fb-lr-b pricing-btn">
-      {{ $t('pricing-indv-btn') }}
+      {{ $t('pricing_indv_btn') }}
     </button>
     <button type="button" class="btn-round btn-fb-lr-b pricing-btn">
-      {{ $t('pricing-grp-btn') }}
+      {{ $t('pricing_grp_btn') }}
     </button>
 
-    <pre class="footnote" v-html="$t('pricing-footnote')"></pre>
+    <pre class="footnote" v-html="$t('pricing_footnote')"></pre>
   </div>
 </template>
 

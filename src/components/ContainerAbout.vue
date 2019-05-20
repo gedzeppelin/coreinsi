@@ -2,40 +2,40 @@
   <div class="container about-container" id="c-about">
     <div class="about-text">
 
-      <h6 class="about-head">{{ $t('about-head') }}</h6>
+      <h6 class="about-head">{{ $t('about_head') }}</h6>
       <h2 class="about-title">XII COREINSI</h2>
       <p class="about-text-content">
-        {{ $t('about-text') }}
+        {{ $t('about_text') }}
       </p>
 
       <img src="../assets/logo-coreinsi.png" class="ceis-logo" />
 
       <button type="button" class="btn-round btn-cc-wp about-btn" @click="scrollToComponent('c-schedule')">
-        {{ $t('button-schedule') }}
+        {{ $t('button_schedule') }}
         <font-awesome-icon icon="arrow-right" />
       </button>
 
-      <h6 class="about-countdown">{{ $t('about-countdown') }}</h6>
+      <h6 class="about-countdown">{{ $t('about_countdown') }}</h6>
       <ul class="countdown">
         <li class="counter">
           <p>{{ weeks }}</p>
-          <p class="counter-label">{{ $t('about-countdown-weeks') }}</p>
+          <p class="counter-label">{{ $t('about_countdown_weeks') }}</p>
         </li>
         <li class="counter">
           <p>{{ days }}</p>
-          <p class="counter-label">{{ $t('about-countdown-days') }}</p>
+          <p class="counter-label">{{ $t('about_countdown_days') }}</p>
         </li>
         <li class="counter">
           <p>{{ hours }}</p>
-          <p class="counter-label">{{ $t('about-countdown-hours') }}</p>
+          <p class="counter-label">{{ $t('about_countdown_hours') }}</p>
         </li>
         <li class="counter">
           <p>{{ minutes }}</p>
-          <p class="counter-label">{{ $t('about-countdown-minutes') }}</p>
+          <p class="counter-label">{{ $t('about_countdown_minutes') }}</p>
         </li>
         <li class="counter">
           <p>{{ seconds }}</p>
-          <p class="counter-label">{{ $t('about-countdown-seconds') }}</p>
+          <p class="counter-label">{{ $t('about_countdown_seconds') }}</p>
         </li>
       </ul>
 

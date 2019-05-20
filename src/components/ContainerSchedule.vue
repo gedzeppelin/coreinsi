@@ -1,130 +1,54 @@
 <template>
   <div class="container schedule-container" id="c-schedule">
 
-    <h3 class="schedule-header">
-      {{ $t('schedule-header') }}
-    </h3>
+    <h2 class="schedule-header">
+      {{ $t('schedule_header') }}
+    </h2>
 
     <div class="button-container">
       <button type="button" class="btn-round btn-cc-tw date-button-f"
       @click="position = 0" v-bind:class="{ 'active': position == 0 }">
-        {{ $t('schedule-1st-day') }}<br/>{{ $t('schedule-1st-long-day') }}
+        {{ $t('schedule_1st_day') }}<br/>{{ $t('schedule_1st_long_day') }}
       </button>
       <button type="button" class="btn-round btn-cc-tw date-button-m"
       @click="position = 1" v-bind:class="{ 'active': position == 1 }">
-        {{ $t('schedule-2nd-day') }}<br/>{{ $t('schedule-2nd-long-day') }}
+        {{ $t('schedule_2nd_day') }}<br/>{{ $t('schedule_2nd_long_day') }}
       </button>
       <button type="button" class="btn-round btn-cc-tw date-button-m"
       @click="position = 2" v-bind:class="{ 'active': position == 2 }">
-        {{ $t('schedule-3rd-day') }}<br/>{{ $t('schedule-3rd-long-day') }}
+        {{ $t('schedule_3rd_day') }}<br/>{{ $t('schedule_3rd_long_day') }}
       </button>
       <button type="button" class="btn-round btn-cc-tw date-button-l"
       @click="position = 3" v-bind:class="{ 'active': position == 3 }">
-        {{ $t('schedule-4th-day') }}<br/>{{ $t('schedule-4th-long-day') }}
+        {{ $t('schedule_4th_day') }}<br/>{{ $t('schedule_4th_long_day') }}
       </button>
     </div>
 
-    <transition name="fade" mode="out-in">
-      <ul key=1 class="activities-list" v-if="position == 0">
-        <li class="activities-container" v-for="schedule in $t('schedule-wednesday')">
-          <div class="nrr-helper">
+    <div :key="schedulesIndex" v-for="(scheduleS, scheduleSName, schedulesIndex) in $t('schedules')">
+      <ul class="activities-list activities-a" v-show="position == schedulesIndex">
+        <li class="activities-container" :key="scheduleName" v-for="(schedule, scheduleName) in scheduleS" :class="{ 'break-helper': schedule.isBreak }">
+          <div class="nrr-helper" :class="{ 'pinga': schedule.description === undefined }">
             <span class="activity-title">{{ schedule.title }}</span>
             </br>
             <span class="activity-title-2">{{ schedule.title2 }}</span>
-            <div v-if="schedule.speaker != ''">
-              <span class="speaker-helper">{{ $i18n.locale == "es" ? "por" : "by" }}</span>
-              <span>&nbsp;{{ schedule.speaker }}&nbsp;</span>
-              <span class="speaker-helper" v-if="schedule.speakerJob != ''">| {{ schedule.speakerJob }}</span>
+            <div v-if="schedule.speaker">
+              <span>{{ $t('schedules.' + scheduleSName + '.' + scheduleName + '.speaker') }}&nbsp;</span>
+              <span class="speaker-helper" v-if="schedule.speakerJob">| {{ $t('schedules.' + scheduleSName + '.' + scheduleName + '.speakerJob') }}</span>
             </div>
             {{ schedule.time }}
             </br>
-            <span :class="{ 'workshop': !schedule.isPresentation }">
-              {{ schedule.isPresentation == null ? "" : schedule.isPresentation ? "PONENCIA" : "TALLER" }}
+            <span v-if="schedule.isPresentation !== undefined" :class="{ 'workshop': !schedule.isPresentation }">
+              {{ schedule.isPresentation ? $t('schedule_presentation') : $t('schedule_workshop') }}
             </span>
           </div>
 
-          <span class="nrrr-helper" v-if="schedule.description != ''">
+          <span class="nrrr-helper" v-if="schedule.description">
             <hr/>
             {{ schedule.description }}
           </span>
         </li>
       </ul>
-
-      <ul key=2 class="activities-list" v-if="position == 1">
-        <li class="activities-container" v-for="schedule in $t('schedule-thursday')" >
-          <div class="nrr-helper">
-            <span class="activity-title">{{ schedule.title }}</span>
-            </br>
-            <span class="activity-title-2">{{ schedule.title2 }}</span>
-            <div v-if="schedule.speaker != ''">
-              <span class="speaker-helper">{{ $i18n.locale == "es" ? "por" : "by" }}</span>
-              <span>&nbsp;{{ schedule.speaker }}&nbsp;</span>
-              <span class="speaker-helper" v-if="schedule.speakerJob != ''">| {{ schedule.speakerJob }}</span>
-            </div>
-            {{ schedule.time }}
-            </br>
-            <span :class="{ 'workshop': !schedule.isPresentation }">
-              {{ schedule.isPresentation == null ? "" : schedule.isPresentation ? "PONENCIA" : "TALLER" }}
-            </span>
-          </div>
-
-          <span class="nrrr-helper" v-if="schedule.description != ''">
-            <hr/>
-            {{ schedule.description }}
-          </span>
-        </li>
-      </ul>
-
-      <ul key=3 class="activities-list" v-if="position == 2">
-        <li class="activities-container" v-for="schedule in $t('schedule-friday')" >
-          <div class="nrr-helper">
-            <span class="activity-title">{{ schedule.title }}</span>
-            </br>
-            <span class="activity-title-2">{{ schedule.title2 }}</span>
-            <div v-if="schedule.speaker != ''">
-              <span class="speaker-helper">{{ $i18n.locale == "es" ? "por" : "by" }}</span>
-              <span>&nbsp;{{ schedule.speaker }}&nbsp;</span>
-              <span class="speaker-helper" v-if="schedule.speakerJob != ''">| {{ schedule.speakerJob }}</span>
-            </div>
-            {{ schedule.time }}
-            </br>
-            <span :class="{ 'workshop': !schedule.isPresentation }">
-              {{ schedule.isPresentation == null ? "" : schedule.isPresentation ? "PONENCIA" : "TALLER" }}
-            </span>
-          </div>
-
-          <span class="nrrr-helper" v-if="schedule.description != ''">
-            <hr/>
-            {{ schedule.description }}
-          </span>
-        </li>
-      </ul>
-
-      <ul key=4 class="activities-list" v-if="position == 3">
-        <li class="activities-container" v-for="schedule in $t('schedule-saturday')" >
-          <div class="nrr-helper">
-            <span class="activity-title">{{ schedule.title }}</span>
-            </br>
-            <span class="activity-title-2">{{ schedule.title2 }}</span>
-            <div v-if="schedule.speaker != ''">
-              <span class="speaker-helper">{{ $i18n.locale == "es" ? "por" : "by" }}</span>
-              <span>&nbsp;{{ schedule.speaker }}&nbsp;</span>
-              <span class="speaker-helper" v-if="schedule.speakerJob != ''">| {{ schedule.speakerJob }}</span>
-            </div>
-            {{ schedule.time }}
-            </br>
-            <span :class="{ 'workshop': !schedule.isPresentation }">
-              {{ schedule.isPresentation == null ? "" : schedule.isPresentation ? "PONENCIA" : "TALLER" }}
-            </span>
-          </div>
-
-          <span class="nrrr-helper" v-if="schedule.description != ''">
-            <hr/>
-            {{ schedule.description }}
-          </span>
-        </li>
-      </ul>
-    </transition>
+    </div>
 
   </div>
 </template>
@@ -137,17 +61,18 @@ export default {
       position: 0,
     };
   },
-  methods: {
-
-  },
-  mounted(){
-    console.log(this.$t('schedule'))
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  /****************************************************************************|
+  |* Animations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
+  |****************************************************************************/
+  @include keyframes(schedule-a){
+    0%   {opacity:0;}
+    100% {opacity:1;}
+  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 
   /****************************************************************************|
@@ -159,7 +84,6 @@ export default {
     height: auto;
     z-index: 0;
     text-align: center;
-    padding-bottom: 25px;
     &::after{
       content: "";
       background: url(https://redstart.studio/wp-content/uploads/2018/09/adrien-olichon-762138-unsplash.jpg);
@@ -172,7 +96,10 @@ export default {
       z-index: -1;
     }
     @include breakpoint(tablet){
-      padding-bottom: 50px;
+      padding-bottom: .75em;
+    }
+    @include breakpoint(desktop){
+      padding-bottom: 1.5em;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -187,17 +114,7 @@ export default {
     margin-top: 55px;
     border-bottom: 3px dashed;
     @include breakpoint(tablet){
-      font-size: 4.5vw;
       border-bottom: 4px dashed;
-    }
-    @include breakpoint(desktop){
-      font-size: 3.1vw;
-    }
-    @include breakpoint(large){
-      font-size: 2.75vw;
-    }
-    @include breakpoint(x-large){
-      font-size: 1.85vw;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
@@ -281,6 +198,11 @@ export default {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    transition: all 1s;
+  }
+  .activities-a{
+    opacity: 0;
+    @include animation-mix(schedule-a, $duration: .7s);
   }
   .activities-container{
     text-align: justify;
@@ -307,6 +229,22 @@ export default {
     @include breakpoint(x-large){
       font-size: .85vw;
       width: 50%;
+    }
+  }
+  .break-helper{
+    text-align:center;
+    width: 43.75%;
+    @include breakpoint(tablet){
+      width: 30%;
+    }
+    @include breakpoint(desktop){
+      width: 17%;
+    }
+    @include breakpoint(large){
+      width: 13%;
+    }
+    @include breakpoint(x-large){
+      width: 10.5%;
     }
   }
   .activity-title{
@@ -367,6 +305,9 @@ export default {
       vertical-align: middle;
     }
   }
+  .pinga{
+    width: 100%;
+  }
   .nrrr-helper{
     @include breakpoint(desktop){
       display: inline-block;
@@ -382,10 +323,11 @@ export default {
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
   .fade-enter-active, .fade-leave-active {
-    transition: opacity .35s;
+    transition: all .5s;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+    transform: translateY(30px);
   }
 
 </style>
