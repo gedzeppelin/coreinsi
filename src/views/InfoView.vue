@@ -75,7 +75,7 @@
     <ContainerPricing />
     <ContainerFooter />
 
-    <div @click="scrollToComponent('c-home'); if(isTogleAux) collapseHeader();" class="nav-button"></div>
+    <div @click="scrollToComponent('c-home'); if(isTogleAux) collapseHeader();" class="nav-button-up"></div>
 
   </div>
 </template>
@@ -395,7 +395,7 @@
   /****************************************************************************|
   |* Navigation fixed button (to top) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .nav-button{
+  .nav-button-up{
     cursor: pointer;
     position: fixed;
     bottom: 2%;

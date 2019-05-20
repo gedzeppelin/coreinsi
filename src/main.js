@@ -11,12 +11,12 @@ import axios from 'axios';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowAltCircleRight, faArrowAltCircleLeft  } from '@fortawesome/free-regular-svg-icons';
-import { faArrowRight, faArrowUp, faCircle, faGlobeAmericas, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faGlobeAmericas, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(faArrowAltCircleRight, faArrowAltCircleLeft,
-          faArrowRight, faArrowUp, faCircle, faGlobeAmericas, faMapMarkerAlt,
+          faArrowRight, faGlobeAmericas, faMapMarkerAlt,
           faFacebookF, faGithub, faInstagram, faLinkedinIn, faTwitter);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
