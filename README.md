@@ -1,7 +1,7 @@
 # CEIS WEB (FRONT-END)
 
 ## Description
-An online web to 
+An online web to promote a conference (XII SYSTEMS ENGINEERING REGIONAL CONFERENCE); and maybe, just maybe, sell tickets online for it.
 
 ## Requirements
 * You must have [Node.js] (https://nodejs.org/), wich is tipically bundled with the [npm package manager] (https://www.npmjs.com/)
@@ -21,7 +21,6 @@ Start a development server with hot-reloads, then build for development and laun
 ```
 cd <path_to_project>
 npm run serve
-
 ```
 
 
@@ -31,7 +30,6 @@ Build the project in ready-to-serve minified and static files.
 ```
 cd <path_to_project>
 npm run build
-
 ```
 
 ## Developed with
