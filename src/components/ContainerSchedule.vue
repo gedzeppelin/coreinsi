@@ -86,7 +86,7 @@ export default {
     text-align: center;
     &::after{
       content: "";
-      background: url(https://redstart.studio/wp-content/uploads/2018/09/adrien-olichon-762138-unsplash.jpg);
+      // background: url(https://redstart.studio/wp-content/uploads/2018/09/adrien-olichon-762138-unsplash.jpg);
       opacity: 0.15;
       top: 0;
       left: 0;
