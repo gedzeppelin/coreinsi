@@ -397,7 +397,7 @@ export default {
     border-bottom-left-radius: 10px;
     height: 1.85em;
     padding: 0 .6em;
-    background: $malibu;
+    background: $black-75;
     @include breakpoint(tablet){
       height: 1.75em;
       padding: 0 .4em;

@@ -12,15 +12,16 @@
   <span class="social-networks">REDES SOCIALES</span>
   <br/>
   <div class="social-cont">
-    <div class="social-helper"></div>
+    <a href="https://www.facebook.com/ceis.ingenheiros" target="_blank"><div class="social-helper"></div></a>
     <font-awesome-icon :icon="['fab', 'facebook-f']" class="social-icon" />
+
   </div>
   <div class="social-cont">
     <div class="social-helper"></div>
     <font-awesome-icon :icon="['fab', 'twitter']" class="social-icon" />
   </div>
   <div class="social-cont">
-    <div class="social-helper"></div>
+    <a href="https://github.com/episunsch" target="_blank"><div class="social-helper"></div></a>
     <font-awesome-icon :icon="['fab', 'github']" class="social-icon" />
   </div>
   <hr/>
