@@ -350,7 +350,7 @@ export default {
       &-b{
         color: $white;
         &:hover{
-          color: $nav-color;
+          color: $black-75;
         }
       }
     }
@@ -361,7 +361,7 @@ export default {
       right: 2.5%;
     }
     &-b{
-      color: $nav-color;
+      color: $black-75;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

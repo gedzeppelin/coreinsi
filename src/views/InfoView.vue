@@ -200,22 +200,22 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 18px 0px;
-    background: $nav-color-r;
+    background: $black-50;
     @include transition-pd(all, .5s);
     @include breakpoint(large){
       flex-wrap: nowrap;
-      background: $nav-color;
+      background: $black-75;
       font-size: 24px;
     }
   }
   .expanded{
-    background: $nav-color;
+    background: $black-75;
   }
   .scrolled-y{
     padding: 10px 0px;
-    background: $nav-color2;
+    background: $black-100;
     @include breakpoint(large){
-      background: $nav-color2;
+      background: $black-100;
       padding: 18 0px;
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
@@ -404,13 +404,13 @@
     width: 36px;
     background-image: url("../assets/up-arrow.png");
     background-repeat: no-repeat;
-    background-color: $nar-arrow;
+    background-color: $mineShaft-60;
     background-position: center;
     background-size: 18px;
     border-radius: 999px;
     @include transition-pd(background-color, .35s);
     &:hover{
-      background-color: $nar-arrow-h;
+      background-color: $mineShaft;
     }
     @include breakpoint(tablet){
       bottom: 2.5%;

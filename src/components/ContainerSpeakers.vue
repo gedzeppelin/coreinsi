@@ -179,6 +179,8 @@ export default {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px $black;
   }
   .flip-card{
     width: 80vw;
@@ -219,8 +221,7 @@ export default {
     &-back {
       @extend %flip-card-side;
       background-color: $white;
-      color: $malibu;
-      border-radius: 10px;
+      color: $shark;
       transform: rotateY(180deg);
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
@@ -236,7 +237,6 @@ export default {
   }
   .front-card-content{
     @extend %card-content;
-    // background-image: url("../assets/avatar.jpg");
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     @include background-fill;
@@ -268,7 +268,7 @@ export default {
       left: 0;
       width: 100%;
       height: 35%;
-      background: linear-gradient(transparent, $avatar-trans);
+      background: linear-gradient(transparent, $black-85);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
     }
@@ -427,7 +427,7 @@ export default {
     height:10%;
     width: 100%;
     border-radius: 0;
-    background: $malibu;
+    background: $black-85;
     padding:0;
     @include breakpoint(tablet){
       font-size: 2.55vw;
@@ -451,8 +451,6 @@ export default {
       width: 100%;
       z-index: 2;
       bottom:0;
-      // left:0;
-      // right:0;
       color: $white;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;

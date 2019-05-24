@@ -47,23 +47,38 @@ const messages = {
 				"@:schedules.schedule_friday.fri7.title"
 			]
 		},
-		ian: {
-			img: "ian.jpg",
-			name: "Ian Paul Brossard",
-			job: "UX Researcher at CONCYTEC",
+		elvis: {
+			img: "elvis.jpeg",
+			name: "Elvis Rivera",
+			job: "Inmerzum.com co-founder",
 			socialNetworks: "",
 			description:
 			[
-				"Holds a Master of Computer Science",
-				"Professor; assigned to the Biomedical Engineering program, PUCP – UPCH",
-				"Works in <i>Consejo Nacional de Ciencia y Tecnología - CONCYTEC</i>",
-				"Member of the research group \"ai-pucp\", PUCP",
-				"Researcher in Computational Linguistics topics"
+				"Virtual and augmented reality specialist.",
+				"Google Developer Group Lima organizer.",
+				"Consultant in the development of digital materials and interactive activities for virtual environments.",
+				"Chief technology officer at Internovam.",
 			],
 			talks:
 			[
-				"@:schedules.schedule_friday.fri1.title" + " @:schedules.schedule_friday.fri1.title2" ,
-				"@:schedules.schedule_friday.fri6.title",
+				"@:schedules.schedule_friday.fri4.title" + " @:schedules.schedule_friday.fri4.title2" ,
+				"@:schedules.schedule_saturday.sat1.title",
+			]
+		},
+		keith: {
+			img: "keith.jpg",
+			name: "Keith Fernández Idme",
+			job: "Digital Intelligence analyst",
+			socialNetworks: "",
+			description:
+			[
+				"CEO and Project Manager at DENDRO PERÚ",
+				"Chief technology officer at APERBIT"
+			],
+			talks:
+			[
+				"@:schedules.schedule_friday.fri4.title" + " @:schedules.schedule_friday.fri4.title2" ,
+				"@:schedules.schedule_saturday.sat1.title",
 			]
 		},
 		dino: {
@@ -89,15 +104,37 @@ const messages = {
 				"@:schedules.schedule_saturday.sat2.title",
 			]
 		},
-		keith: {
-			img: "keith.jpg",
-			name: "Keith Fernández Idme",
-			job: "Digital Intelligence analyst",
+		ian: {
+			img: "ian.jpg",
+			name: "Ian Paul Brossard",
+			job: "UX Researcher at CONCYTEC",
 			socialNetworks: "",
 			description:
 			[
-				"CEO and Project Manager at DENDRO PERÚ",
-				"Chief technology officer at APERBIT"
+				"Holds a Master of Computer Science",
+				"Professor; assigned to the Biomedical Engineering program, PUCP – UPCH",
+				"Works in <i>Consejo Nacional de Ciencia y Tecnología - CONCYTEC</i>",
+				"Member of the research group \"ai-pucp\", PUCP",
+				"Researcher in Computational Linguistics topics"
+			],
+			talks:
+			[
+				"@:schedules.schedule_friday.fri1.title" + " @:schedules.schedule_friday.fri1.title2" ,
+				"@:schedules.schedule_friday.fri6.title",
+			]
+		},
+		jorge: {
+			img: "jorge.jpg",
+			name: "Jorge Gonzales Moreno",
+			job: "LET’S GO ROBOT! organizer",
+			socialNetworks: {
+				facebook: "https://www.facebook.com/letsgorobot/",
+			},
+			description:
+			[
+				"Builds specific purpose drones, previous mathematical and physical analysis for chosing optimal components.",
+				"Jury of various robotics competitions.",
+				"Digital and analog circuits developer.",
 			],
 			talks:
 			[
@@ -119,115 +156,137 @@ const messages = {
 		{
 			wed1: {
 				title: "OPENING CEREMONY",
-				time: "8:00 a.m. - 10:00 a.m.",
+				time: "10:00 a.m. - 11:00 a.m.",
 				speaker: "XXX XXX XXX",
 				speakerJob: "XXXX XXXX XXXX",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			wed2: {
-				title: "2D VIDEO GAMES DEVELOPMENT",
+				title: "INTO THE WORLD OF ROBOTICS.",
 				isPresentation: true,
-				time: "de 8:00 a.m. - 10:00 a.m.",
+				time: "11:00 a.m. - 12:00 p.m.",
 				speaker: "@:speakers.dino.name",
 				speakerJob: "@:speakers.dino.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			wed3: {
-				title: "INVESTIGATION",
+				title: "3D PIXEL PROSTHESIS.",
 				isPresentation: true,
-				time: "de 8:00 a.m. - 10:00 a.m.",
-				speaker: "Yauri",
+				time: "3:00 p.m. - 4:10 p.m.",
+				speaker: "XXXX XXXX XXXX",
 				speakerJob: "XXXX XXXX XXXX",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
-			}
+			},
 		},
 		schedule_thursday:
-		{},
+		{
+			thu1: {
+				title: "INVESTIGATION",
+				isPresentation: true,
+				time: "9:00 a.m. - 10:00 a.m.",
+				speaker: "XXXX XXXX XXXX",
+				speakerJob: "XXXX XXXX XXXX",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+			},
+			thu2: {
+				title: "VIRTUAL REALITY",
+				isPresentation: true,
+				time: "10:10 a.m. - 11:10 a.m.",
+				speaker: "XXXX XXXX XXXX",
+				speakerJob: "XXXX XXXX XXXX",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
+			},
+			thu3: {
+				title: "BREAK",
+				isBreak: true,
+				time: "11:10 a.m. - 11:50 a.m.",
+			},
+		},
 		schedule_friday:
 		{
 			fri1: {
 				title: "AI IMAGE RECOGNITION:",
 				title2: "Implementing a Pokédex from scratch.",
 				isPresentation: true,
-				time: "9:00 a.m. - 10:15 a.m.",
+				time: "9:00 a.m. - 10:10 a.m.",
 				speaker: "@:speakers.ian.name",
 				speakerJob: "@:speakers.ian.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			fri2: {
-				title: "MUSIC AND PROGRAMMING:",
-				title2: "How to join two passions?",
+				title: "BUSINESS INTELLIGENCE.",
 				isPresentation: true,
-				time: "10:15 a.m. - 11:20 a.m.",
-				speaker: "@:speakers.michael.name",
-				speakerJob: "@:speakers.michael.job",
+				time: "10:10 a.m. - 11:10 a.m.",
+				speaker: "XXXX XXXX XXXX",
+				speakerJob: "XXXX XXXX XXXX",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			fri3: {
 				title: "BREAK",
 				isBreak: true,
-				time: "11:20 a.m. - 11:50 a.m.",
+				time: "11:10 a.m. - 11:50 a.m.",
 			},
 			fri4: {
-				title: "SHODAN:",
-				title2: "Hacking IOT devices.",
+				title: "MUSIC AND PROGRAMMING:",
+				title2: "How to join two passions?",
 				isPresentation: true,
-				time: "11:50 a.m. a 1:00 p.m.",
-				speaker: "@:speakers.keith.name",
-				speakerJob: "@:speakers.keith.job",
+				time: "11:50 a.m. - 12:50 p.m.",
+				speaker: "@:speakers.michael.name",
+				speakerJob: "@:speakers.michael.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			fri5: {
 				title: "CONFERENCE PAUSE",
 				isBreak: true,
-				time: "1:00 p.m. - 4:00 p.m.",
+				time: "12:50 p.m. - 4:00 p.m.",
 			},
 			fri6: {
-				title: "MACHINE LEARNING.",
+				title: "SHODAN:",
+				title2: "Hacking IOT devices.",
 				isPresentation: true,
 				time: "4:00 p.m. - 5:00 p.m.",
-				speaker: "@:speakers.ian.name",
-				speakerJob: "@:speakers.ian.job",
+				speaker: "@:speakers.keith.name",
+				speakerJob: "@:speakers.keith.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			fri7: {
 				title: "TEN YEARS OF FABLABS IN PERÚ.",
 				isPresentation: true,
-				time: "5:00 p.m. - 6:00 p.m.",
+				time: "5:10 p.m. - 6:10 p.m.",
 				speaker: "@:speakers.michael.name",
 				speakerJob: "@:speakers.michael.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
-			}
+			},
 		},
 		schedule_saturday:
 		{
 			sat1: {
 				title: "OSINT AND SEARCH ENGINE HACKING.",
 				isPresentation: true,
-				time: "9:00 a.m. - 10:15 a.m.",
+				time: "9:00 a.m. - 10:00 a.m.",
 				speaker: "@:speakers.keith.name",
 				speakerJob: "@:speakers.keith.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			sat2: {
-				title: "INTO THE WORLD OF ROBOTICS.",
+				title: "DRONES, CONSTRUCTION AND HANDLING.",
 				isPresentation: true,
-				time: "10:15 a.m. - 11:20 a.m.",
-				speaker: "@:speakers.dino.name",
-				speakerJob: "@:speakers.dino.job",
+				time: "10:10 a.m. - 11:10 a.m.",
+				speaker: "Jorge Gonzales Moreno",
+				speakerJob: "XXXX XXXX XXXX",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			sat3: {
 				title: "BREAK",
 				isBreak: true,
-				time: "11:20 a.m. - 11:50 a.m.",
+				time: "11:10 a.m. - 11:50 a.m.",
 			},
 			sat4: {
-				title: "DRONES, CONSTRUCTION AND HANDLING.",
+				title: "2D VIDEO GAMES DEVELOPMENT.",
 				isPresentation: true,
-				time: "11:50 a.m. - 1:00 p.m.",
-				speaker: "Jorge Gonzales Moreno",
-				speakerJob: "XXXX XXXX XXXX",
+				time: "11:50 a.m. - 12:50 p.m.",
+				speaker: "@:speakers.dino.name",
+				speakerJob: "@:speakers.dino.job",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			sat5: {
