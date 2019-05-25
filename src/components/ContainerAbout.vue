@@ -4,8 +4,20 @@
 
       <h6 class="about-head">{{ $t('about_head') }}</h6>
       <h2 class="about-title">XII COREINSI</h2>
+      <p class="about-text-content" v-html="$t('about_text')"></p>
+      <h6 class="about-section">{{ $t('about_section_where') }}</h6>
       <p class="about-text-content">
-        {{ $t('about_text') }}
+        {{ $t('about_text_where') }}
+      </p>
+      <h6 class="about-section">{{ $t('about_section_when') }}</h6>
+      <p class="about-text-content">
+        {{ $t('about_text_when') }}
+      </p>
+      <h6 class="about-section">{{ $t('about_section_who') }}</h6>
+      <p class="about-text-content" v-html="$t('about_text_who')"></p>
+      <h6 class="about-section">{{ $t('about_section_who2') }}</h6>
+      <p class="about-text-content">
+        {{ $t('about_text_who2') }}
       </p>
 
       <img src="../assets/logo-coreinsi.png" class="ceis-logo" />
@@ -92,6 +104,9 @@ export default {
     background: linear-gradient(to bottom, $bossanova, $eggplant);
     height: auto;
     font-size: 6vw;
+    @include breakpoint(tablet){
+      font-size: 4vw;
+    }
     @include breakpoint(desktop){
       font-size: 3vw;
     }
@@ -106,7 +121,6 @@ export default {
     margin: 0 auto;
     margin-top: 50px;
     width: 90%;
-    text-align: center;
     @include breakpoint(desktop){
       margin-top: 70px;
       width: 75%;
@@ -118,19 +132,39 @@ export default {
   |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-head{
-    margin: 0 auto;
+    margin: 3.5vw 0;
     border-bottom: 3px solid;
-    text-align: left;
+    font-family: $font-mono;
   }
   .about-title{
     margin: 2.25vh auto;
     color: $gold;
-    text-align: left;
   }
+  .about-section{
+    display: inline-block;
+    margin: 14px 0;
+    font-family: $font-mono;
+    border-bottom: 2px dotted;
+    color: $gold;
+    @include breakpoint(tablet){
+      margin: 15px 0;
+    }
+    @include breakpoint(desktop){
+      margin: 16px 0;
+    }
+    @include breakpoint(large){
+      margin: 18px 0;
+    }
+  }
+
   .about-text-content{
     text-align: justify;
-    font-size: 4.5vw;
+    // text-justify: inter-character;
+    font-size: 4.75vw;
     font-family: $font-content;
+    @include breakpoint(tablet){
+      font-size: 3vw;
+    }
     @include breakpoint(desktop){
       font-size: 2.75vw;
     }
@@ -144,7 +178,11 @@ export default {
   .ceis-logo{
     display: block;
     max-width: 75%;
-    margin: 2.5vh auto;
+    margin: 4% auto;
+    @include breakpoint(tablet){
+      margin: 2.5% auto;
+      max-width: 55%;
+    }
     @include breakpoint(desktop){
       max-width: 40%;
       margin: 2.5% auto;
@@ -178,14 +216,16 @@ export default {
   |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-countdown{
-    margin: 0 auto;
+    text-align: center;
+    margin: 0;
   }
   .countdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     margin: 0 auto;
-    margin-bottom: 75px;
+    margin-bottom: 50px;
     padding: .25em 0;
     border-top: 3px dashed;
     border-bottom: 3px dashed;

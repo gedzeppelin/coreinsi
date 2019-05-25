@@ -4,8 +4,9 @@
   <hr/>
   <span class="contact">CONTACTO</span>
   <br/>
-  <font-awesome-icon :icon="['far', 'envelope']"
-  class="envelope" />
+  <a href = "mailto: contacto@sistemas-unsch.com">
+    <font-awesome-icon :icon="['far', 'envelope']" class="envelope" />
+  </a>
   <br/>
   <span class="mail">contacto@sistemas-unsch.com</span>
   <hr/>
@@ -14,10 +15,9 @@
   <div class="social-cont">
     <a href="https://www.facebook.com/ceis.ingenheiros" target="_blank"><div class="social-helper"></div></a>
     <font-awesome-icon :icon="['fab', 'facebook-f']" class="social-icon" />
-
   </div>
   <div class="social-cont">
-    <div class="social-helper"></div>
+    <a href="https://twitter.com/coreinsi" target="_blank"><div class="social-helper"></div></a>
     <font-awesome-icon :icon="['fab', 'twitter']" class="social-icon" />
   </div>
   <div class="social-cont">
@@ -25,7 +25,7 @@
     <font-awesome-icon :icon="['fab', 'github']" class="social-icon" />
   </div>
   <hr/>
-  <span class="by">by: <a href="http://gedzeppelin.me" target="_blank">thefungusrocket</a></span>
+  <span class="by">@<a href="http://gedzeppelin.me" target="_blank">thefungusrocket</a></span>
   <span class="powered">powered by: <a href="http://gedzeppelin.me" target="_blank">enigma.scss</a></span>
   </div>
 </template>
@@ -106,21 +106,20 @@ export default {
     @include transform(translate(-50%,-50%));
     font-size:  22px;
   }
-  .by{
+  %bottom-text{
     font-family: $font-content;
     display: inline-block;
     color: rgb(125, 125, 125);
     font-size: 12px;
-    margin-bottom: 75px;
+    margin-bottom: 70px;
+  }
+  .by{
+    @extend %bottom-text;
     margin-left: 10%;
     float: left;
   }
   .powered{
-    font-family: $font-content;
-    display: inline-block;
-    color: rgb(125, 125, 125);
-    font-size: 12px;
-    margin-bottom: 75px;
+    @extend %bottom-text;
     margin-right: 10%;
     float: right;
   }
