@@ -27,7 +27,7 @@
     <div :key="schedulesIndex" v-for="(scheduleS, scheduleSName, schedulesIndex) in $t('schedules')">
       <ul class="activities-list activities-a" v-show="position == schedulesIndex">
         <li class="activities-container" :key="scheduleName" v-for="(schedule, scheduleName) in scheduleS" :class="{ 'break-helper': schedule.isBreak }">
-          <div class="nrr-helper" :class="{ 'pinga': schedule.description === undefined }">
+          <div class="nr-activity-helper" :class="{ 'full-width': schedule.description === undefined }">
             <span class="activity-title">{{ schedule.title }}</span>
             </br>
             <span class="activity-title-2">{{ schedule.title2 }}</span>
@@ -42,7 +42,7 @@
             </span>
           </div>
 
-          <span class="nrrr-helper" v-if="schedule.description">
+          <span class="nr-description-helper" v-if="schedule.description">
             <hr/>
             {{ schedule.description }}
           </span>
@@ -86,8 +86,8 @@ export default {
     text-align: center;
     &::after{
       content: "";
-      // background: url(https://redstart.studio/wp-content/uploads/2018/09/adrien-olichon-762138-unsplash.jpg);
-      opacity: 0.15;
+      background: url(https://redstart.studio/wp-content/uploads/2018/09/adrien-olichon-762138-unsplash.jpg);
+      opacity: 0.1;
       top: 0;
       left: 0;
       bottom: 0;
@@ -298,17 +298,17 @@ export default {
       display: none;
     }
   }
-  .nrr-helper{
+  .nr-activity-helper{
     @include breakpoint(desktop){
       display: inline-block;
       width: 48.25%;
       vertical-align: middle;
     }
   }
-  .pinga{
+  .full-width{
     width: 100%;
   }
-  .nrrr-helper{
+  .nr-description-helper{
     @include breakpoint(desktop){
       display: inline-block;
       width: 50%;

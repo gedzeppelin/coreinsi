@@ -6,9 +6,7 @@
       <h2 class="about-title">XII COREINSI</h2>
       <p class="about-text-content" v-html="$t('about_text')"></p>
       <h6 class="about-section">{{ $t('about_section_where') }}</h6>
-      <p class="about-text-content">
-        {{ $t('about_text_where') }}
-      </p>
+      <p class="about-text-content" v-html="$t('about_text_where')"></p>
       <h6 class="about-section">{{ $t('about_section_when') }}</h6>
       <p class="about-text-content">
         {{ $t('about_text_when') }}
@@ -101,7 +99,8 @@ export default {
   |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
   .about-container{
-    background: linear-gradient(to bottom, $bossanova, $eggplant);
+    background: radial-gradient(circle, $eggplant 15%,$bossanova);
+
     height: auto;
     font-size: 6vw;
     @include breakpoint(tablet){
