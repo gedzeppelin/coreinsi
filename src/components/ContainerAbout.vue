@@ -9,7 +9,7 @@
       <p class="about-text-content" v-html="$t('about_text_where')"></p>
       <h6 class="about-section">{{ $t('about_section_when') }}</h6>
       <p class="about-text-content">
-        {{ $t('about_text_when') }}
+        {{ $t('about_text_when') }} <span class="schedule-link" @click="scrollToComponent('c-schedule')">{{ $i18n.locale === 'es' ? 'aquí' : 'here' }}</span>.
       </p>
       <h6 class="about-section">{{ $t('about_section_who') }}</h6>
       <p class="about-text-content" v-html="$t('about_text_who')"></p>
@@ -155,10 +155,8 @@ export default {
       margin: 18px 0;
     }
   }
-
   .about-text-content{
     text-align: justify;
-    // text-justify: inter-character;
     font-size: 4.75vw;
     font-family: $font-content;
     @include breakpoint(tablet){
@@ -173,6 +171,10 @@ export default {
     @include breakpoint(x-large){
       font-size: 1.5vw;
     }
+  }
+  .schedule-link{
+    cursor: pointer;
+    text-decoration: underline;
   }
   .ceis-logo{
     display: block;

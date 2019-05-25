@@ -7,7 +7,7 @@
 
     <div class="nr-contact-helper">
       <div class="nr-item-helper-left">
-        <span class="contact">CONTACTO</span>
+        <span class="contact">{{ $t('footer_contact') }}</span>
         <br/>
         <a href = "mailto: contacto@sistemas-unsch.com">
           <font-awesome-icon :icon="['far', 'envelope']" class="envelope" />
@@ -19,7 +19,7 @@
       <hr class="hr-footer-middle"/>
 
       <div class="nr-item-helper-right">
-        <span class="social-networks">REDES SOCIALES</span>
+        <span class="social-networks">{{ $t('footer_social') }}</span>
         <br/>
         <div class="social-cont">
           <a href="https://www.facebook.com/ceis.ingenheiros" target="_blank"><div class="social-helper"></div></a>
@@ -99,8 +99,8 @@ export default {
   |****************************************************************************/
   .nr-contact-helper{
     @include breakpoint(desktop){
-      margin-top: 20px;
-      margin-bottom: 12px;
+      margin-top: 22px;
+      margin-bottom: 17px;
     }
   }
   %nr-item-helper-common{
@@ -261,7 +261,7 @@ export default {
         width: 0;
         margin-top: 0px;
         margin-bottom: 0px;
-        height: 125px;
+        height: 100px;
       }
     }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|

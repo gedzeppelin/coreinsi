@@ -185,9 +185,6 @@
     background: $white;
     color: $white;
     font: 18px $font-sans;
-    @include breakpoint(large){
-      // font-size: 5em;
-    }
   } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 

@@ -16,9 +16,11 @@ const messages = {
 	about_section_when: "WHEN?",
 	about_section_who: "WHO?",
 	about_section_who2: "WHO CAN ATTEND?",
-	about_text: "<i>XII COREINSI 2019</i> is an academic event focused on the hot topics that the Systems Engineering and related professions contemplate. Attendees can learn with well-qualified, highly rated speakers, about topics with high market demand; like robotics, computational intelligence or virtual reality.",
+	about_text: "The <b><i>XII COREINSI 2019</i></b> is an academic event focused on the hot topics that the Systems Engineering and related professions contemplate. Attendees can learn with well-qualified, highly rated speakers, about topics with high market demand; like robotics, computational intelligence or virtual reality.",
 	about_text_where: "The four-day event will be hosted at the <i>Pedro Gual</i> Auditorium (formerly <i>I.N.C.</i>) in <i>la muy noble y leal ciudad de Huamanga</i>, located in the <i>Ayacucho</i> region of PERU.",
 	about_text_when: "From June 19 to 22, 2019, schedules for each day are available",
+	about_text_who: "The <b><i>XII COREINSI 2019</i></b> is hosted by the <i>Escuela Profesional de Ingeniería de Sistemas</i> (Systems Engineering school) from the <i>Real y Pontificia Universidad Nacional de San Cristóbal de Huamanga</i>.",
+	about_text_who2: "We welcome students, professionals and all interested people in topics that the Systems Engineering and related careers contemplate.",
 	about_countdown: "COUNTDOWN",
 	about_countdown_weeks: "WKS",
 	about_countdown_days: "DAYS",
@@ -49,7 +51,7 @@ const messages = {
 			],
 			talks:
 			[
-				"@:schedules.schedule_friday.fri2.title" + " @:schedules.schedule_friday.fri2.title2",
+				"@:schedules.schedule_friday.fri4.title" + " @:schedules.schedule_friday.fri4.title2",
 				"@:schedules.schedule_friday.fri7.title"
 			]
 		},
@@ -67,8 +69,7 @@ const messages = {
 			],
 			talks:
 			[
-				"@:schedules.schedule_friday.fri4.title" + " @:schedules.schedule_friday.fri4.title2" ,
-				"@:schedules.schedule_saturday.sat1.title",
+
 			]
 		},
 		keith: {
@@ -83,7 +84,7 @@ const messages = {
 			],
 			talks:
 			[
-				"@:schedules.schedule_friday.fri4.title" + " @:schedules.schedule_friday.fri4.title2" ,
+				"@:schedules.schedule_friday.fri6.title" + " @:schedules.schedule_friday.fri6.title2",
 				"@:schedules.schedule_saturday.sat1.title",
 			]
 		},
@@ -107,7 +108,7 @@ const messages = {
 			talks:
 			[
 				"@:schedules.schedule_wednesday.wed2.title",
-				"@:schedules.schedule_saturday.sat2.title",
+				"@:schedules.schedule_saturday.sat4.title",
 			]
 		},
 		ian: {
@@ -125,8 +126,7 @@ const messages = {
 			],
 			talks:
 			[
-				"@:schedules.schedule_friday.fri1.title" + " @:schedules.schedule_friday.fri1.title2" ,
-				"@:schedules.schedule_friday.fri6.title",
+				"@:schedules.schedule_friday.fri1.title" + " @:schedules.schedule_friday.fri1.title2",
 			]
 		},
 		jorge: {
@@ -144,8 +144,7 @@ const messages = {
 			],
 			talks:
 			[
-				"@:schedules.schedule_friday.fri4.title" + " @:schedules.schedule_friday.fri4.title2" ,
-				"@:schedules.schedule_saturday.sat1.title",
+				"@:schedules.schedule_saturday.sat2.title",
 			]
 		},
 	},
@@ -161,7 +160,7 @@ const messages = {
 		schedule_wednesday:
 		{
 			wed1: {
-				title: "OPENING CEREMONY",
+				title: "OPENING CEREMONY.",
 				time: "10:00 a.m. - 11:00 a.m.",
 				speaker: "XXX XXX XXX",
 				speakerJob: "XXXX XXXX XXXX",
@@ -187,7 +186,7 @@ const messages = {
 		schedule_thursday:
 		{
 			thu1: {
-				title: "INVESTIGATION",
+				title: "INVESTIGATION.",
 				isPresentation: true,
 				time: "9:00 a.m. - 10:00 a.m.",
 				speaker: "XXXX XXXX XXXX",
@@ -195,7 +194,7 @@ const messages = {
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			thu2: {
-				title: "VIRTUAL REALITY",
+				title: "VIRTUAL REALITY.",
 				isPresentation: true,
 				time: "10:10 a.m. - 11:10 a.m.",
 				speaker: "XXXX XXXX XXXX",
@@ -256,7 +255,7 @@ const messages = {
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			fri7: {
-				title: "TEN YEARS OF FABLABS IN PERÚ.",
+				title: "TEN YEARS OF FABLABS IN PERU.",
 				isPresentation: true,
 				time: "5:10 p.m. - 6:10 p.m.",
 				speaker: "@:speakers.michael.name",
@@ -296,7 +295,7 @@ const messages = {
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
 			},
 			sat5: {
-				title: "POSITIVE PSYCHOLOGY",
+				title: "POSITIVE PSYCHOLOGY.",
 				time: "1:00 p.m. - 2:00 p.m.",
 				speaker: "SYSTEMS ENGINEERING STUDENT GOVERNMENT",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat dolor in eros auctor, ac vestibulum diam ultrices. Nam tincidunt ornare fermentum. Phasellus porttitor interdum libero id efficitur. Curabitur condimentum malesuada mi luctus vulputate."
@@ -314,7 +313,9 @@ const messages = {
 	pricing_3rd_title: "GROUP",
 	pricing_indv_btn: "BUY INDIVIDUAL",
 	pricing_grp_btn: "BUY GROUP",
-	pricing_footnote: "* S: Student.</br>&nbsp;&nbsp;P: Professional.</br>&nbsp;&nbsp;10+: More than 10 students.</br>&nbsp;&nbsp;15+: More than 15 students."
+	pricing_footnote: "* S: Student.</br>&nbsp;&nbsp;P: Professional.</br>&nbsp;&nbsp;10+: More than 10 students.</br>&nbsp;&nbsp;15+: More than 15 students.",
+	footer_contact: "CONTACT",
+	footer_social: "SOCIAL NETWORKS",
 }
 
 export default messages;
