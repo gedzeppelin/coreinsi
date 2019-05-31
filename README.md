@@ -1,4 +1,4 @@
-# CEIS WEB (FRONT-END)
+# XII COREINSI WEB APP (FRONT-END)
 
 ## Description
 An online web to promote a conference (XII SYSTEMS ENGINEERING REGIONAL CONFERENCE); and maybe, just maybe, sell tickets online for it.
