@@ -12,7 +12,7 @@ An online web to promote a conference (XII SYSTEMS ENGINEERING REGIONAL CONFEREN
 First of all, clone the repository.
 
 ```
-git clone git@github.com:gedzeppelin/ceis.git
+git clone git@github.com:gedzeppelin/coreinsi.git
 ```
 
 ### Build and launch for development
