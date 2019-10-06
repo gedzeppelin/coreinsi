@@ -13,12 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
 #        node-version: ${{ matrix.node-version }}
         node-version: '12.x'
-    - name: npm install and build
+    - name: NPM install and build
       run: |
         npm install
         npm run build --if-present
@@ -28,9 +28,9 @@ jobs:
       uses: AEnterprise/rsync-deploy@v1.0
       env:
         DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        ARGS: "-e -c -r --delete"
+        ARGS: "-a -v -z -r --delete"
         SERVER_PORT: ${{ secrets.SERVER_PORT }}
-        FOLDER: "dist"
+        FOLDER: "dist/"
         SERVER_IP: ${{ secrets.SERVER_IP }}
         USERNAME: ${{ secrets.USERNAME }}
         SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
