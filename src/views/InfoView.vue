@@ -7,7 +7,7 @@
           <span class="line line-3" ref="line3"></span>
       </div>
 
-      <span class="header-logo">XII COREINSI</span>
+      <span class="header-logo">XIIA COREINSI</span>
 
       <span class="header-logo-r header-logo-re" @click="scrollToComponent('c-home'); collapseHeader();"
             :class="{ 'active': position === 0 }" v-if="isTogleAux">

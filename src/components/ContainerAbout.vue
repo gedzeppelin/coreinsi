@@ -76,20 +76,28 @@ export default {
     setDiff() {
       var now = this.$moment();
       var theDay = this.$moment("20190619", "YYYYMMDD");
-      this.weeks = theDay.diff(now, 'weeks');
-      now.weeks(now.weeks() + this.weeks);
-      this.days = theDay.diff(now, 'days');
-      now.days(now.days() + this.days);
-      this.hours = theDay.diff(now, 'hours');
-      now.hours(now.hours() + this.hours);
-      this.minutes = theDay.diff(now, 'minutes');
-      now.minutes(now.minutes() + this.minutes);
-      this.seconds = theDay.diff(now, 'seconds');
+      if(now > theDay) {
+        this.weeks = 'XX';
+        this.days = 'XX';
+        this.hours = 'XX'
+        this.minutes = 'XX'
+        this.seconds = 'XX';
+      } else {
+        this.weeks = theDay.diff(now, 'weeks');
+        now.weeks(now.weeks() + this.weeks);
+        this.days = theDay.diff(now, 'days');
+        now.days(now.days() + this.days);
+        this.hours = theDay.diff(now, 'hours');
+        now.hours(now.hours() + this.hours);
+        this.minutes = theDay.diff(now, 'minutes');
+        now.minutes(now.minutes() + this.minutes);
+        this.seconds = theDay.diff(now, 'seconds');
+        setInterval(this.updateDiff, 1000);
+      }
     }
   },
   mounted() {
     this.setDiff();
-    setInterval(this.updateDiff, 1000);
   }
 }
 </script>
