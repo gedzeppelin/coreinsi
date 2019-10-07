@@ -1,4 +1,14 @@
 import Vue from 'vue';
+
+// Sentry integration
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
+
+Sentry.init({
+  dsn: 'https://917fdec5dc294b3ab5ede8e6ba5feee2@sentry.io/1771522',
+  integrations: [new Integrations.Vue({Vue, attachProps: true, logErrors: true})],
+});
+
 import App from './App.vue';
 import router from './router';
 import moment from 'moment';

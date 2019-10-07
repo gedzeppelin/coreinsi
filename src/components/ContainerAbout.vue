@@ -1,7 +1,6 @@
 <template>
   <div class="container about-container" id="c-about">
     <div class="about-text">
-
       <h6 class="about-head">{{ $t('about_head') }}</h6>
       <h2 class="about-title">XII COREINSI</h2>
       <p class="about-text-content" v-html="$t('about_text')"></p>
@@ -9,14 +8,16 @@
       <p class="about-text-content" v-html="$t('about_text_where')"></p>
       <h6 class="about-section">{{ $t('about_section_when') }}</h6>
       <p class="about-text-content">
-        {{ $t('about_text_when') }} <span class="schedule-link" @click="scrollToComponent('c-schedule')">{{ $i18n.locale === 'es' ? 'aquí' : 'here' }}</span>.
+        {{ $t('about_text_when') }}
+        <span class="schedule-link" @click="scrollToComponent('c-schedule')">{{
+          $i18n.locale === 'es' ? 'aquí' : 'here'
+        }}</span
+        >.
       </p>
       <h6 class="about-section">{{ $t('about_section_who') }}</h6>
       <p class="about-text-content" v-html="$t('about_text_who')"></p>
       <h6 class="about-section">{{ $t('about_section_who2') }}</h6>
-      <p class="about-text-content">
-        {{ $t('about_text_who2') }}
-      </p>
+      <p class="about-text-content">{{ $t('about_text_who2') }}</p>
 
       <img src="../assets/logo-coreinsi.png" class="ceis-logo" />
 
@@ -25,30 +26,35 @@
         <font-awesome-icon icon="arrow-right" />
       </button>
 
-      <h6 class="about-countdown">{{ $t('about_countdown') }}</h6>
-      <ul class="countdown">
-        <li class="counter">
-          <p>{{ weeks }}</p>
-          <p class="counter-label">{{ $t('about_countdown_weeks') }}</p>
-        </li>
-        <li class="counter">
-          <p>{{ days }}</p>
-          <p class="counter-label">{{ $t('about_countdown_days') }}</p>
-        </li>
-        <li class="counter">
-          <p>{{ hours }}</p>
-          <p class="counter-label">{{ $t('about_countdown_hours') }}</p>
-        </li>
-        <li class="counter">
-          <p>{{ minutes }}</p>
-          <p class="counter-label">{{ $t('about_countdown_minutes') }}</p>
-        </li>
-        <li class="counter">
-          <p>{{ seconds }}</p>
-          <p class="counter-label">{{ $t('about_countdown_seconds') }}</p>
-        </li>
-      </ul>
+      <div v-if="isCountdownEnabled">
+        <h6 class="about-countdown">{{ $t('about_countdown') }}</h6>
+        <ul class="countdown">
+          <li class="counter">
+            <p>{{ weeks }}</p>
+            <p class="counter-label">{{ $t('about_countdown_weeks') }}</p>
+          </li>
+          <li class="counter">
+            <p>{{ days }}</p>
+            <p class="counter-label">{{ $t('about_countdown_days') }}</p>
+          </li>
+          <li class="counter">
+            <p>{{ hours }}</p>
+            <p class="counter-label">{{ $t('about_countdown_hours') }}</p>
+          </li>
+          <li class="counter">
+            <p>{{ minutes }}</p>
+            <p class="counter-label">{{ $t('about_countdown_minutes') }}</p>
+          </li>
+          <li class="counter">
+            <p>{{ seconds }}</p>
+            <p class="counter-label">{{ $t('about_countdown_seconds') }}</p>
+          </li>
+        </ul>
+      </div>
 
+      <div class="about-countdown" v-else>
+        <span class="finished-countdown">¡Nos veremos de vuelta el 2020!</span>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +64,7 @@ export default {
   name: 'ContainerAbout',
   data: function() {
     return {
+      isCountdownEnabled: true,
       weeks: 0,
       days: 0,
       hours: 0,
@@ -67,21 +74,17 @@ export default {
   },
   methods: {
     updateDiff: function() {
-      if(this.$moment().seconds() == 0 || this.seconds < 0){
+      if (this.$moment().seconds() == 0 || this.seconds < 0) {
         this.setDiff();
-      } else{
+      } else {
         this.seconds -= 1;
       }
     },
     setDiff() {
       var now = this.$moment();
-      var theDay = this.$moment("20190619", "YYYYMMDD");
-      if(now > theDay) {
-        this.weeks = 'XX';
-        this.days = 'XX';
-        this.hours = 'XX'
-        this.minutes = 'XX'
-        this.seconds = 'XX';
+      var theDay = this.$moment('20190619', 'YYYYMMDD');
+      if (now > theDay) {
+        this.isCountdownEnabled = false;
       } else {
         this.weeks = theDay.diff(now, 'weeks');
         now.weeks(now.weeks() + this.weeks);
@@ -99,191 +102,208 @@ export default {
   mounted() {
     this.setDiff();
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
-  /****************************************************************************|
+/****************************************************************************|
   |* General configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .about-container{
-    background: radial-gradient(circle, $eggplant 15%,$bossanova);
+.about-container {
+  background: radial-gradient(circle, $eggplant 15%, $bossanova);
 
-    height: auto;
-    font-size: 6vw;
-    @include breakpoint(tablet){
-      font-size: 4vw;
-    }
-    @include breakpoint(desktop){
-      font-size: 3vw;
-    }
-    @include breakpoint(large){
-      font-size: 2vw;
-    }
-    @include breakpoint(x-large){
-      font-size: 1.75vw;
-    }
+  height: auto;
+  font-size: 6vw;
+  @include breakpoint(tablet) {
+    font-size: 4vw;
   }
-  .about-text{
-    margin: 0 auto;
-    margin-top: 50px;
-    width: 90%;
-    @include breakpoint(desktop){
-      margin-top: 70px;
-      width: 75%;
-    }
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+  @include breakpoint(desktop) {
+    font-size: 3vw;
+  }
+  @include breakpoint(large) {
+    font-size: 2vw;
+  }
+  @include breakpoint(x-large) {
+    font-size: 1.75vw;
+  }
+}
+.about-text {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 90%;
+  @include breakpoint(desktop) {
+    margin-top: 70px;
+    width: 75%;
+  }
+} //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
-
-  /****************************************************************************|
+/****************************************************************************|
   |* Content configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .about-head{
-    margin: 3.5vw 0;
-    border-bottom: 3px solid;
-    font-family: $font-mono;
+.about-head {
+  margin: 3.5vw 0;
+  border-bottom: 3px solid;
+  font-family: $font-mono;
+}
+.about-title {
+  margin: 2.25vh auto;
+  color: $gold;
+}
+.about-section {
+  display: inline-block;
+  margin: 14px 0;
+  font-family: $font-mono;
+  border-bottom: 2px dotted;
+  color: $gold;
+  @include breakpoint(tablet) {
+    margin: 15px 0;
   }
-  .about-title{
-    margin: 2.25vh auto;
-    color: $gold;
+  @include breakpoint(desktop) {
+    margin: 16px 0;
   }
-  .about-section{
-    display: inline-block;
-    margin: 14px 0;
-    font-family: $font-mono;
-    border-bottom: 2px dotted;
-    color: $gold;
-    @include breakpoint(tablet){
-      margin: 15px 0;
-    }
-    @include breakpoint(desktop){
-      margin: 16px 0;
-    }
-    @include breakpoint(large){
-      margin: 18px 0;
-    }
+  @include breakpoint(large) {
+    margin: 18px 0;
   }
-  .about-text-content{
-    text-align: justify;
-    font-size: 4.75vw;
-    font-family: $font-content;
-    @include breakpoint(tablet){
-      font-size: 3vw;
-    }
-    @include breakpoint(desktop){
-      font-size: 2.75vw;
-    }
-    @include breakpoint(large){
-      font-size: 1.75vw;
-    }
-    @include breakpoint(x-large){
-      font-size: 1.5vw;
-    }
+}
+.about-text-content {
+  text-align: justify;
+  font-size: 4.75vw;
+  font-family: $font-content;
+  @include breakpoint(tablet) {
+    font-size: 3vw;
   }
-  .schedule-link{
-    cursor: pointer;
-    text-decoration: underline;
+  @include breakpoint(desktop) {
+    font-size: 2.75vw;
   }
-  .ceis-logo{
-    display: block;
-    max-width: 75%;
-    margin: 4% auto;
-    @include breakpoint(tablet){
-      margin: 2.5% auto;
-      max-width: 55%;
-    }
-    @include breakpoint(desktop){
-      max-width: 40%;
-      margin: 2.5% auto;
-    }
-    @include breakpoint(large){
-      max-width: 35%;
-    }
-    @include breakpoint(x-large){
-      max-width: 30%;
-      margin: 2% auto;
-    }
+  @include breakpoint(large) {
+    font-size: 1.75vw;
   }
-  .about-btn{
-    font-size: 75%;
-    padding: .75em 1.25em;
-    margin-bottom: 5vh;
-    @include breakpoint(desktop){
-      font-size: 1.5vw;
-    }
-    @include breakpoint(large){
-      font-size: 1.15vw;
-    }
-    @include breakpoint(x-large){
-      font-size: 1vw;
-      margin-bottom: 3.5%;
-    }
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+  @include breakpoint(x-large) {
+    font-size: 1.5vw;
+  }
+}
+.schedule-link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.ceis-logo {
+  display: block;
+  max-width: 75%;
+  margin: 4% auto;
+  @include breakpoint(tablet) {
+    margin: 2.5% auto;
+    max-width: 55%;
+  }
+  @include breakpoint(desktop) {
+    max-width: 40%;
+    margin: 2.5% auto;
+  }
+  @include breakpoint(large) {
+    max-width: 35%;
+  }
+  @include breakpoint(x-large) {
+    max-width: 30%;
+    margin: 2% auto;
+  }
+}
+.about-btn {
+  font-size: 75%;
+  padding: 0.75em 1.25em;
+  margin-bottom: 4.25vh;
+  @include breakpoint(desktop) {
+    font-size: 1.5vw;
+  }
+  @include breakpoint(large) {
+    font-size: 1.15vw;
+  }
+  @include breakpoint(x-large) {
+    font-size: 1vw;
+    margin-bottom: 3.5%;
+  }
+} //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
-
-  /****************************************************************************|
+/****************************************************************************|
   |* Countdown configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ *|
   |****************************************************************************/
-  .about-countdown{
-    text-align: center;
-    margin: 0;
+.about-countdown {
+  text-align: center;
+  margin: 0;
+}
+.countdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 0.25em 0;
+  border-top: 3px dashed;
+  border-bottom: 3px dashed;
+  list-style-type: none;
+  width: 100%;
+  font-size: 8.5vw;
+  @include breakpoint(tablet) {
+    justify-content: space-evenly;
+    width: 75%;
+    font-size: 5.5vw;
   }
-  .countdown {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    padding: .25em 0;
-    border-top: 3px dashed;
-    border-bottom: 3px dashed;
-    list-style-type: none;
-    width: 100%;
-    font-size: 8.5vw;
-    @include breakpoint(tablet){
-      justify-content: space-evenly;
-      width: 75%;
-      font-size: 5.5vw;
-    }
-    @include breakpoint(desktop){
-      font-size: 4.5vw;
-    }
-    @include breakpoint(large){
-      width: 60%;
-      font-size: 3.5vw;
-    }
-    @include breakpoint(x-large){
-      width: 50%;
-      font-size: 2.5vw;
-    }
+  @include breakpoint(desktop) {
+    font-size: 4.5vw;
   }
-  .counter {
-    border: 2px solid;
-    border-radius: 15px;
-    padding: .25em 0px;
-    width: 18%;
-    filter: drop-shadow( 3px 3px 5px rgba(0,0,0,1) );
-    @include breakpoint(tablet){
-      width: 17%;
-    }
-    @include breakpoint(desktop){
-      width: 16%;
-    }
+  @include breakpoint(large) {
+    width: 60%;
+    font-size: 3.5vw;
   }
-  .counter-label {
-    font-size: 3.75vw;
-    @include breakpoint(tablet){
-      font-size: 2.25vw;
-    }
-    @include breakpoint(desktop){
-      font-size: 1.5vw;
-    }
-    @include breakpoint(large){
-      font-size: 1.15vw;
-    }
-    @include breakpoint(x-large){
-      font-size: 0.95vw;
-    }
-  } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
+  @include breakpoint(x-large) {
+    width: 50%;
+    font-size: 2.5vw;
+  }
+}
+.finished-countdown {
+  display: inline-block;
+  margin-bottom: 40px;
+  padding: 0.25em 0;
+  border-top: 3px dashed;
+  border-bottom: 3px dashed;
+  @include breakpoint(tablet) {
+    font-size: 5.5vw;
+  }
+  @include breakpoint(desktop) {
+    font-size: 4.5vw;
+  }
+  @include breakpoint(large) {
+    font-size: 2.35vw;
+  }
+  @include breakpoint(x-large) {
+    font-size: 1.75vw;
+  }
+}
+.counter {
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 0.25em 0px;
+  width: 18%;
+  filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 1));
+  @include breakpoint(tablet) {
+    width: 17%;
+  }
+  @include breakpoint(desktop) {
+    width: 16%;
+  }
+}
+.counter-label {
+  font-size: 3.75vw;
+  @include breakpoint(tablet) {
+    font-size: 2.25vw;
+  }
+  @include breakpoint(desktop) {
+    font-size: 1.5vw;
+  }
+  @include breakpoint(large) {
+    font-size: 1.15vw;
+  }
+  @include breakpoint(x-large) {
+    font-size: 0.95vw;
+  }
+} //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 </style>

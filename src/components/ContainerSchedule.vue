@@ -7,19 +7,19 @@
 
     <div class="button-container">
       <button type="button" class="btn-round btn-cc-tw date-button-f"
-      @click="position = 0" v-bind:class="{ 'active': position == 0 }">
+      @click="position = 0" :class="{ 'active': position == 0 }">
         {{ $t('schedule_1st_day') }}<br/>{{ $t('schedule_1st_long_day') }}
       </button>
       <button type="button" class="btn-round btn-cc-tw date-button-m"
-      @click="position = 1" v-bind:class="{ 'active': position == 1 }">
+      @click="position = 1" :class="{ 'active': position == 1 }">
         {{ $t('schedule_2nd_day') }}<br/>{{ $t('schedule_2nd_long_day') }}
       </button>
       <button type="button" class="btn-round btn-cc-tw date-button-m"
-      @click="position = 2" v-bind:class="{ 'active': position == 2 }">
+      @click="position = 2" :class="{ 'active': position == 2 }">
         {{ $t('schedule_3rd_day') }}<br/>{{ $t('schedule_3rd_long_day') }}
       </button>
       <button type="button" class="btn-round btn-cc-tw date-button-l"
-      @click="position = 3" v-bind:class="{ 'active': position == 3 }">
+      @click="position = 3" :class="{ 'active': position == 3 }">
         {{ $t('schedule_4th_day') }}<br/>{{ $t('schedule_4th_long_day') }}
       </button>
     </div>
