@@ -2,11 +2,11 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import moment from 'moment';
-Object.defineProperty(Vue.prototype, '$moment', { value: moment });
+
 import { VueHammer } from 'vue2-hammer';
 
 import VueI18n from 'vue-i18n';
-import messages from '@/lang/es';
+import messages from '@/i18n/es';
 import axios from 'axios';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(faArrowAltCircleRight, faArrowAltCircleLeft, faEnvelope,
           faArrowRight, faGlobeAmericas, faMapMarkerAlt,
           faFacebookF, faGithub, faInstagram, faLinkedinIn, faTwitter);
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 VueHammer.config.swipe = {
@@ -60,7 +61,10 @@ Vue.mixin({
     loadLanguageAsync: function(lang) {
       if (i18n.locale !== lang) {
         if (!loadedLanguages.includes(lang)) {
-          return import(/* webpackChunkName: "lang-[request]" */ `@/lang/${lang}`).then(msgs => {
+          return import(
+            /* webpackChunkName: "i18n-[request]" */ 
+            `@/i18n/${lang}`
+          ).then(msgs => {
             i18n.setLocaleMessage(lang, msgs.default)
             loadedLanguages.push(lang)
             return setI18nLanguage(lang)
@@ -79,7 +83,9 @@ Number.prototype.between = function(a, b, inclusive) {
 
   return inclusive ? this >= min && this <= max : this > min && this < max;
 }
-// Vue.prototype.moment = moment;
+
+//Object.defineProperty(Vue.prototype, '$moment', { value: moment });
+Vue.prototype.$moment = moment;
 
 new Vue({
   i18n,
