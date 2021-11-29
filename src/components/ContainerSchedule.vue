@@ -145,6 +145,8 @@ export default {
   height: auto;
   z-index: 0;
   text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   & > .schedule-bg {
     background-image: url(https://redstart.studio/wp-content/uploads/2018/09/adrien-olichon-762138-unsplash.jpg);
     opacity: 0.1;

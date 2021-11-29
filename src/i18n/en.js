@@ -317,4 +317,5 @@ export default {
 	pricing_footnote: "* S: Student.</br>&nbsp;&nbsp;P: Professional.</br>&nbsp;&nbsp;10+: More than 10 students.</br>&nbsp;&nbsp;15+: More than 15 students.",
 	footer_contact: "CONTACT",
 	footer_social: "SOCIAL NETWORKS",
+  pricing_buy: "The XII Regional Congress of Systems Engineering has already ended, Thank you very much for your interest! ",
 };

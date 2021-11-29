@@ -1,0 +1,5 @@
+/*
+  Content-Security-Policy: script-src 'self' 'unsafe-eval'
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: vibrate=(none), geolocation=(none), midi=(none), notifications=(none), push=(none), sync-xhr=(none), microphone=(none), camera=(none), magnetometer=(none), gyroscope=(none), speaker=(none), fullscreen=(none), payment=(none)

@@ -140,8 +140,8 @@ export default {
   text-align: center;
   font-size: 5vw;
   z-index: 0;
-  padding-bottom: 7rem;
-  padding-top: 7rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   &::after {
     content: "";
     background: url("../assets/speakers-background.gif");
@@ -158,6 +158,8 @@ export default {
   }
   @include breakpoint(desktop) {
     font-size: 2.5vw;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
   @include breakpoint(large) {
     font-size: 2.15vw;

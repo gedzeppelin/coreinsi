@@ -114,9 +114,8 @@ export default {
   |****************************************************************************/
 .about-container {
   background: radial-gradient(circle, $eggplant 15%, $bossanova);
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   height: auto;
   font-size: 6vw;
   @include breakpoint(tablet) {
@@ -124,6 +123,8 @@ export default {
   }
   @include breakpoint(desktop) {
     font-size: 3vw;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
   @include breakpoint(large) {
     font-size: 2vw;

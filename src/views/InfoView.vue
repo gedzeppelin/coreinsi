@@ -23,7 +23,7 @@
       >
         {{ $t("app_1st_li") }}
       </span>
-      <span class="header-logo-r" @click="scrollTooComponent()" v-else>
+      <span class="header-logo-r" @click="scrollToComponent()" v-else>
         {{
           position === 0
             ? $t("app_1st_li")
@@ -124,14 +124,14 @@
       <span class="language-selector">
         <abbr
           v-bind:class="{ 'language-selected': !isEnActive }"
-          @click="change_lang"
+          @click="changeLang"
         >
           es
         </abbr>
         <aside>&nbsp;|&nbsp;</aside>
         <abbr
           v-bind:class="{ 'language-selected': isEnActive }"
-          @click="change_lang"
+          @click="changeLang"
         >
           en
         </abbr>
@@ -198,7 +198,7 @@ export default {
         this.position = 4;
       }
     },
-    change_lang: function () {
+    changeLang: function () {
       if (this.isEnActive) {
         this.loadLanguageAsync("es");
       } else {
@@ -221,7 +221,7 @@ export default {
         this.$refs.line2.style =
           null;
     },
-    scrollTooComponent: function () {
+    scrollToComponent: function () {
       switch (this.position) {
         case 0:
           this.scrollToComponent("c-home");
@@ -279,7 +279,7 @@ header {
   padding: 20px 0px;
   background: $black-85;
   @include transition-pd(all, 0.5s);
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     flex-wrap: nowrap;
     background: $black-85;
     font-size: 24px;
@@ -291,7 +291,7 @@ header {
 .scrolled-y {
   padding: 14px 0px;
   background: $black-100;
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     background: $black-100;
     padding: 18 0px;
   }
@@ -307,7 +307,7 @@ header {
   margin-right: 1.12em;
   width: auto;
   cursor: pointer;
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     display: none;
   }
 }
@@ -321,7 +321,7 @@ header {
   top: 0;
   border-radius: 10px;
   @include transition-pdt(all, ease-in-out, 0.35s);
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     display: none;
   }
   &-3 {
@@ -334,7 +334,7 @@ header {
   |****************************************************************************/
 .header-logo {
   display: none;
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     display: inline-block;
     width: 25%;
     margin-left: 1%;
@@ -347,7 +347,7 @@ header {
   color: $gold;
   cursor: pointer;
   @include unselectable;
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     display: none;
   }
   &e {
@@ -375,13 +375,13 @@ header {
     max-height: 0px;
     width: 100%;
     @include transition-multi(opacity 0.35s ease-in, max-height 0.25s ease-out);
-    @include breakpoint(large) {
+    @include breakpoint(desktop) {
       display: none;
     }
   }
   &-normal {
     display: none;
-    @include breakpoint(large) {
+    @include breakpoint(desktop) {
       display: inline-flex;
       justify-content: space-between;
       width: 68%;
@@ -400,7 +400,7 @@ header {
   color: white;
   cursor: pointer;
   @include transition-pdt(color, 0.15s, linear);
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     width: 20%;
     padding: 0;
     font-size: 1rem;
@@ -442,7 +442,7 @@ header {
   text-align: right;
   cursor: pointer;
   @include unselectable;
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     width: 25%;
     margin-right: 1%;
     font-size: 18px;
@@ -491,7 +491,7 @@ aside {
     width: 46px;
     background-size: 23px;
   }
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     right: 1.5%;
   }
 } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
@@ -501,7 +501,7 @@ aside {
   |****************************************************************************/
 .fa-arrow-right {
   margin-left: 0.25em;
-  @include breakpoint(large) {
+  @include breakpoint(desktop) {
     font-size: inherit;
   }
 } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|

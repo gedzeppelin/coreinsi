@@ -45,10 +45,18 @@
       <span class="item grp-item2-3">S/70.00</span>
     </div>
 
-    <button type="button" class="btn-round btn-fb-lr-b pricing-btn">
+    <button
+      type="button"
+      class="btn-round btn-fb-lr-b pricing-btn"
+      @click="buyTicket"
+    >
       {{ $t("pricing_indv_btn") }}
     </button>
-    <button type="button" class="btn-round btn-fb-lr-b pricing-btn">
+    <button
+      type="button"
+      class="btn-round btn-fb-lr-b pricing-btn"
+      @click="buyTicket"
+    >
       {{ $t("pricing_grp_btn") }}
     </button>
 
@@ -59,6 +67,11 @@
 <script>
 export default {
   name: "ContainerPricing",
+  methods: {
+    buyTicket() {
+      alert(this.$t("pricing_buy"));
+    },
+  },
 };
 </script>
 
@@ -71,8 +84,12 @@ export default {
   text-align: center;
   color: #696969;
   height: auto;
-  padding-top: 7rem;
-  padding-bottom: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @include breakpoint(desktop) {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+  }
 } //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|
 
 /****************************************************************************|

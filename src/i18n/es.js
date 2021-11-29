@@ -318,5 +318,6 @@ export default {
 		pricing_footnote: "* E: Estudiante.</br>&nbsp;&nbsp;P: Profesional.</br>&nbsp;&nbsp;10+: Más de 10 estudiantes.</br>&nbsp;&nbsp;15+: Más de 15 estudiantes.",
 		footer_contact: "CONTACTO",
 		footer_social: "REDES SOCIALES",
+    pricing_buy: "El XII Congreso Regional de Ingeniería de Sistemas ya ha finalizado, ¡Muchas gracias por su interés!",
 	}
 }
